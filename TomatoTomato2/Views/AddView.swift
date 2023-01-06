@@ -10,43 +10,43 @@ import SwiftUI
 struct AddView: View {
     
     @State var textFieldText: String = ""
-    @State var sizePickerSelection: Int = 2
-    @State var typePickerSelection: String = "Mail"
+    @State var sizePickerSelection: String = "L"
+    @State var typePickerSelection: String = "Research"
+    
+    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
     var typePickerOptions: [String] = ["Mail", "Develop", "Launch", "Meet", "Plan", "Research", "Review", "Test"]
     
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type the task", text: $textFieldText)
+                TextField("Type the title", text: $textFieldText)
                     .padding(.horizontal)
                     .frame(height: 45)
-                    .background(Color.theme.background)
+                    .background(Color.theme.background.opacity(0.85))
                     .cornerRadius(20)
                     .padding()
                 
                 Picker("Size", selection: $sizePickerSelection) {
-                    Text("XS").tag(1)
-                    Text("S").tag(2)
-                    Text("M").tag(3)
-                    Text("L").tag(4)
-                    Text("XL").tag(5)
+                    ForEach(sizePickerOptions, id: \.self) { size in
+                        Text(size)
+                    }
                 }
-                .padding(.bottom)
                 .pickerStyle(.segmented)
-                .padding()
+                .padding(.horizontal)
+                .padding(.bottom)
                 .frame(height: 45)
                 
-                HStack {
-                    Text("Type:")
-                    Picker("Type", selection: $typePickerSelection) {
-                        ForEach(typePickerOptions, id: \.self) { type in
-                            Text(type)
-                        }
+                Picker("Type", selection: $typePickerSelection) {
+                    ForEach(typePickerOptions, id: \.self) { type in
+                        Text(type)
+                            .foregroundColor(Color.theme.extra)
                     }
-                    Spacer()
                 }
-                
-                
+                .pickerStyle(.wheel)
+                .background(Color.theme.extra.opacity(0.1))
+                .cornerRadius(20)
+                .padding(.horizontal)
+                .padding(.bottom)
                 
                 Button("Save me".uppercased()) {
                     //smth happens
