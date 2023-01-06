@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct CellListView: View {
+    
+    let title: String
+    
     var body: some View {
         HStack {
             Image(systemName: "checkmark.circle")
-            Text("Create the views")
+            Text(title)
             Spacer()
         }
     }
@@ -19,6 +22,6 @@ struct CellListView: View {
 
 struct CellListView_Previews: PreviewProvider {
     static var previews: some View {
-        CellListView()
+        CellListView(title: "Preview title")
     }
 }

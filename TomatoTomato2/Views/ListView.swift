@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    @State var items: [String] = [
+        "First task",
+        "Second task",
+        "Third task"
+    ]
+    
     var body: some View {
+        
         List {
-            CellListView()
+            ForEach(items, id: \.self) { item in
+                CellListView(title: item)
+            }
         }
         .navigationTitle("📌 To do:")
+        .navigationBarItems(
+            leading: EditButton(),
+            trailing:
+                NavigationLink("Add", destination: Text("Edit screen"))
+        )
     }
 }
 
