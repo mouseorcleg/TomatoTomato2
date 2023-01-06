@@ -16,6 +16,10 @@ struct AddView: View {
     var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
     var typePickerOptions: [String] = ["Mail", "Develop", "Launch", "Meet", "Plan", "Research", "Review", "Test"]
     
+    init() {
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
