@@ -8,6 +8,13 @@ I will follow this 3 steps logic:
 
 I will add bd when or if I need it. I will try to concentrate on getting the app up and running first, improve it later.
 
+## How it looks like
+
+6th of January:
+
+<img width="570" alt="Screenshot 2023-01-06 at 19 36 48" src="https://user-images.githubusercontent.com/45575272/211086542-58b26465-230f-4937-bafa-790c1cee0160.png"> <img width="570" alt="211086146-9cbd3254-3cd6-4a0a-8e8b-e80b892baf0c" src="https://user-images.githubusercontent.com/45575272/211086362-1deb3836-3ece-4e6b-9009-229f4b5f2897.png">
+
+
 ## Credits and acknowledgements
 The first part of building this app will be going through the Swiftful Thinking tutorial: [SwiftUI Todo List](https://www.youtube.com/playlist?list=PLwvDm4VfkdpheGqemblOIA7v3oq0MS30i)
 
