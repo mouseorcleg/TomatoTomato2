@@ -30,17 +30,14 @@ struct CellListView: View {
                     Text(task.size)
                         .foregroundColor(Color.theme.background)
                 }
-                .padding(5)
-                .padding(.trailing)
         }
-        .font(.title2)
-        .padding(.vertical, 8)
+        .font(.title3)
     }
 }
 
 struct CellListView_Previews: PreviewProvider {
-    static var task1 = TomatoTaskModel(title: "Sleep well", size: "L", type: "Research", isCompleted: true)
-    static var task2 = TomatoTaskModel(title: "Wake up", size: "XS", type: "Develop", isCompleted: false)
+    static var task1 = TomatoTaskModel(title: "Sleep well", size: "L", type: "research", isCompleted: true)
+    static var task2 = TomatoTaskModel(title: "Wake up", size: "XS", type: "develop", isCompleted: false)
     
     static var previews: some View {
         Group {

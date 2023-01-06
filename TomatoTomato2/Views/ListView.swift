@@ -10,9 +10,9 @@ import SwiftUI
 struct ListView: View {
     
     @State var tasks: [TomatoTaskModel] = [
-        TomatoTaskModel(title: "Sleep", size: "XL", type: "Research", isCompleted: true),
-        TomatoTaskModel(title: "Breakfast", size: "S", type: "Develop", isCompleted: false),
-        TomatoTaskModel(title: "Go for a walk", size: "M", type: "Plan", isCompleted: false)
+        TomatoTaskModel(title: "Sleep", size: "XL", type: "research", isCompleted: true),
+        TomatoTaskModel(title: "Breakfast", size: "S", type: "develop", isCompleted: false),
+        TomatoTaskModel(title: "Go for a walk", size: "M", type: "plan", isCompleted: false)
         
     ]
     
@@ -20,7 +20,7 @@ struct ListView: View {
         
         List {
             ForEach(tasks) { task in
-//                CellListView(title: task)
+                CellListView(task: task)
             }
         }
         .listStyle(InsetGroupedListStyle())
