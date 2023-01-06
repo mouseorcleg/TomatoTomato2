@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct TaskModel: Identifiable {
+struct TomatoTaskModel: Identifiable {
     var id = UUID()
     var title: String
     var size: String
     var type: String
-    var isCompleted: Bool = false
+    var isCompleted: Bool
 }
 
 //potentially you can add Color and dueDate to this model

@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var tasks: [String] = [
-        "First task",
-        "Second task",
-        "Third task"
+    @State var tasks: [TomatoTaskModel] = [
+        TomatoTaskModel(title: "Sleep", size: "XL", type: "Research", isCompleted: true),
+        TomatoTaskModel(title: "Breakfast", size: "S", type: "Develop", isCompleted: false),
+        TomatoTaskModel(title: "Go for a walk", size: "M", type: "Plan", isCompleted: false)
+        
     ]
     
     var body: some View {
         
         List {
-            ForEach(tasks, id: \.self) { task in
-                CellListView(title: task)
+            ForEach(tasks) { task in
+//                CellListView(title: task)
             }
         }
         .listStyle(InsetGroupedListStyle())
