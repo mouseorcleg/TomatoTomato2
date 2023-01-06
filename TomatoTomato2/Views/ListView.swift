@@ -10,7 +10,7 @@ import SwiftUI
 struct ListView: View {
     var body: some View {
         List {
-            Text("Create the views")
+            CellListView()
         }
         .navigationTitle("📌 To do:")
     }

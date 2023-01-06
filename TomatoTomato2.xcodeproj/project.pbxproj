@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB21D451296881FC00F6F8CC /* CellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21D450296881FC00F6F8CC /* CellListView.swift */; };
 		CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */; };
 		CBA9A18329682EFA00879058 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA9A18229682EFA00879058 /* Assets.xcassets */; };
 		CBA9A18629682EFA00879058 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA9A18529682EFA00879058 /* Preview Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB21D450296881FC00F6F8CC /* CellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellListView.swift; sourceTree = "<group>"; };
 		CBA9A17B29682EF700879058 /* TomatoTomato2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoTomato2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTomato2App.swift; sourceTree = "<group>"; };
 		CBA9A18229682EFA00879058 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				CBA9A18F2968419C00879058 /* ListView.swift */,
+				CB21D450296881FC00F6F8CC /* CellListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB21D451296881FC00F6F8CC /* CellListView.swift in Sources */,
 				CBA9A1902968419C00879058 /* ListView.swift in Sources */,
 				CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */,
 				CBA9A18D2968404300879058 /* Color.swift in Sources */,
