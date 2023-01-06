@@ -13,21 +13,30 @@ struct CellListView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "checkmark.circle")
-                .foregroundColor(Color.theme.accent)
+            Image(systemName: task.isCompleted ? "checkmark.circle" : "circle")
+                .foregroundColor(task.isCompleted ? Color.theme.accent : Color.primary)
             Text(task.title)
             Spacer()
             Text(task.type)
-                .foregroundColor(Color.theme.extra)
+                .padding(5)
+                .background(Color.theme.extra)
+                .foregroundColor(Color.theme.background)
+                .cornerRadius(10)
+
             Text(task.size)
-                .padding()
-                .foregroundColor(Color.theme.accent)
+                .padding(5)
+                .background(Color.theme.accent)
+                .foregroundColor(Color.theme.background)
+                .cornerRadius(20)
+                .padding(.trailing)
         }
+        .font(.title2)
+        .padding(.vertical, 8)
     }
 }
 
 struct CellListView_Previews: PreviewProvider {
-    static var task1 = TomatoTaskModel(title: "Sleep well", size: "XL", type: "Research", isCompleted: true)
+    static var task1 = TomatoTaskModel(title: "Sleep well", size: " L ", type: "Research", isCompleted: true)
     static var task2 = TomatoTaskModel(title: "Wake up", size: "XS", type: "Develop", isCompleted: false)
     
     static var previews: some View {
@@ -35,5 +44,6 @@ struct CellListView_Previews: PreviewProvider {
             CellListView(task: task1)
             CellListView(task: task2)
         }
+        .previewLayout(.sizeThatFits)
     }
 }
