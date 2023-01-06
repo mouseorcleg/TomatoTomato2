@@ -27,7 +27,7 @@ struct ListView: View {
         .navigationBarItems(
             leading: EditButton(),
             trailing:
-                NavigationLink("Add", destination: Text("Edit screen"))
+                NavigationLink("Add", destination: AddView())
         )
     }
 }
