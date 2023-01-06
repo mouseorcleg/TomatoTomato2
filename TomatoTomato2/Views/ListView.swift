@@ -22,6 +22,7 @@ struct ListView: View {
                 CellListView(title: item)
             }
         }
+        .listStyle(InsetGroupedListStyle())
         .navigationTitle("📌 To do:")
         .navigationBarItems(
             leading: EditButton(),
