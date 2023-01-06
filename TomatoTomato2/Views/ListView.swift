@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var items: [String] = [
+    @State var tasks: [String] = [
         "First task",
         "Second task",
         "Third task"
@@ -18,8 +18,8 @@ struct ListView: View {
     var body: some View {
         
         List {
-            ForEach(items, id: \.self) { item in
-                CellListView(title: item)
+            ForEach(tasks, id: \.self) { task in
+                CellListView(title: task)
             }
         }
         .listStyle(InsetGroupedListStyle())
