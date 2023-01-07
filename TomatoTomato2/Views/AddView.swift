@@ -11,10 +11,10 @@ struct AddView: View {
     
     @State var textFieldText: String = ""
     @State var sizePickerSelection: String = "L"
-    @State var typePickerSelection: String = "Research"
+    @State var typePickerSelection: String = ""
     
     var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["Mail", "Develop", "Launch", "Meet", "Plan", "Research", "Review", "Test"]
+    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
@@ -27,7 +27,7 @@ struct AddView: View {
                     .padding(.horizontal)
                     .frame(height: 45)
                     .background(Color.theme.background.opacity(0.85))
-                    .cornerRadius(20)
+                    .cornerRadius(10)
                     .padding()
                 
                 Picker("Size", selection: $sizePickerSelection) {
@@ -48,7 +48,7 @@ struct AddView: View {
                 }
                 .pickerStyle(.wheel)
                 .background(Color.theme.extra.opacity(0.1))
-                .cornerRadius(20)
+                .cornerRadius(10)
                 .padding(.horizontal)
                 .padding(.bottom)
                 
@@ -61,7 +61,7 @@ struct AddView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.theme.accent)
                 .foregroundColor(Color.theme.background)
-                .cornerRadius(20)
+                .cornerRadius(10)
                 .padding(.horizontal)
             }
         }

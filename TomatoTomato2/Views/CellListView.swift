@@ -9,19 +9,41 @@ import SwiftUI
 
 struct CellListView: View {
     
-    let title: String
+    let task: TomatoTaskModel
     
     var body: some View {
         HStack {
-            Image(systemName: "checkmark.circle")
-            Text(title)
+            Image(systemName: task.isCompleted ? "checkmark.circle" : "circle")
+                .foregroundColor(task.isCompleted ? Color.theme.accent : Color.primary)
+            Text(task.title)
             Spacer()
+            Text(task.type)
+                .padding(5)
+                .background(Color.theme.extra)
+                .foregroundColor(Color.theme.background)
+                .cornerRadius(10)
+
+            Circle()
+                .frame(width: 37)
+                .foregroundColor(Color.theme.accent)
+                .overlay {
+                    Text(task.size)
+                        .foregroundColor(Color.theme.background)
+                }
         }
+        .font(.title3)
     }
 }
 
 struct CellListView_Previews: PreviewProvider {
+    static var task1 = TomatoTaskModel(title: "Sleep well", size: "L", type: "research", isCompleted: true)
+    static var task2 = TomatoTaskModel(title: "Wake up", size: "XS", type: "develop", isCompleted: false)
+    
     static var previews: some View {
-        CellListView(title: "Preview title")
+        Group {
+            CellListView(task: task1)
+            CellListView(task: task2)
+        }
+        .previewLayout(.sizeThatFits)
     }
 }
