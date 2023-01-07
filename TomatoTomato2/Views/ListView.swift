@@ -22,6 +22,8 @@ struct ListView: View {
             ForEach(tasks) { task in
                 CellListView(task: task)
             }
+            .onDelete(perform: deleteTask)
+            .onMove(perform: moveTask)
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("📌 To do:")
@@ -30,6 +32,14 @@ struct ListView: View {
             trailing:
                 NavigationLink("Add", destination: AddView())
         )
+    }
+    
+    func deleteTask(indexSet: IndexSet) {
+        tasks.remove(atOffsets: indexSet)
+    }
+    
+    func moveTask(from: IndexSet, to: Int) {
+        tasks.move(fromOffsets: from, toOffset: to)
     }
 }
 
