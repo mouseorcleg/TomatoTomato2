@@ -9,21 +9,16 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var tasks: [TomatoTaskModel] = [
-        TomatoTaskModel(title: "Sleep", size: "XL", type: "research", isCompleted: true),
-        TomatoTaskModel(title: "Breakfast", size: "S", type: "develop", isCompleted: false),
-        TomatoTaskModel(title: "Go for a walk", size: "M", type: "plan", isCompleted: false)
-        
-    ]
+    @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
         
         List {
-            ForEach(tasks) { task in
+            ForEach(listViewModel.tasks) { task in
                 CellListView(task: task)
             }
-            .onDelete(perform: deleteTask)
-            .onMove(perform: moveTask)
+            .onDelete(perform: listViewModel.deleteTask)
+            .onMove(perform: listViewModel.moveTask)
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("📌 To do:")
@@ -32,14 +27,6 @@ struct ListView: View {
             trailing:
                 NavigationLink("Add", destination: AddView())
         )
-    }
-    
-    func deleteTask(indexSet: IndexSet) {
-        tasks.remove(atOffsets: indexSet)
-    }
-    
-    func moveTask(from: IndexSet, to: Int) {
-        tasks.move(fromOffsets: from, toOffset: to)
     }
 }
 
