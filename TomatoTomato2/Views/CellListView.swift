@@ -22,9 +22,10 @@ struct CellListView: View {
                 .background(Color.theme.extra)
                 .foregroundColor(Color.theme.background)
                 .cornerRadius(10)
+                .font(.body)
 
             Circle()
-                .frame(width: 37)
+                .frame(width: 32)
                 .foregroundColor(Color.theme.accent)
                 .overlay {
                     Text(task.size)
