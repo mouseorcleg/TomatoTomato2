@@ -31,4 +31,9 @@ class ListViewModel: ObservableObject {
         tasks.move(fromOffsets: from, toOffset: to)
     }
     
+    func addTask(title: String, size: String, type: String) {
+        let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
+        tasks.append(newTask)
+    }
+    
 }

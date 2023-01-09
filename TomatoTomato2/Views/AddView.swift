@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddView: View {
     
+    @EnvironmentObject var listViewModel: ListViewModel
     @State var textFieldText: String = ""
     @State var sizePickerSelection: String = "L"
     @State var typePickerSelection: String = ""
@@ -67,6 +68,10 @@ struct AddView: View {
         }
         .navigationTitle("✏️ New task ")
     }
+    
+    func savedButtonPressed() {
+        listViewModel.addTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+    }
 }
 
 struct AddView_Previews: PreviewProvider {
@@ -74,5 +79,6 @@ struct AddView_Previews: PreviewProvider {
         NavigationView{
             AddView()
         }
+        .environmentObject(ListViewModel())
     }
 }
