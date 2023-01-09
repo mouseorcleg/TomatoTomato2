@@ -9,7 +9,12 @@ import SwiftUI
 
 struct AddView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
+    
+    @State var alertTitle: String = ""
+    @State var showAlert: Bool = false
+    
     @State var textFieldText: String = ""
     @State var sizePickerSelection: String = "L"
     @State var typePickerSelection: String = ""
@@ -67,10 +72,30 @@ struct AddView: View {
             }
         }
         .navigationTitle("✏️ New task ")
+        .alert(isPresented: $showAlert) {
+            getAlert()
+        }
     }
     
     func savedButtonPressed() {
-        listViewModel.addTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+        if thereIsTheTitle() {
+            listViewModel.addTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    func thereIsTheTitle() -> Bool {
+        if textFieldText.count < 3 {
+            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
+            //can add other checks here
+            showAlert.toggle()
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle))
     }
 }
 
