@@ -11,16 +11,7 @@ struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
-    
-    @State var alertTitle: String = ""
-    @State var showAlert: Bool = false
-    
-    @State var textFieldText: String = ""
-    @State var sizePickerSelection: String = "L"
-    @State var typePickerSelection: String = ""
-    
-    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
+    @EnvironmentObject var addViewModel: AddViewModel
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
@@ -29,15 +20,15 @@ struct AddView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type the title", text: $textFieldText)
+                TextField("Type the title", text: $addViewModel.textFieldText)
                     .padding(.horizontal)
                     .frame(height: 45)
                     .background(Color.theme.background.opacity(0.85))
                     .cornerRadius(10)
                     .padding()
                 
-                Picker("Size", selection: $sizePickerSelection) {
-                    ForEach(sizePickerOptions, id: \.self) { size in
+                Picker("Size", selection: $addViewModel.sizePickerSelection) {
+                    ForEach(addViewModel.sizePickerOptions, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -46,8 +37,8 @@ struct AddView: View {
                 .padding(.bottom)
                 .frame(height: 45)
                 
-                Picker("Type", selection: $typePickerSelection) {
-                    ForEach(typePickerOptions, id: \.self) { type in
+                Picker("Type", selection: $addViewModel.typePickerSelection) {
+                    ForEach(addViewModel.typePickerOptions, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }
@@ -59,7 +50,7 @@ struct AddView: View {
                 .padding(.bottom)
                 
                 Button("Save me".uppercased()) {
-                    savedButtonPressed()
+                    addViewModel.savedButtonPressed()
                 }
                 .padding(.vertical)
                 .font(.headline)
@@ -72,30 +63,9 @@ struct AddView: View {
             }
         }
         .navigationTitle("✏️ New task ")
-        .alert(isPresented: $showAlert) {
-            getAlert()
+        .alert(isPresented: $addViewModel.showAlert) {
+            addViewModel.getAlert()
         }
-    }
-    
-    func savedButtonPressed() {
-        if thereIsTheTitle() {
-            listViewModel.addTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
-            presentationMode.wrappedValue.dismiss()
-        }
-    }
-    
-    func thereIsTheTitle() -> Bool {
-        if textFieldText.count < 3 {
-            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
-            //can add other checks here
-            showAlert.toggle()
-            return false
-        }
-        return true
-    }
-    
-    func getAlert() -> Alert {
-        return Alert(title: Text(alertTitle))
     }
 }
 
@@ -105,5 +75,6 @@ struct AddView_Previews: PreviewProvider {
             AddView()
         }
         .environmentObject(ListViewModel())
+        .environmentObject(AddViewModel())
     }
 }
