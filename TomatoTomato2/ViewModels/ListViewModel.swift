@@ -10,7 +10,12 @@ import SwiftUI
 
 class ListViewModel: ObservableObject {
     
-    @Published var tasks: [TomatoTaskModel] = []
+    @Published var tasks: [TomatoTaskModel] = [] {
+        didSet {
+            saveTasks()
+        }
+    }
+    let tasksKey: String = "tasks_list"
     
     @Published var alertTitle: String = ""
     @Published var showAlert: Bool = false
@@ -23,8 +28,7 @@ class ListViewModel: ObservableObject {
     var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
     init() {
-        
-        getTestTasks()
+        getYourTasks()
     }
     
     func getTestTasks() {
@@ -34,6 +38,14 @@ class ListViewModel: ObservableObject {
             TomatoTaskModel(title: "Go for a walk", size: "M", type: "plan", isCompleted: false)
         ]
         tasks.append(contentsOf: testItems)
+    }
+    
+    func getYourTasks() {
+        guard
+            let data = UserDefaults.standard.data(forKey: tasksKey),
+            let savedTasks = try? JSONDecoder().decode([TomatoTaskModel].self, from: data)
+        else { return }
+        self.tasks = savedTasks
     }
     
     func deleteTask(indexSet: IndexSet) {
@@ -48,6 +60,12 @@ class ListViewModel: ObservableObject {
         
         if let index = tasks.firstIndex(where: { $0.id == task.id}) {
             tasks[index] = task.updateCompletion()
+        }
+    }
+    
+    func saveTasks() {
+        if let encodedData = try? JSONEncoder().encode(tasks) {
+            UserDefaults.standard.set(encodedData, forKey: tasksKey)
         }
     }
     

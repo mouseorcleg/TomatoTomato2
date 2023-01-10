@@ -9,7 +9,7 @@ import Foundation
 
 //Immutable struct - use let so the data can't be changed easily
 
-struct TomatoTaskModel: Identifiable {
+struct TomatoTaskModel: Identifiable, Codable {
     let id: String
     let title: String
     let size: String
