@@ -11,7 +11,6 @@ struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
-    @EnvironmentObject var addViewModel: AddViewModel
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
@@ -27,8 +26,8 @@ struct AddView: View {
                     .cornerRadius(10)
                     .padding()
                 
-                Picker("Size", selection: $addViewModel.sizePickerSelection) {
-                    ForEach(addViewModel.sizePickerOptions, id: \.self) { size in
+                Picker("Size", selection: $listViewModel.sizePickerSelection) {
+                    ForEach(listViewModel.sizePickerOptions, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -37,8 +36,8 @@ struct AddView: View {
                 .padding(.bottom)
                 .frame(height: 45)
                 
-                Picker("Type", selection: $addViewModel.typePickerSelection) {
-                    ForEach(addViewModel.typePickerOptions, id: \.self) { type in
+                Picker("Type", selection: $listViewModel.typePickerSelection) {
+                    ForEach(listViewModel.typePickerOptions, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }
@@ -50,7 +49,7 @@ struct AddView: View {
                 .padding(.bottom)
                 
                 Button("Save me".uppercased()) {
-                    addViewModel.savedButtonPressed()
+                    listViewModel.savedButtonPressed()
                 }
                 .padding(.vertical)
                 .font(.headline)
@@ -63,8 +62,8 @@ struct AddView: View {
             }
         }
         .navigationTitle("✏️ New task ")
-        .alert(isPresented: $addViewModel.showAlert) {
-            addViewModel.getAlert()
+        .alert(isPresented: $listViewModel.showAlert) {
+            listViewModel.getAlert()
         }
     }
 }
@@ -75,6 +74,5 @@ struct AddView_Previews: PreviewProvider {
             AddView()
         }
         .environmentObject(ListViewModel())
-        .environmentObject(AddViewModel())
     }
 }

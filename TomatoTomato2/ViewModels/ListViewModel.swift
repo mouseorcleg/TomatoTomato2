@@ -6,11 +6,25 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ListViewModel: ObservableObject {
+    
+    @Environment(\.presentationMode) var presentationMode
     @Published var tasks: [TomatoTaskModel] = []
     
+    @Published var alertTitle: String = ""
+    @Published var showAlert: Bool = false
+    
+    @Published var textFieldText: String = ""
+    @Published var sizePickerSelection: String = "L"
+    @Published var typePickerSelection: String = ""
+    
+    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
+    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
+    
     init() {
+        
         getTestTasks()
     }
     
@@ -36,6 +50,32 @@ class ListViewModel: ObservableObject {
         if let index = tasks.firstIndex(where: { $0.id == task.id}) {
             tasks[index] = task.updateCompletion()
         }
+    }
+    
+    func addTask(title: String, size: String, type: String) {
+        let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
+        tasks.append(newTask)
+    }
+    
+    func savedButtonPressed() {
+        if thereIsTheTitle() {
+            addTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    func thereIsTheTitle() -> Bool {
+        if textFieldText.count < 3 {
+            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
+            //can add other checks here
+            showAlert.toggle()
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle))
     }
     
 }

@@ -11,7 +11,6 @@ import SwiftUI
 struct TomatoTomato2App: App {
     
     @StateObject var listViewModel: ListViewModel = ListViewModel()
-    @StateObject var addViewModel: AddViewModel = AddViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -19,7 +18,6 @@ struct TomatoTomato2App: App {
                 ListView()
             }
             .environmentObject(listViewModel)
-            .environmentObject(addViewModel)
         }
     }
 }
