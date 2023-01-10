@@ -59,7 +59,7 @@ struct AddView: View {
                 .padding(.bottom)
                 
                 Button("Save me".uppercased()) {
-                    //smth happens
+                    savedButtonPressed()
                 }
                 .padding(.vertical)
                 .font(.headline)

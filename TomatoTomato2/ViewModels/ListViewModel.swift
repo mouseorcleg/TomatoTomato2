@@ -36,4 +36,12 @@ class ListViewModel: ObservableObject {
         tasks.append(newTask)
     }
     
+    func updateTaskCompletion(task: TomatoTaskModel) {
+        if let index = tasks.firstIndex { (existingTask) -> Bool in
+            return existingTask.id == task.id
+        } {
+            // run the code
+        }
+    }
+    
 }

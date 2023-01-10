@@ -16,6 +16,11 @@ struct ListView: View {
         List {
             ForEach(listViewModel.tasks) { task in
                 CellListView(task: task)
+                    .onTapGesture {
+                        withAnimation(.linear) {
+                            
+                        }
+                    }
             }
             .onDelete(perform: listViewModel.deleteTask)
             .onMove(perform: listViewModel.moveTask)
