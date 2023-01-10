@@ -9,12 +9,8 @@ import SwiftUI
 
 struct AddView: View {
     
-    @State var textFieldText: String = ""
-    @State var sizePickerSelection: String = "L"
-    @State var typePickerSelection: String = ""
-    
-    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var listViewModel: ListViewModel
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
@@ -23,15 +19,15 @@ struct AddView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type the title", text: $textFieldText)
+                TextField("Type the title", text: $listViewModel.textFieldText)
                     .padding(.horizontal)
                     .frame(height: 45)
                     .background(Color.theme.background.opacity(0.85))
                     .cornerRadius(10)
                     .padding()
                 
-                Picker("Size", selection: $sizePickerSelection) {
-                    ForEach(sizePickerOptions, id: \.self) { size in
+                Picker("Size", selection: $listViewModel.sizePickerSelection) {
+                    ForEach(listViewModel.sizePickerOptions, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -40,8 +36,8 @@ struct AddView: View {
                 .padding(.bottom)
                 .frame(height: 45)
                 
-                Picker("Type", selection: $typePickerSelection) {
-                    ForEach(typePickerOptions, id: \.self) { type in
+                Picker("Type", selection: $listViewModel.typePickerSelection) {
+                    ForEach(listViewModel.typePickerOptions, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }
@@ -53,7 +49,7 @@ struct AddView: View {
                 .padding(.bottom)
                 
                 Button("Save me".uppercased()) {
-                    //smth happens
+                    savedButtonPressed()
                 }
                 .padding(.vertical)
                 .font(.headline)
@@ -66,6 +62,16 @@ struct AddView: View {
             }
         }
         .navigationTitle("✏️ New task ")
+        .alert(isPresented: $listViewModel.showAlert) {
+            listViewModel.getAlert()
+        }
+    }
+    
+    func savedButtonPressed() {
+        if listViewModel.thereIsTheTitle() {
+            listViewModel.addTask(title: listViewModel.textFieldText, size: listViewModel.sizePickerSelection, type: listViewModel.typePickerSelection)
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
@@ -74,5 +80,6 @@ struct AddView_Previews: PreviewProvider {
         NavigationView{
             AddView()
         }
+        .environmentObject(ListViewModel())
     }
 }
