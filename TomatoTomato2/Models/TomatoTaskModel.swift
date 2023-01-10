@@ -7,12 +7,14 @@
 
 import Foundation
 
+//Immutable struct - use let so the data can't be changed easily
+
 struct TomatoTaskModel: Identifiable {
-    var id: String
-    var title: String
-    var size: String
-    var type: String
-    var isCompleted: Bool
+    let id: String
+    let title: String
+    let size: String
+    let type: String
+    let isCompleted: Bool
     
     init(id: String = UUID().uuidString, title: String, size: String, type: String, isCompleted: Bool) {
         self.id = id
@@ -20,6 +22,10 @@ struct TomatoTaskModel: Identifiable {
         self.size = size
         self.type = type
         self.isCompleted = isCompleted
+    }
+    
+    func updateCompletion() -> TomatoTaskModel {
+        return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted)
     }
 }
 
