@@ -39,7 +39,7 @@ class ListViewModel: ObservableObject {
     func updateTaskCompletion(task: TomatoTaskModel) {
         
         if let index = tasks.firstIndex(where: { $0.id == task.id}) {
-            tasks[index] = TomatoTaskModel(title: task.title, size: task.size, type: task.type, isCompleted: !task.isCompleted)
+            tasks[index] = task.updateCompletion()
         }
     }
     

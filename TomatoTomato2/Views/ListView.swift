@@ -18,7 +18,7 @@ struct ListView: View {
                 CellListView(task: task)
                     .onTapGesture {
                         withAnimation(.linear) {
-                            
+                            listViewModel.updateTaskCompletion(task: task)
                         }
                     }
             }

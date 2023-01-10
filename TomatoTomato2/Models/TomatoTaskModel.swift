@@ -28,5 +28,6 @@ struct TomatoTaskModel: Identifiable {
         return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted)
     }
 }
+// NB - update the model only through here!
 
 //potentially you can add Color and dueDate to this model
