@@ -10,7 +10,6 @@ import SwiftUI
 
 class ListViewModel: ObservableObject {
     
-    @Environment(\.presentationMode) var presentationMode
     @Published var tasks: [TomatoTaskModel] = []
     
     @Published var alertTitle: String = ""
@@ -55,13 +54,6 @@ class ListViewModel: ObservableObject {
     func addTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
         tasks.append(newTask)
-    }
-    
-    func savedButtonPressed() {
-        if thereIsTheTitle() {
-            addTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
-            presentationMode.wrappedValue.dismiss()
-        }
     }
     
     func thereIsTheTitle() -> Bool {

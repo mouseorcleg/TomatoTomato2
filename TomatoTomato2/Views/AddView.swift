@@ -19,7 +19,7 @@ struct AddView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type the title", text: $addViewModel.textFieldText)
+                TextField("Type the title", text: $listViewModel.textFieldText)
                     .padding(.horizontal)
                     .frame(height: 45)
                     .background(Color.theme.background.opacity(0.85))
@@ -49,7 +49,7 @@ struct AddView: View {
                 .padding(.bottom)
                 
                 Button("Save me".uppercased()) {
-                    listViewModel.savedButtonPressed()
+                    savedButtonPressed()
                 }
                 .padding(.vertical)
                 .font(.headline)
@@ -64,6 +64,13 @@ struct AddView: View {
         .navigationTitle("✏️ New task ")
         .alert(isPresented: $listViewModel.showAlert) {
             listViewModel.getAlert()
+        }
+    }
+    
+    func savedButtonPressed() {
+        if listViewModel.thereIsTheTitle() {
+            listViewModel.addTask(title: listViewModel.textFieldText, size: listViewModel.sizePickerSelection, type: listViewModel.typePickerSelection)
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }
