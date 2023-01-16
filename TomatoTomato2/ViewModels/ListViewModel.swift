@@ -31,39 +31,7 @@ class ListViewModel: ObservableObject {
     
     //MARK: db logic
     
-    @Published var savedEntities: [TomatoTaskEntity] = []
-    let container: NSPersistentContainer
-    
-    init() {
-//        getYourTasks()
         
-        container = NSPersistentContainer(name: "TomatoTasksContainer")
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                print("Error loading CoreData: \(error)")
-            }
-        }
-        fetchTomatoTasksFromDB()
-    }
-    
-    func fetchTomatoTasksFromDB() {
-        let request = NSFetchRequest<TomatoTaskEntity>(entityName: "TomatoTaskEntity")
-        do {
-            savedEntities = try container.viewContext.fetch(request)
-        } catch let error {
-            print("Error fetching from db: \(error)")
-        }
-    }
-    
-    func addTomatoTaskToDB(model: TomatoTaskModel) {
-        let newTomatoTask = TomatoTaskEntity(context: container.viewContext)
-        newTomatoTask.id = model.id
-        newTomatoTask.title = model.title
-        newTomatoTask.size = model.size
-        newTomatoTask.type = model.type
-        newTomatoTask.isCompleted = model.isCompleted
-    }
-    
 //    func addTask(title: String, size: String, type: String) {
 //        let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
 //        tasks.append(newTask)
