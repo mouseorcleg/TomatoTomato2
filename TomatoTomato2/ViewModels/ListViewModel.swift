@@ -36,10 +36,12 @@ class ListViewModel: ObservableObject {
     init() {
 //        getYourTasks()
         
-        container = NSPersistentContainer(name: "TomatoTaskContainer")
+        container = NSPersistentContainer(name: "TomatoTasksContainer")
         container.loadPersistentStores { description, error in
             if let error = error {
-                print("error loading CoreData: \(error)")
+                print("Error loading CoreData: \(error)")
+            } else {
+                print("Sucsessfully loaded a Core Data! Yaaay")
             }
         }
     }
