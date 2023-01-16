@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 class ListViewModel: ObservableObject {
     
@@ -28,8 +29,19 @@ class ListViewModel: ObservableObject {
     var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
     var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
+    //MARK: db logic
+    
+    let container: NSPersistentContainer
+    
     init() {
 //        getYourTasks()
+        
+        container = NSPersistentContainer(name: "TomatoTaskContainer")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                print("error loading CoreData: \(error)")
+            }
+        }
     }
     
 //    func getTestTasks() {

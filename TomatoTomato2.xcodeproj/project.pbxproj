@@ -11,6 +11,7 @@
 		CB21D453296886D700F6F8CC /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21D452296886D700F6F8CC /* AddView.swift */; };
 		CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */; };
 		CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D07296C5E660012D59E /* ListViewModel.swift */; };
+		CBA74835297566DB00404330 /* TomatoTasksContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA74833297566DB00404330 /* TomatoTasksContainer.xcdatamodeld */; };
 		CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */; };
 		CBA9A18329682EFA00879058 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA9A18229682EFA00879058 /* Assets.xcassets */; };
 		CBA9A18629682EFA00879058 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA9A18529682EFA00879058 /* Preview Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		CB21D452296886D700F6F8CC /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskModel.swift; sourceTree = "<group>"; };
 		CB9F5D07296C5E660012D59E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		CBA74834297566DB00404330 /* TomatoTasksContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoTasksContainer.xcdatamodel; sourceTree = "<group>"; };
 		CBA9A17B29682EF700879058 /* TomatoTomato2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoTomato2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTomato2App.swift; sourceTree = "<group>"; };
 		CBA9A18229682EFA00879058 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		CBA748322975669F00404330 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CBA74833297566DB00404330 /* TomatoTasksContainer.xcdatamodeld */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		CBA9A17229682EF700879058 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */,
+				CBA748322975669F00404330 /* DataBase */,
 				CB9F5D032968B2870012D59E /* Models */,
 				CB9F5D06296C5E450012D59E /* ViewModels */,
 				CBA9A18E2968418700879058 /* Views */,
@@ -178,6 +189,7 @@
 			files = (
 				CB21D451296881FC00F6F8CC /* CellListView.swift in Sources */,
 				CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */,
+				CBA74835297566DB00404330 /* TomatoTasksContainer.xcdatamodeld in Sources */,
 				CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */,
 				CBA9A1902968419C00879058 /* ListView.swift in Sources */,
 				CB21D453296886D700F6F8CC /* AddView.swift in Sources */,
@@ -389,6 +401,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBA74833297566DB00404330 /* TomatoTasksContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBA74834297566DB00404330 /* TomatoTasksContainer.xcdatamodel */,
+			);
+			currentVersion = CBA74834297566DB00404330 /* TomatoTasksContainer.xcdatamodel */;
+			path = TomatoTasksContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CBA9A17329682EF700879058 /* Project object */;
 }
