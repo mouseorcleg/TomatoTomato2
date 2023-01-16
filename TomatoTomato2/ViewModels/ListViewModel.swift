@@ -15,9 +15,6 @@ class ListViewModel: ObservableObject {
     
     init() {
         loadYourTasks2()
-//        if tomatoTasks.isEmpty {
-//            getTestTasks()
-//        }
     }
     
     func loadYourTasks2() {
@@ -39,15 +36,6 @@ class ListViewModel: ObservableObject {
         updateTomatoDB(model: newTask)
     }
     
-//    func getTestTasks() {
-//        let testItems = [
-//            TomatoTaskModel(title: "Sleep", size: "XL", type: "research", isCompleted: true),
-//            TomatoTaskModel(title: "Breakfast", size: "S", type: "develop", isCompleted: false),
-//            TomatoTaskModel(title: "Go for a walk", size: "M", type: "plan", isCompleted: false)
-//        ]
-//        tomatoTasks.append(contentsOf: testItems)
-//    }
-    
     func deleteTask(indexSet: IndexSet) {
         let model = tomatoTasks[indexSet.first!]
         tomatoDBService.goodbyeTask(model: model)
@@ -62,6 +50,7 @@ class ListViewModel: ObservableObject {
         
         if let index = tomatoTasks.firstIndex(where: { $0.id == task.id}) {
             tomatoTasks[index] = task.updateCompletion()
+            updateTomatoDB(model: tomatoTasks[index])
         }
     }
     
