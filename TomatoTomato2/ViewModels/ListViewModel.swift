@@ -45,7 +45,8 @@ class ListViewModel: ObservableObject {
                         guard let entity = taskEntities.first(where: { $0.id == tomatoTask.id }) else {
                             return nil
                         }
-                        return tomatoTask
+        // TODO: double check the logic here
+                        return tomatoTask.updateMe(from: tomatoTask)
                     }
             }
     }
