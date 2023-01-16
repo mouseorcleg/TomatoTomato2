@@ -12,12 +12,12 @@ import CoreData
 class ListViewModel: ObservableObject {
     
     @Published var tasks: [TomatoTaskModel] = []
-//    {
-//        didSet {
-//            saveTasks()
-//        }
-//    }
-//    let tasksKey: String = "tasks_list"
+    {
+        didSet {
+            saveTasks()
+        }
+    }
+    let tasksKey: String = "tasks_list"
     
     @Published var alertTitle: String = ""
     @Published var showAlert: Bool = false
@@ -29,30 +29,29 @@ class ListViewModel: ObservableObject {
     var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
     var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
-    //MARK: db logic
     
         
-//    func addTask(title: String, size: String, type: String) {
-//        let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
-//        tasks.append(newTask)
-//    }
+    func addTask(title: String, size: String, type: String) {
+        let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
+        tasks.append(newTask)
+    }
     
-//    func getTestTasks() {
-//        let testItems = [
-//            TomatoTaskModel(title: "Sleep", size: "XL", type: "research", isCompleted: true),
-//            TomatoTaskModel(title: "Breakfast", size: "S", type: "develop", isCompleted: false),
-//            TomatoTaskModel(title: "Go for a walk", size: "M", type: "plan", isCompleted: false)
-//        ]
-//        tasks.append(contentsOf: testItems)
-//    }
+    func getTestTasks() {
+        let testItems = [
+            TomatoTaskModel(title: "Sleep", size: "XL", type: "research", isCompleted: true),
+            TomatoTaskModel(title: "Breakfast", size: "S", type: "develop", isCompleted: false),
+            TomatoTaskModel(title: "Go for a walk", size: "M", type: "plan", isCompleted: false)
+        ]
+        tasks.append(contentsOf: testItems)
+    }
     
-//    func getYourTasks() {
-//        guard
-//            let data = UserDefaults.standard.data(forKey: tasksKey),
-//            let savedTasks = try? JSONDecoder().decode([TomatoTaskModel].self, from: data)
-//        else { return }
-//        self.tasks = savedTasks
-//    }
+    func getYourTasks() {
+        guard
+            let data = UserDefaults.standard.data(forKey: tasksKey),
+            let savedTasks = try? JSONDecoder().decode([TomatoTaskModel].self, from: data)
+        else { return }
+        self.tasks = savedTasks
+    }
     
     func deleteTask(indexSet: IndexSet) {
         tasks.remove(atOffsets: indexSet)
@@ -69,11 +68,11 @@ class ListViewModel: ObservableObject {
         }
     }
     
-//    func saveTasks() {
-//        if let encodedData = try? JSONEncoder().encode(tasks) {
-//            UserDefaults.standard.set(encodedData, forKey: tasksKey)
-//        }
-//    }
+    func saveTasks() {
+        if let encodedData = try? JSONEncoder().encode(tasks) {
+            UserDefaults.standard.set(encodedData, forKey: tasksKey)
+        }
+    }
     
     func addTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
