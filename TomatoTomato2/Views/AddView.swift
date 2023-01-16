@@ -16,18 +16,28 @@ struct AddView: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
     }
     
+    @State var alertTitle: String = ""
+    @State var showAlert: Bool = false
+    
+    @State var textFieldText: String = ""
+    @State var sizePickerSelection: String = "L"
+    @State var typePickerSelection: String = ""
+    
+    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
+    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
+    
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type the title", text: $listViewModel.textFieldText)
+                TextField("Type the title", text: $textFieldText)
                     .padding(.horizontal)
                     .frame(height: 45)
                     .background(Color.theme.background.opacity(0.85))
                     .cornerRadius(10)
                     .padding()
                 
-                Picker("Size", selection: $listViewModel.sizePickerSelection) {
-                    ForEach(listViewModel.sizePickerOptions, id: \.self) { size in
+                Picker("Size", selection: $sizePickerSelection) {
+                    ForEach(sizePickerOptions, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -36,8 +46,8 @@ struct AddView: View {
                 .padding(.bottom)
                 .frame(height: 45)
                 
-                Picker("Type", selection: $listViewModel.typePickerSelection) {
-                    ForEach(listViewModel.typePickerOptions, id: \.self) { type in
+                Picker("Type", selection: $typePickerSelection) {
+                    ForEach(typePickerOptions, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }
@@ -62,16 +72,33 @@ struct AddView: View {
             }
         }
         .navigationTitle("✏️ New task ")
-        .alert(isPresented: $listViewModel.showAlert) {
-            listViewModel.getAlert()
+        .alert(isPresented: $showAlert) {
+            getAlert()
         }
     }
     
     func savedButtonPressed() {
-        if listViewModel.thereIsTheTitle() {
-            listViewModel.addTask(title: listViewModel.textFieldText, size: listViewModel.sizePickerSelection, type: listViewModel.typePickerSelection)
+        if thereIsTheTitle() {
+            
+            guard let newShinyTask: TomatoTaskModel = TomatoTaskModel(title: <#T##String#>, size: <#T##String#>, type: <#T##String#>, isCompleted: <#T##Bool#>)
+            listViewModel.updateTomatoDB(model: <#T##TomatoTaskModel#>)
+//            listViewModel.addTomatoTask(title: listViewModel.textFieldText, size: listViewModel.sizePickerSelection, type: listViewModel.typePickerSelection)
             presentationMode.wrappedValue.dismiss()
         }
+    }
+    
+    func thereIsTheTitle() -> Bool {
+        if textFieldText.count < 3 {
+            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
+            //can add other checks here
+            showAlert.toggle()
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle))
     }
 }
 

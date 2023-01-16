@@ -29,7 +29,7 @@ class TomatoDataService {
     // MARK: One and only public fuction
     // Can be called someewhere else in the app
     
-    func updateTomatoDB(updateFrom: TomatoTaskModel) {
+    func updateMyTomatoDB(updateFrom: TomatoTaskModel) {
         
         //check if we already have this task in db
         if let entity = savedEntities.first(where: { $0.id == updateFrom.id}) {

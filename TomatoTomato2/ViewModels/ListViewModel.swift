@@ -6,31 +6,21 @@
 //
 
 import Foundation
-import SwiftUI
 import Combine
 
 class ListViewModel: ObservableObject {
     
-    @Published var dbTasks: [TomatoTaskModel] = []
+//    @Published var dbTasks: [TomatoTaskModel] = []
     @Published var tomatoTasks: [TomatoTaskModel] = []
-    
-    let tasksKey: String = "tasks_list"
-    
-    @Published var alertTitle: String = ""
-    @Published var showAlert: Bool = false
-    
-    @Published var textFieldText: String = ""
-    @Published var sizePickerSelection: String = "L"
-    @Published var typePickerSelection: String = ""
-    
-    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
     private let tomatoDBService = TomatoDataService()
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         loadYourTasks()
+        if tomatoTasks.isEmpty {
+            getTestTasks()
+        }
     }
     
     func loadYourTasks() {
@@ -49,16 +39,16 @@ class ListViewModel: ObservableObject {
                     }
             }
             .sink { [weak self] (returnedTasks) in
-                self?.dbTasks = returnedTasks
+                self?.tomatoTasks = returnedTasks
             }
             .store(in: &cancellables)
     }
     
     func updateTomatoDB(model: TomatoTaskModel) {
-        tomatoDBService.updateTomatoDB(updateFrom: model)
+        tomatoDBService.updateMyTomatoDB(updateFrom: model)
     }
         
-    func addTask(title: String, size: String, type: String) {
+    func addTomatoTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
         tomatoTasks.append(newTask)
     }
@@ -85,7 +75,7 @@ class ListViewModel: ObservableObject {
         
         if let index = tomatoTasks.firstIndex(where: { $0.id == task.id}) {
             tomatoTasks[index] = task.updateCompletion()
-            tomatoDBService.updateTomatoDB(updateFrom: task.updateCompletion())
+            updateTomatoDB(model: task)
         }
     }
     
@@ -95,24 +85,6 @@ class ListViewModel: ObservableObject {
 //        }
 //    }
     
-    func addTomatoTask(title: String, size: String, type: String) {
-        let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
-        tomatoTasks.append(newTask)
-        tomatoDBService.updateTomatoDB(updateFrom: newTask)
-    }
     
-    func thereIsTheTitle() -> Bool {
-        if textFieldText.count < 3 {
-            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
-            //can add other checks here
-            showAlert.toggle()
-            return false
-        }
-        return true
-    }
-    
-    func getAlert() -> Alert {
-        return Alert(title: Text(alertTitle))
-    }
     
 }
