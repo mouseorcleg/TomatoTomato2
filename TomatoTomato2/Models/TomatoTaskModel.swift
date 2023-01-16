@@ -28,12 +28,12 @@ struct TomatoTaskModel: Identifiable, Codable {
         return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted)
     }
     
-    func updateMe(from: TomatoTaskModel) -> TomatoTaskModel {
+    static func from(from: TomatoTaskModel) -> TomatoTaskModel {
         return TomatoTaskModel(title: from.title, size: from.size, type: from.type, isCompleted: from.isCompleted)
     }
     
-    func updateMeFromDB(from: TomatoTaskEntity) -> TomatoTaskModel {
-        return TomatoTaskModel(title: from.title!, size: from.size ?? "", type: from.type ?? "", isCompleted: from.isCompleted)
+    static func fromDB(model: TomatoTaskEntity) -> TomatoTaskModel {
+        return TomatoTaskModel(title: model.title!, size: model.size ?? "", type: model.type ?? "", isCompleted: model.isCompleted)
     }
 }
 // NB - update the model only through here!

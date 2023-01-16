@@ -33,13 +33,17 @@ class TomatoDataService {
         
         //check if we already have this task in db
         if let entity = savedEntities.first(where: { $0.id == updateFrom.id}) {
-            if updateFrom.title == "" {
-                deleteData(entity: entity)
-            } else {
                 updateData(entity: entity, update: updateFrom)
-            }
-        } else {
+            } else {
             addData(model: updateFrom)
+        }
+    }
+    
+    func goodbyeTask(model: TomatoTaskModel) {
+        if let entity = savedEntities.first(where: { $0.id == model.id}) {
+            deleteData(entity: entity)
+        } else {
+            print("I cannot delete what does not exist. Try to create this task first")
         }
     }
     

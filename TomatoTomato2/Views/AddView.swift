@@ -80,9 +80,8 @@ struct AddView: View {
     func savedButtonPressed() {
         if thereIsTheTitle() {
             
-            guard let newShinyTask: TomatoTaskModel = TomatoTaskModel(title: <#T##String#>, size: <#T##String#>, type: <#T##String#>, isCompleted: <#T##Bool#>)
-            listViewModel.updateTomatoDB(model: <#T##TomatoTaskModel#>)
-//            listViewModel.addTomatoTask(title: listViewModel.textFieldText, size: listViewModel.sizePickerSelection, type: listViewModel.typePickerSelection)
+            listViewModel.addTomatoTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+
             presentationMode.wrappedValue.dismiss()
         }
     }
