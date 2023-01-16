@@ -14,7 +14,7 @@ struct ListView: View {
     var body: some View {
         
         List {
-                    ForEach(listViewModel.tasks) { tomatoTask in
+                    ForEach(listViewModel.tomatoTasks) { tomatoTask in
                         CellListView(task: tomatoTask)
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                 Button {

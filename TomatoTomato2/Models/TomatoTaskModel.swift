@@ -31,6 +31,10 @@ struct TomatoTaskModel: Identifiable, Codable {
     func updateMe(from: TomatoTaskModel) -> TomatoTaskModel {
         return TomatoTaskModel(title: from.title, size: from.size, type: from.type, isCompleted: from.isCompleted)
     }
+    
+    func updateMeFromDB(from: TomatoTaskEntity) -> TomatoTaskModel {
+        return TomatoTaskModel(title: from.title!, size: from.size ?? "", type: from.type ?? "", isCompleted: from.isCompleted)
+    }
 }
 // NB - update the model only through here!
 

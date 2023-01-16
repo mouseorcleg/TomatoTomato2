@@ -7,16 +7,18 @@
 
 import Foundation
 import SwiftUI
-import CoreData
+import Combine
 
 class ListViewModel: ObservableObject {
     
-    @Published var tasks: [TomatoTaskModel] = []
+    @Published var dbTasks: [TomatoTaskModel] = []
+    @Published var tomatoTasks: [TomatoTaskModel] = []
     {
         didSet {
             saveTasks()
         }
     }
+    
     let tasksKey: String = "tasks_list"
     
     @Published var alertTitle: String = ""
@@ -30,13 +32,14 @@ class ListViewModel: ObservableObject {
     var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
     private let tomatoDBService = TomatoDataService()
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         getYourTasks()
     }
     
     func loadYourTasks() {
-        $tasks
+        $tomatoTasks
             .combineLatest(tomatoDBService.$savedEntities)
             .map { taskModels, taskEntities -> [TomatoTaskModel] in
                 
@@ -46,14 +49,19 @@ class ListViewModel: ObservableObject {
                             return nil
                         }
         // TODO: double check the logic here
-                        return tomatoTask.updateMe(from: tomatoTask)
+        //for now it updates the task in vm array with data from db
+                        return tomatoTask.updateMeFromDB(from: entity)
                     }
             }
+            .sink { [weak self] (returnedTasks) in
+                self?.dbTasks = returnedTasks
+            }
+            .store(in: &cancellables)
     }
         
     func addTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
-        tasks.append(newTask)
+        tomatoTasks.append(newTask)
     }
     
     func getTestTasks() {
@@ -62,7 +70,7 @@ class ListViewModel: ObservableObject {
             TomatoTaskModel(title: "Breakfast", size: "S", type: "develop", isCompleted: false),
             TomatoTaskModel(title: "Go for a walk", size: "M", type: "plan", isCompleted: false)
         ]
-        tasks.append(contentsOf: testItems)
+        tomatoTasks.append(contentsOf: testItems)
     }
     
     func getYourTasks() {
@@ -70,33 +78,33 @@ class ListViewModel: ObservableObject {
             let data = UserDefaults.standard.data(forKey: tasksKey),
             let savedTasks = try? JSONDecoder().decode([TomatoTaskModel].self, from: data)
         else { return }
-        self.tasks = savedTasks
+        self.tomatoTasks = savedTasks
     }
     
     func deleteTask(indexSet: IndexSet) {
-        tasks.remove(atOffsets: indexSet)
+        tomatoTasks.remove(atOffsets: indexSet)
     }
     
     func moveTask(from: IndexSet, to: Int) {
-        tasks.move(fromOffsets: from, toOffset: to)
+        tomatoTasks.move(fromOffsets: from, toOffset: to)
     }
     
     func updateTaskCompletion(task: TomatoTaskModel) {
         
-        if let index = tasks.firstIndex(where: { $0.id == task.id}) {
-            tasks[index] = task.updateCompletion()
+        if let index = tomatoTasks.firstIndex(where: { $0.id == task.id}) {
+            tomatoTasks[index] = task.updateCompletion()
         }
     }
     
     func saveTasks() {
-        if let encodedData = try? JSONEncoder().encode(tasks) {
+        if let encodedData = try? JSONEncoder().encode(tomatoTasks) {
             UserDefaults.standard.set(encodedData, forKey: tasksKey)
         }
     }
     
     func addTomatoTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
-        tasks.append(newTask)
+        tomatoTasks.append(newTask)
     }
     
     func thereIsTheTitle() -> Bool {
