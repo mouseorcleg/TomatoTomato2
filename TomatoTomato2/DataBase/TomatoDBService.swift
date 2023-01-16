@@ -22,8 +22,8 @@ class TomatoDataService {
             if let error = error {
                 print("Error loading CoreData: \(error)")
             }
-            self.fetchData()
         }
+        fetchData()
     }
 
     // MARK: One and only public fuction
@@ -33,18 +33,15 @@ class TomatoDataService {
         
         //check if we already have this task in db
         if let entity = savedEntities.first(where: { $0.id == updateFrom.id}) {
-                updateData(entity: entity, update: updateFrom)
+            updateData(entity: entity, update: updateFrom)
             } else {
             addData(model: updateFrom)
         }
     }
     
-    func goodbyeTask(model: TomatoTaskModel) {
-        //TODO: next line of code does not work for some reason
-        let entity = savedEntities.first(where: { $0.id == model.id })
-        print("I found and entity to delete! \(entity?.id ?? "there shoild be id")")
-        deleteData(entity: entity!)
-        }
+    func goodbyeTask(indexSet: IndexSet) {
+        deleteData(indexSet: indexSet)
+    }
     
     // MARK: Private functions
     // they work only instide this class, can't be called from somewhere else
@@ -65,33 +62,32 @@ class TomatoDataService {
         newTomatoTask.size = model.size
         newTomatoTask.type = model.type
         newTomatoTask.isCompleted = model.isCompleted
-        applyChanges()
+        saveData()
     }
     
     private func updateData(entity: TomatoTaskEntity, update: TomatoTaskModel) {
+        entity.id = entity.id
         entity.title = update.title
         entity.size = update.size
         entity.type = update.type
         entity.isCompleted = update.isCompleted
-        applyChanges()
+        saveData()
     }
     
-    private func deleteData(entity: TomatoTaskEntity) {
+    private func deleteData(indexSet: IndexSet) {
+        guard let index = indexSet.first else { return }
+        let entity = savedEntities[index]
         container.viewContext.delete(entity)
-        applyChanges()
+        saveData()
     }
 
     private func saveData() {
         do {
             try container.viewContext.save()
+            fetchData()
         } catch let error {
             print("Error saving data to CoreData: \(error)")
         }
-    }
-    
-    private func applyChanges() {
-        saveData()
-        fetchData()
     }
 }
 

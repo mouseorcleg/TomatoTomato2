@@ -27,12 +27,7 @@ struct ListView: View {
                                 .tint(Color.theme.accent)
                             }
                     }
-                    .onDelete { indexSet in
-                        let findMe: TomatoTaskModel = listViewModel.tomatoTasks[indexSet.first!]
-                        print("\(findMe.id)")
-                        listViewModel.deleteTomatofromDB(model: findMe)
-                        listViewModel.deleteTask(indexSet: indexSet)
-                    }
+                    .onDelete(perform: listViewModel.deleteTask)
                     .onMove(perform: listViewModel.moveTask)
                 }
         .listStyle(InsetGroupedListStyle())
