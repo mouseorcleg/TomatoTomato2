@@ -46,6 +46,10 @@ class ListViewModel: ObservableObject {
         }
     }
     
+    func fetchTomatoTasks() {
+        let request = NSFetchRequest<TomatoTaskEntity>(entityName: "TomatoTaskEntity")
+    }
+    
 //    func getTestTasks() {
 //        let testItems = [
 //            TomatoTaskModel(title: "Sleep", size: "XL", type: "research", isCompleted: true),
