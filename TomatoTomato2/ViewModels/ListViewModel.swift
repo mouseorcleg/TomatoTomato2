@@ -13,11 +13,6 @@ class ListViewModel: ObservableObject {
     
     @Published var dbTasks: [TomatoTaskModel] = []
     @Published var tomatoTasks: [TomatoTaskModel] = []
-    {
-        didSet {
-            saveTasks()
-        }
-    }
     
     let tasksKey: String = "tasks_list"
     
@@ -35,7 +30,7 @@ class ListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        getYourTasks()
+        loadYourTasks()
     }
     
     func loadYourTasks() {
@@ -58,6 +53,10 @@ class ListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
+    func updateTomatoDB(model: TomatoTaskModel) {
+        tomatoDBService.updateTomatoDB(updateFrom: model)
+    }
         
     func addTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
@@ -73,16 +72,9 @@ class ListViewModel: ObservableObject {
         tomatoTasks.append(contentsOf: testItems)
     }
     
-    func getYourTasks() {
-        guard
-            let data = UserDefaults.standard.data(forKey: tasksKey),
-            let savedTasks = try? JSONDecoder().decode([TomatoTaskModel].self, from: data)
-        else { return }
-        self.tomatoTasks = savedTasks
-    }
-    
     func deleteTask(indexSet: IndexSet) {
         tomatoTasks.remove(atOffsets: indexSet)
+//TODO: figure out the logic here
     }
     
     func moveTask(from: IndexSet, to: Int) {
@@ -93,18 +85,20 @@ class ListViewModel: ObservableObject {
         
         if let index = tomatoTasks.firstIndex(where: { $0.id == task.id}) {
             tomatoTasks[index] = task.updateCompletion()
+            tomatoDBService.updateTomatoDB(updateFrom: task.updateCompletion())
         }
     }
     
-    func saveTasks() {
-        if let encodedData = try? JSONEncoder().encode(tomatoTasks) {
-            UserDefaults.standard.set(encodedData, forKey: tasksKey)
-        }
-    }
+//    func saveTasks() {
+//        if let encodedData = try? JSONEncoder().encode(tomatoTasks) {
+//            UserDefaults.standard.set(encodedData, forKey: tasksKey)
+//        }
+//    }
     
     func addTomatoTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
         tomatoTasks.append(newTask)
+        tomatoDBService.updateTomatoDB(updateFrom: newTask)
     }
     
     func thereIsTheTitle() -> Bool {
