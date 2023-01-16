@@ -22,10 +22,26 @@ class TomatoDataService {
             if let error = error {
                 print("Error loading CoreData: \(error)")
             }
+            self.fetchData()
         }
-        fetchData()
     }
 
+    // MARK: One and only public fuction
+    // Can be called someewhere else in the app
+    
+    func updateTomatoDB(updateFrom: TomatoTaskModel) {
+        
+        //check if we already have this task in db
+        if let entity = savedEntities.first(where: { $0.id == updateFrom.id}) {
+            if updateFrom.title == "" {
+                deleteData(entity: entity)
+            } else {
+                updateData(entity: entity, update: updateFrom)
+            }
+        } else {
+            addData(model: updateFrom)
+        }
+    }
     
     // MARK: Private functions
     // they work only instide this class, can't be called from somewhere else
