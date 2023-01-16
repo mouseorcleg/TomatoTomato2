@@ -36,8 +36,9 @@ class ListViewModel: ObservableObject {
         updateTomatoDB(model: newTask)
     }
     
+    //TODO: find why deteling from db does not work
     func deleteTask(indexSet: IndexSet) {
-        let model = tomatoTasks[indexSet.first!]
+        let model = self.tomatoTasks[indexSet.first!]
         tomatoDBService.goodbyeTask(model: model)
         tomatoTasks.remove(atOffsets: indexSet)
     }
