@@ -29,7 +29,26 @@ class ListViewModel: ObservableObject {
     var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
     var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
+    private let tomatoDBService = TomatoDataService()
     
+    init() {
+        getYourTasks()
+    }
+    
+    func loadYourTasks() {
+        $tasks
+            .combineLatest(tomatoDBService.$savedEntities)
+            .map { taskModels, taskEntities -> [TomatoTaskModel] in
+                
+                taskModels
+                    .compactMap { (tomatoTask) -> TomatoTaskModel? in
+                        guard let entity = taskEntities.first(where: { $0.id == tomatoTask.id }) else {
+                            return nil
+                        }
+                        return tomatoTask
+                    }
+            }
+    }
         
     func addTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
@@ -74,7 +93,7 @@ class ListViewModel: ObservableObject {
         }
     }
     
-    func addTask(title: String, size: String, type: String) {
+    func addTomatoTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
         tasks.append(newTask)
     }
