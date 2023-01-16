@@ -29,6 +29,10 @@ class ListViewModel: ObservableObject {
     func updateTomatoDB(model: TomatoTaskModel) {
         tomatoDBService.updateMyTomatoDB(updateFrom: model)
     }
+    
+    func deleteTomatofromDB(model: TomatoTaskModel) {
+        tomatoDBService.goodbyeTask(model: model)
+    }
         
     func addTomatoTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
@@ -38,8 +42,6 @@ class ListViewModel: ObservableObject {
     
     //TODO: find why deteling from db does not work
     func deleteTask(indexSet: IndexSet) {
-        let model = self.tomatoTasks[indexSet.first!]
-        tomatoDBService.goodbyeTask(model: model)
         tomatoTasks.remove(atOffsets: indexSet)
     }
     

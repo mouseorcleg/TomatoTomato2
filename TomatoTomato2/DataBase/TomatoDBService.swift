@@ -40,12 +40,11 @@ class TomatoDataService {
     }
     
     func goodbyeTask(model: TomatoTaskModel) {
-        if let entity = savedEntities.first(where: { $0.id == model.id}) {
-            deleteData(entity: entity)
-        } else {
-            print("I cannot delete what does not exist. Try to create this task first")
+        //TODO: next line of code does not work for some reason
+        let entity = savedEntities.first(where: { $0.id == model.id })
+        print("I found and entity to delete! \(entity?.id ?? "there shoild be id")")
+        deleteData(entity: entity!)
         }
-    }
     
     // MARK: Private functions
     // they work only instide this class, can't be called from somewhere else
