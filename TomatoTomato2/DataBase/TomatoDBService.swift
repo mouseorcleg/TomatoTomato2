@@ -26,17 +26,24 @@ class TomatoDataService {
         fetchData()
     }
 
-    // MARK: One and only public fuction
+    // MARK: public fuctions
     // Can be called someewhere else in the app
     
-    func updateMyTomatoDB(updateFrom: TomatoTaskModel) {
+    func howDoYouDoTask(model: TomatoTaskModel) {
         
-        //check if we already have this task in db
-        if let entity = savedEntities.first(where: { $0.id == updateFrom.id}) {
-            updateData(entity: entity, update: updateFrom)
-            } else {
-            addData(model: updateFrom)
+        //TODO: WE HAVE A BUG HERE
+        
+        if let index = savedEntities.firstIndex(where: { $0.id == model.id}) {
+            let updateMe = savedEntities[index]
+            updateData(entity: updateMe, update: model)
+        } else {
+            print("Sorry, I can't update")
         }
+
+    }
+    
+    func helloTask(model: TomatoTaskModel) {
+        addData(model: model)
     }
     
     func goodbyeTask(indexSet: IndexSet) {
