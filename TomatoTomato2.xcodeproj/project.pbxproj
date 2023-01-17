@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CB21D451296881FC00F6F8CC /* CellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21D450296881FC00F6F8CC /* CellListView.swift */; };
 		CB21D453296886D700F6F8CC /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21D452296886D700F6F8CC /* AddView.swift */; };
+		CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB42D87129757BBB005060B1 /* TomatoDBService.swift */; };
 		CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */; };
 		CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D07296C5E660012D59E /* ListViewModel.swift */; };
 		CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */; };
@@ -16,11 +17,13 @@
 		CBA9A18629682EFA00879058 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA9A18529682EFA00879058 /* Preview Assets.xcassets */; };
 		CBA9A18D2968404300879058 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A18C2968404300879058 /* Color.swift */; };
 		CBA9A1902968419C00879058 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A18F2968419C00879058 /* ListView.swift */; };
+		CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBE424782976EAB6006CCA91 /* TomatoContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB21D450296881FC00F6F8CC /* CellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellListView.swift; sourceTree = "<group>"; };
 		CB21D452296886D700F6F8CC /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		CB42D87129757BBB005060B1 /* TomatoDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoDBService.swift; sourceTree = "<group>"; };
 		CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskModel.swift; sourceTree = "<group>"; };
 		CB9F5D07296C5E660012D59E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		CBA9A17B29682EF700879058 /* TomatoTomato2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoTomato2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,6 +32,7 @@
 		CBA9A18529682EFA00879058 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CBA9A18C2968404300879058 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CBA9A18F2968419C00879058 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		CBE424792976EAB6006CCA91 /* TomatoContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoContainer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		CBA748322975669F00404330 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CB42D87129757BBB005060B1 /* TomatoDBService.swift */,
+				CBE424782976EAB6006CCA91 /* TomatoContainer.xcdatamodeld */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		CBA9A17229682EF700879058 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */,
+				CBA748322975669F00404330 /* DataBase */,
 				CB9F5D032968B2870012D59E /* Models */,
 				CB9F5D06296C5E450012D59E /* ViewModels */,
 				CBA9A18E2968418700879058 /* Views */,
@@ -177,7 +191,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB21D451296881FC00F6F8CC /* CellListView.swift in Sources */,
+				CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */,
 				CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */,
+				CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */,
 				CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */,
 				CBA9A1902968419C00879058 /* ListView.swift in Sources */,
 				CB21D453296886D700F6F8CC /* AddView.swift in Sources */,
@@ -389,6 +405,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBE424782976EAB6006CCA91 /* TomatoContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBE424792976EAB6006CCA91 /* TomatoContainer.xcdatamodel */,
+			);
+			currentVersion = CBE424792976EAB6006CCA91 /* TomatoContainer.xcdatamodel */;
+			path = TomatoContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CBA9A17329682EF700879058 /* Project object */;
 }

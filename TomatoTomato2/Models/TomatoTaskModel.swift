@@ -9,14 +9,14 @@ import Foundation
 
 //Immutable struct - use let so the data can't be changed easily
 
-struct TomatoTaskModel: Identifiable {
-    let id: String
+struct TomatoTaskModel: Identifiable, Codable {
+    let id: UUID
     let title: String
     let size: String
     let type: String
     let isCompleted: Bool
     
-    init(id: String = UUID().uuidString, title: String, size: String, type: String, isCompleted: Bool) {
+    init(id: UUID, title: String, size: String, type: String, isCompleted: Bool) {
         self.id = id
         self.title = title
         self.size = size
@@ -26,6 +26,14 @@ struct TomatoTaskModel: Identifiable {
     
     func updateCompletion() -> TomatoTaskModel {
         return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted)
+    }
+    
+    static func from(from: TomatoTaskModel) -> TomatoTaskModel {
+        return TomatoTaskModel(id: from.id, title: from.title, size: from.size, type: from.type, isCompleted: from.isCompleted)
+    }
+    
+    static func fromDB(model: TomatoTaskEntity) -> TomatoTaskModel {
+        return TomatoTaskModel(id: model.tomatoID ?? UUID(), title: model.title!, size: model.size ?? "", type: model.type ?? "", isCompleted: model.isCompleted)
     }
 }
 // NB - update the model only through here!

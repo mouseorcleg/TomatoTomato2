@@ -14,22 +14,22 @@ struct ListView: View {
     var body: some View {
         
         List {
-                    ForEach(listViewModel.tasks) { tomatoTask in
-                        CellListView(task: tomatoTask)
-                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                Button {
-                                    withAnimation(.linear) {
-                                            listViewModel.updateTaskCompletion(task: tomatoTask)
-                                    }
-                                } label: {
-                                    Label("Done?", systemImage: "checkmark")
-                                }
-                                .tint(Color.theme.accent)
+            ForEach(listViewModel.tomatoTasks) { tomatoTask in
+                CellListView(task: tomatoTask)
+                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                        Button {
+                            withAnimation(.linear) {
+                                listViewModel.updateTaskCompletion(task: tomatoTask)
                             }
+                        } label: {
+                            Label("Done?", systemImage: "checkmark")
+                        }
+                        .tint(Color.theme.accent)
                     }
-                    .onDelete(perform: listViewModel.deleteTask)
-                    .onMove(perform: listViewModel.moveTask)
-                }
+            }
+            .onDelete(perform: listViewModel.deleteTask)
+            .onMove(perform: listViewModel.moveTask)
+        }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("📌 To do:")
         .navigationBarItems(
