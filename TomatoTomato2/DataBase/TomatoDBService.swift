@@ -29,17 +29,13 @@ class TomatoDataService {
     // MARK: public fuctions
     // Can be called someewhere else in the app
     
+    //TODO: still a bug here
     func howDoYouDoTask(model: TomatoTaskModel) {
-        
-        //TODO: WE HAVE A BUG HERE
-        
-        if let index = savedEntities.firstIndex(where: { $0.id == model.id}) {
-            let updateMe = savedEntities[index]
-            updateData(entity: updateMe, update: model)
-        } else {
-            print("Sorry, I can't update")
+        let tomatoEntity = savedEntities.first(where: { (savedEntity) -> Bool in
+            return savedEntity.id == model.id
+        }) {
+            updateCompletion(entity: tomatoEntity, update: model)
         }
-
     }
     
     func helloTask(model: TomatoTaskModel) {
@@ -72,13 +68,20 @@ class TomatoDataService {
         saveData()
     }
     
-    private func updateData(entity: TomatoTaskEntity, update: TomatoTaskModel) {
-        entity.id = entity.id
-        entity.title = update.title
-        entity.size = update.size
-        entity.type = update.type
-        entity.isCompleted = update.isCompleted
-        saveData()
+//    private func updateData(entity: TomatoTaskEntity, update: TomatoTaskModel) {
+//        entity.title = update.title
+//        entity.size = update.size
+//        entity.type = update.type
+//        entity.isCompleted = update.isCompleted
+//        saveData()
+//    }
+    
+    private func updateCompletion(entity: TomatoTaskEntity, update: TomatoTaskModel) {
+        if entity.id == update.id {
+            entity.isCompleted.toggle()
+        } else {
+            print("Can't update if they have different id's")
+        }
     }
     
     private func deleteData(indexSet: IndexSet) {
