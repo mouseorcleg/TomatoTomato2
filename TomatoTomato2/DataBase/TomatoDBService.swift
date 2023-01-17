@@ -46,6 +46,7 @@ class TomatoDataService {
     
     // MARK: Private functions
     // they work only instide this class, can't be called from somewhere else
+    // CRUD + few extra
     
     private func fetchData() {
         let request = NSFetchRequest<TomatoTaskEntity>(entityName: entityName)

@@ -81,7 +81,7 @@ struct AddView: View {
         if thereIsTheTitle() {
             
             listViewModel.addTomatoTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
-
+            
             presentationMode.wrappedValue.dismiss()
         }
     }
