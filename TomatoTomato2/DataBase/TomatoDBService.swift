@@ -15,7 +15,7 @@ class TomatoDataService {
     private let container: NSPersistentContainer
     private let containerName: String = "TomatoContainer"
     private let entityName: String = "TomatoTaskEntity"
-
+    
     init() {
         container = NSPersistentContainer(name: containerName)
         container.loadPersistentStores { description, error in
@@ -25,37 +25,20 @@ class TomatoDataService {
             self.fetchData()
         }
     }
-
+    
     // MARK: public fuctions
     // Can be called someewhere else in the app
+    // I tried to make as few as I could
     
-    //TODO: still a bug here
-//    func howDoYouDoTask(model: TomatoTaskModel) {
-//        let tomatoEntity = savedEntities.first(where: { (savedEntity) -> Bool in
-//            return savedEntity.tomatoID == model.id
-//        }) {
-//            updateCompletion(entity: tomatoEntity, update: model)
-//        }
-//    }
     
-    func howAreYouTask(model: TomatoTaskModel) {
+    func updateTask(model: TomatoTaskModel) {
         if let tomatoEntity = savedEntities.filter({ $0.tomatoID == model.id }).first {
-            updateCompletion(entity: tomatoEntity, update: model)
+            updateData(entity: tomatoEntity, update: model)
         } else {
-            print("Ooops, I did it again - I can't update it")
+            addData(model: model)
         }
     }
     
-    func findMe(model: TomatoTaskModel) {
-        let lookAtThis = savedEntities.filter { (savedEntity) in
-            savedEntity.tomatoID == model.id
-        }
-        print("\(lookAtThis.count)")
-    }
-    
-    func helloTask(model: TomatoTaskModel) {
-        addData(model: model)
-    }
     
     func goodbyeTask(indexSet: IndexSet) {
         deleteData(indexSet: indexSet)
@@ -72,7 +55,7 @@ class TomatoDataService {
             print("Error fetching from db: \(error)")
         }
     }
-
+    
     private func addData(model: TomatoTaskModel) {
         let newTomatoTask = TomatoTaskEntity(context: container.viewContext)
         newTomatoTask.tomatoID = model.id
@@ -83,20 +66,15 @@ class TomatoDataService {
         saveData()
     }
     
-//    private func updateData(entity: TomatoTaskEntity, update: TomatoTaskModel) {
-//        entity.title = update.title
-//        entity.size = update.size
-//        entity.type = update.type
-//        entity.isCompleted = update.isCompleted
-//        saveData()
-//    }
-    
-    private func updateCompletion(entity: TomatoTaskEntity, update: TomatoTaskModel) {
+    private func updateData(entity: TomatoTaskEntity, update: TomatoTaskModel) {
         if entity.tomatoID == update.id {
-            entity.isCompleted.toggle()
+            entity.title = update.title
+            entity.size = update.size
+            entity.type = update.type
+            entity.isCompleted = update.isCompleted
             saveData()
         } else {
-            print("Can't update if they have different id's")
+            print("Can't update if there are different id's")
         }
     }
     
@@ -106,7 +84,7 @@ class TomatoDataService {
         container.viewContext.delete(entity)
         saveData()
     }
-
+    
     private func saveData() {
         do {
             try container.viewContext.save()
@@ -122,7 +100,7 @@ class TomatoDataService {
             .absoluteString
             .replacingOccurrences(of: "file://", with: "")
             .removingPercentEncoding
-
+        
         print(path ?? "Not found")
     }
 }

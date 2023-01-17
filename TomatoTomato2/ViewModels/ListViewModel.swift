@@ -32,12 +32,12 @@ class ListViewModel: ObservableObject {
     }
     
     func createTaskInDB(model: TomatoTaskModel) {
-        tomatoDBService.helloTask(model: model)
+        tomatoDBService.updateTask(model: model)
         reloadYourTasks()
     }
     
     func updateTaskInDB(model: TomatoTaskModel) {
-        tomatoDBService.howAreYouTask(model: model)
+        tomatoDBService.updateTask(model: model)
         reloadYourTasks()
     }
     
@@ -54,6 +54,7 @@ class ListViewModel: ObservableObject {
     
     func deleteTask(indexSet: IndexSet) {
         deleteTomatofromDB(indexSet: indexSet)
+        reloadYourTasks()
     }
     
     func moveTask(from: IndexSet, to: Int) {
