@@ -17,23 +17,11 @@ class ListViewModel: ObservableObject {
         reloadYourTasks()
     }
     
+    //MARK: basic functions to update db
+    
     func reloadYourTasks() {
-        cleanUpTomatoTasks()
-        let tasksFromDB = tomatoDBService.savedEntities
-        
-        for task in tasksFromDB {
-            let newModel = TomatoTaskModel.fromDB(model: task)
-            tomatoTasks.append(newModel)
-            }
-        }
-    
-    func cleanUpTomatoTasks() {
-        tomatoTasks.removeAll()
-    }
-    
-    func createTaskInDB(model: TomatoTaskModel) {
-        tomatoDBService.updateTask(model: model)
-        reloadYourTasks()
+        let tasksFromDB = tomatoDBService.savedEntities.map { TomatoTaskModel.fromDB(model: $0) }
+        tomatoTasks = tasksFromDB
     }
     
     func updateTaskInDB(model: TomatoTaskModel) {
@@ -45,33 +33,29 @@ class ListViewModel: ObservableObject {
         tomatoDBService.goodbyeTask(indexSet: indexSet)
         reloadYourTasks()
     }
-        
+    
+    //MARK: functions to work with models for the updates to db
+    
     func addTomatoTask(title: String, size: String, type: String) {
-        let newTask = TomatoTaskModel(id: UUID(), title: title, size: size, type: type, isCompleted: false)
-        createTaskInDB(model: newTask)
-        reloadYourTasks()
-    }
-    
-    func deleteTask(indexSet: IndexSet) {
-        deleteTomatofromDB(indexSet: indexSet)
-        reloadYourTasks()
-    }
-    
-    func moveTask(from: IndexSet, to: Int) {
-        tomatoTasks.move(fromOffsets: from, toOffset: to)
+        updateTaskInDB(model: TomatoTaskModel(
+            id: UUID(),
+            title: title,
+            size: size,
+            type: type,
+            isCompleted: false))
     }
     
     func updateTaskCompletion(task: TomatoTaskModel) {
-        
         if let index = tomatoTasks.firstIndex(where: { $0.id == task.id}) {
             tomatoTasks[index] = task.updateCompletion()
             let updateModel = tomatoTasks[index]
             updateTaskInDB(model: updateModel)
-            reloadYourTasks()
         }
     }
     
+    //MARK: Last function without connection to db
     
-    
-    
+    func moveTask(from: IndexSet, to: Int) {
+        tomatoTasks.move(fromOffsets: from, toOffset: to)
+    }
 }
