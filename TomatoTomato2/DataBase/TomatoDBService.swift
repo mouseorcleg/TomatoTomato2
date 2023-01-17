@@ -30,12 +30,24 @@ class TomatoDataService {
     // Can be called someewhere else in the app
     
     //TODO: still a bug here
-    func howDoYouDoTask(model: TomatoTaskModel) {
-        let tomatoEntity = savedEntities.first(where: { (savedEntity) -> Bool in
-            return savedEntity.id == model.id
-        }) {
-            updateCompletion(entity: tomatoEntity, update: model)
+//    func howDoYouDoTask(model: TomatoTaskModel) {
+//        let tomatoEntity = savedEntities.first(where: { (savedEntity) -> Bool in
+//            return savedEntity.tomatoID == model.id
+//        }) {
+//            updateCompletion(entity: tomatoEntity, update: model)
+//        }
+//    }
+    
+    func howAreYouTask(model: TomatoTaskModel) {
+        whereIsMySQLite()
+        findMe(model: model)
+    }
+    
+    func findMe(model: TomatoTaskModel) {
+        let lookAtThis = savedEntities.filter { (savedEntity) in
+            savedEntity.tomatoID == model.id
         }
+        print("\(lookAtThis.count)")
     }
     
     func helloTask(model: TomatoTaskModel) {
@@ -60,7 +72,7 @@ class TomatoDataService {
 
     private func addData(model: TomatoTaskModel) {
         let newTomatoTask = TomatoTaskEntity(context: container.viewContext)
-        newTomatoTask.id = model.id
+        newTomatoTask.tomatoID = model.id
         newTomatoTask.title = model.title
         newTomatoTask.size = model.size
         newTomatoTask.type = model.type
@@ -77,7 +89,7 @@ class TomatoDataService {
 //    }
     
     private func updateCompletion(entity: TomatoTaskEntity, update: TomatoTaskModel) {
-        if entity.id == update.id {
+        if entity.tomatoID == update.id {
             entity.isCompleted.toggle()
         } else {
             print("Can't update if they have different id's")
@@ -98,6 +110,16 @@ class TomatoDataService {
         } catch let error {
             print("Error saving data to CoreData: \(error)")
         }
+    }
+    
+    private func whereIsMySQLite() {
+        let path = NSPersistentContainer
+            .defaultDirectoryURL()
+            .absoluteString
+            .replacingOccurrences(of: "file://", with: "")
+            .removingPercentEncoding
+
+        print(path ?? "Not found")
     }
 }
 

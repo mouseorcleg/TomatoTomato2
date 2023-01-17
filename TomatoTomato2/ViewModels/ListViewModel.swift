@@ -36,7 +36,7 @@ class ListViewModel: ObservableObject {
     }
     
     func updateTaskInDB(model: TomatoTaskModel) {
-        tomatoDBService.howDoYouDoTask(model: model)
+        tomatoDBService.howAreYouTask(model: model)
     }
     
     func deleteTomatofromDB(indexSet: IndexSet) {
@@ -44,7 +44,7 @@ class ListViewModel: ObservableObject {
     }
         
     func addTomatoTask(title: String, size: String, type: String) {
-        let newTask = TomatoTaskModel(title: title, size: size, type: type, isCompleted: false)
+        let newTask = TomatoTaskModel(id: UUID(), title: title, size: size, type: type, isCompleted: false)
         tomatoTasks.append(newTask)
         createTaskInDB(model: newTask)
     }
