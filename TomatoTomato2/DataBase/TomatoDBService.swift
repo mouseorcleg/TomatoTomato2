@@ -13,7 +13,7 @@ class TomatoDataService {
     @Published var savedEntities: [TomatoTaskEntity] = []
     
     private let container: NSPersistentContainer
-    private let containerName: String = "TomatoTasksContainer"
+    private let containerName: String = "TomatoContainer"
     private let entityName: String = "TomatoTaskEntity"
 
     init() {
@@ -22,8 +22,8 @@ class TomatoDataService {
             if let error = error {
                 print("Error loading CoreData: \(error)")
             }
+            self.fetchData()
         }
-        fetchData()
     }
 
     // MARK: public fuctions
@@ -39,8 +39,11 @@ class TomatoDataService {
 //    }
     
     func howAreYouTask(model: TomatoTaskModel) {
-        whereIsMySQLite()
-        findMe(model: model)
+        if let tomatoEntity = savedEntities.filter({ $0.tomatoID == model.id }).first {
+            updateCompletion(entity: tomatoEntity, update: model)
+        } else {
+            print("Ooops, I did it again - I can't update it")
+        }
     }
     
     func findMe(model: TomatoTaskModel) {
@@ -91,6 +94,7 @@ class TomatoDataService {
     private func updateCompletion(entity: TomatoTaskEntity, update: TomatoTaskModel) {
         if entity.tomatoID == update.id {
             entity.isCompleted.toggle()
+            saveData()
         } else {
             print("Can't update if they have different id's")
         }

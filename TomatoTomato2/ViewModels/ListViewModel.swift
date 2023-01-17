@@ -14,11 +14,11 @@ class ListViewModel: ObservableObject {
     private let tomatoDBService = TomatoDataService()
     
     init() {
-        cleanUpTomatoTasks()
-        loadYourTasks2()
+        reloadYourTasks()
     }
     
-    func loadYourTasks2() {
+    func reloadYourTasks() {
+        cleanUpTomatoTasks()
         let tasksFromDB = tomatoDBService.savedEntities
         
         for task in tasksFromDB {
@@ -33,25 +33,27 @@ class ListViewModel: ObservableObject {
     
     func createTaskInDB(model: TomatoTaskModel) {
         tomatoDBService.helloTask(model: model)
+        reloadYourTasks()
     }
     
     func updateTaskInDB(model: TomatoTaskModel) {
         tomatoDBService.howAreYouTask(model: model)
+        reloadYourTasks()
     }
     
     func deleteTomatofromDB(indexSet: IndexSet) {
         tomatoDBService.goodbyeTask(indexSet: indexSet)
+        reloadYourTasks()
     }
         
     func addTomatoTask(title: String, size: String, type: String) {
         let newTask = TomatoTaskModel(id: UUID(), title: title, size: size, type: type, isCompleted: false)
-        tomatoTasks.append(newTask)
         createTaskInDB(model: newTask)
+        reloadYourTasks()
     }
     
     func deleteTask(indexSet: IndexSet) {
         deleteTomatofromDB(indexSet: indexSet)
-        tomatoTasks.remove(atOffsets: indexSet)
     }
     
     func moveTask(from: IndexSet, to: Int) {
@@ -64,7 +66,7 @@ class ListViewModel: ObservableObject {
             tomatoTasks[index] = task.updateCompletion()
             let updateModel = tomatoTasks[index]
             updateTaskInDB(model: updateModel)
-            
+            reloadYourTasks()
         }
     }
     
