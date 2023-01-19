@@ -16,4 +16,5 @@ struct ColorTheme {
     let accent = Color("AccentColor")
     let background = Color("BackgroundColor")
     let extra = Color("ExtraColor")
+    let appBackground = Color("AppBackgroundColor")
 }

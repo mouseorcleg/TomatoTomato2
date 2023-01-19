@@ -53,7 +53,13 @@ struct TaskDetailView: View {
                 }
                 .font(.title3)
             }
+            .padding(.vertical)
+            .background(.background)
+            .backgroundStyle(.thickMaterial)
+            .cornerRadius(10)
+            .padding(.horizontal)
         }
+        .background(Color.theme.appBackground)
     }
 }
     
