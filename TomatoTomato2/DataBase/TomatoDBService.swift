@@ -39,7 +39,6 @@ class TomatoDataService {
         }
     }
     
-    
     func goodbyeTask(indexSet: IndexSet) {
         deleteData(indexSet: indexSet)
     }
