@@ -48,7 +48,7 @@ struct TaskDetailView: View {
                     Image(systemName: tomatoTask.isCompleted ? "checkmark.circle" : "circle")
                         .foregroundColor(tomatoTask.isCompleted ? Color.theme.accent : Color.primary)
                         .padding(.leading)
-                    Text(tomatoTask.isCompleted ? "Yeeees queeeen" : "Not yet")
+                    Text(tomatoTask.isCompleted ? "Yeees 🎉" : "Not yet")
                     Spacer()
                 }
                 .font(.title3)
@@ -66,6 +66,6 @@ struct TaskDetailView: View {
     
     struct TaskDetailView_Previews: PreviewProvider {
         static var previews: some View {
-            TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Megatask", size: "M", type: "mail", isCompleted: false))
+            TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create DetailView", size: "M", type: "mail", isCompleted: true))
         }
     }
