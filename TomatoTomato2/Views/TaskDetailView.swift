@@ -15,12 +15,12 @@ struct TaskDetailView: View {
         ScrollView {
             VStack {
                 HStack {
-                    Text(tomatoTask.title)
-                        .font(.title2)
-                        .padding(.horizontal)
+                    Text("Task:")
                         .padding(.leading)
+                    Text(tomatoTask.title)
                     Spacer()
                 }
+                .font(.title2)
                 HStack {
                     Text("Type:")
                         .padding(.leading)
@@ -54,7 +54,6 @@ struct TaskDetailView: View {
                 .font(.title3)
             }
         }
-        .navigationTitle("📍 My task: ")
     }
 }
     
