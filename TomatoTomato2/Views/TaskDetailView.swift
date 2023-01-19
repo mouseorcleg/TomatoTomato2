@@ -15,7 +15,7 @@ struct TaskDetailView: View {
         ScrollView {
             VStack {
                 HStack {
-                    Text("Task:")
+                    Text("📍Task:")
                         .padding(.leading)
                     Text(tomatoTask.title)
                     Spacer()
