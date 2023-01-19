@@ -15,17 +15,21 @@ struct ListView: View {
         
         List {
             ForEach(listViewModel.tomatoTasks) { tomatoTask in
-                CellListView(task: tomatoTask)
-                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                        Button {
-                            withAnimation(.linear) {
-                                listViewModel.updateTaskCompletion(task: tomatoTask)
+                NavigationLink {
+                    TaskDetailView(tomatoTask: tomatoTask)
+                } label: {
+                    CellListView(task: tomatoTask)
+                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                            Button {
+                                withAnimation(.linear) {
+                                    listViewModel.updateTaskCompletion(task: tomatoTask)
+                                }
+                            } label: {
+                                Label("Done?", systemImage: "checkmark")
                             }
-                        } label: {
-                            Label("Done?", systemImage: "checkmark")
+                            .tint(Color.theme.accent)
                         }
-                        .tint(Color.theme.accent)
-                    }
+                }
             }
             .onDelete(perform: listViewModel.deleteTomatofromDB)
             .onMove(perform: listViewModel.moveTask)
