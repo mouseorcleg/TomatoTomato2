@@ -54,18 +54,51 @@ struct TaskDetailView: View {
                 .font(.title3)
             }
             .padding(.vertical)
-            .background(.background)
+            .background()
             .backgroundStyle(.thickMaterial)
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            Spacer(minLength: 15)
+            
+            VStack {
+                Image(systemName: "timer")
+                    .frame(width: 340, height: 150, alignment: .bottom)
+                    .font(.largeTitle)
+                    .foregroundColor(Color.theme.extra)
+                    .opacity(0.7)
+                    .padding(.bottom)
+                Text("Place for a 🍅 timer")
+                    .font(.subheadline)
+                    .opacity(0.7)
+                    .padding(.bottom)
+            }
+            .background()
+            .backgroundStyle(.thinMaterial)
+            .cornerRadius(10)
+            
+            Spacer(minLength: 15)
+            
+            HStack {
+                Text("Tomatos for this task: 🍅 🍅 🍅")
+                    .font(.subheadline)
+                    .opacity(0.7)
+                    .padding(.leading)
+                    .padding(.vertical)
+                Spacer()
+            }
+            .background()
+            .backgroundStyle(.thinMaterial)
             .cornerRadius(10)
             .padding(.horizontal)
         }
         .background(Color.theme.appBackground)
     }
 }
-    
-    
-    struct TaskDetailView_Previews: PreviewProvider {
-        static var previews: some View {
-            TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create DetailView", size: "M", type: "mail", isCompleted: true))
-        }
+
+
+struct TaskDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create DetailView", size: "M", type: "mail", isCompleted: true))
     }
+}
