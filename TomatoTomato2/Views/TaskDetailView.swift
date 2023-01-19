@@ -93,6 +93,9 @@ struct TaskDetailView: View {
             .padding(.horizontal)
         }
         .background(Color.theme.appBackground)
+        .navigationBarItems(
+            trailing: NavigationLink("Edit", destination: TomatoEditView())
+        )
     }
 }
 

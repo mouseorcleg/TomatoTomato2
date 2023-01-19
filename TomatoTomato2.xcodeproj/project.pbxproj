@@ -18,6 +18,7 @@
 		CBA9A18D2968404300879058 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A18C2968404300879058 /* Color.swift */; };
 		CBA9A1902968419C00879058 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A18F2968419C00879058 /* ListView.swift */; };
 		CBCB6B7629798DDB004C5552 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */; };
+		CBCB6B782979AFFD004C5552 /* TomatoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */; };
 		CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBE424782976EAB6006CCA91 /* TomatoContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		CBA9A18C2968404300879058 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CBA9A18F2968419C00879058 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoEditView.swift; sourceTree = "<group>"; };
 		CBE424792976EAB6006CCA91 /* TomatoContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoContainer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				CB21D450296881FC00F6F8CC /* CellListView.swift */,
 				CB21D452296886D700F6F8CC /* AddView.swift */,
 				CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */,
+				CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB21D451296881FC00F6F8CC /* CellListView.swift in Sources */,
+				CBCB6B782979AFFD004C5552 /* TomatoEditView.swift in Sources */,
 				CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */,
 				CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */,
 				CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */,
