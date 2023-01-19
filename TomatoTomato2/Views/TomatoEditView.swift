@@ -32,7 +32,77 @@ struct TomatoEditView: View {
     var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                TextField("Type the title", text: $textFieldText)
+                    .padding(.horizontal)
+                    .frame(height: 45)
+                    .background(Color.theme.background.opacity(0.85))
+                    .cornerRadius(10)
+                    .padding()
+                
+                Picker("Size", selection: $sizePickerSelection) {
+                    ForEach(sizePickerOptions, id: \.self) { size in
+                        Text(size)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal)
+                .padding(.bottom)
+                .frame(height: 45)
+                
+                Picker("Type", selection: $typePickerSelection) {
+                    ForEach(typePickerOptions, id: \.self) { type in
+                        Text(type)
+                            .foregroundColor(Color.theme.extra)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .background(Color.theme.extra.opacity(0.1))
+                .cornerRadius(10)
+                .padding(.horizontal)
+                .padding(.bottom)
+                
+                Button("Save me".uppercased()) {
+                    savedButtonPressed()
+                }
+                .padding(.vertical)
+                .font(.headline)
+                .frame(height: 45)
+                .frame(maxWidth: .infinity)
+                .background(Color.theme.accent)
+                .foregroundColor(Color.theme.background)
+                .cornerRadius(10)
+                .padding(.horizontal)
+            }
+        }
+        .navigationTitle("✏️ Edit task ")
+        .alert(isPresented: $showAlert) {
+            getAlert()
+        }
+    }
+    
+    func savedButtonPressed() {
+        if thereIsTheTitle() {
+            
+//Save mechanics
+            
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    func thereIsTheTitle() -> Bool {
+        if textFieldText.count < 3 {
+            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
+            //can add other checks here
+            showAlert.toggle()
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle))
     }
 }
 
