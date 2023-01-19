@@ -28,6 +28,11 @@ struct TomatoTaskModel: Identifiable, Codable {
         return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted)
     }
     
+    static func fromEdit(model: TomatoTaskModel, title: String, size: String, type: String) -> TomatoTaskModel {
+        let newModel = TomatoTaskModel(id: model.id, title: title, size: size, type: type, isCompleted: model.isCompleted)
+        return newModel
+    }
+    
     static func from(from: TomatoTaskModel) -> TomatoTaskModel {
         return TomatoTaskModel(id: from.id, title: from.title, size: from.size, type: from.type, isCompleted: from.isCompleted)
     }

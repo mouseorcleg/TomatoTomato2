@@ -86,7 +86,7 @@ struct TomatoEditView: View {
         if thereIsTheTitle() {
             
             //Save mechanics
-            listViewModel.updateTaskInDB(model: tomatoTask)
+            listViewModel.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: textFieldText, size: sizePickerSelection, type: typePickerSelection))
             
             presentationMode.wrappedValue.dismiss()
         }
