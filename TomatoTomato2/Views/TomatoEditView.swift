@@ -85,7 +85,8 @@ struct TomatoEditView: View {
     func savedButtonPressed() {
         if thereIsTheTitle() {
             
-//Save mechanics
+            //Save mechanics
+            listViewModel.updateTaskInDB(model: tomatoTask)
             
             presentationMode.wrappedValue.dismiss()
         }
