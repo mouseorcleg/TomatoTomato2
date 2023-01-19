@@ -27,7 +27,7 @@ struct ListView: View {
                         .tint(Color.theme.accent)
                     }
             }
-            .onDelete(perform: listViewModel.deleteTask)
+            .onDelete(perform: listViewModel.deleteTomatofromDB)
             .onMove(perform: listViewModel.moveTask)
         }
         .listStyle(InsetGroupedListStyle())

@@ -23,7 +23,7 @@ struct CellListView: View {
                 .foregroundColor(Color.theme.background)
                 .cornerRadius(10)
                 .font(.body)
-
+            
             Circle()
                 .frame(width: 32)
                 .foregroundColor(Color.theme.accent)
