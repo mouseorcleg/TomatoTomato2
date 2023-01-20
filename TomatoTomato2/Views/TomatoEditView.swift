@@ -81,11 +81,12 @@ struct TomatoEditView: View {
         .alert(isPresented: $showAlert) {
             getAlert()
         }
-        .onDisappear(perform: {
-            showDialog.toggle()
+        .navigationBarItems(leading: Button("Cancel") {
+            showDialog = true
         })
+        .navigationBarBackButtonHidden()
         .alert(isPresented: $showDialog) {
-            Alert(title: Text("Are you sure you want to leave?"), message: Text("All changes will be lost."), primaryButton: .cancel(), secondaryButton: .default(Text("Leave")) {
+            Alert(title: Text("Are you sure you want to leave?"), message: Text("All changes will be lost."), primaryButton: .cancel(Text("Go back")), secondaryButton: .default(Text("Leave")) {
                 presentationMode.wrappedValue.dismiss()
             })
         }
@@ -105,7 +106,6 @@ struct TomatoEditView: View {
         if textFieldText.count < 3 {
             alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
             //can add other checks here
-            showAlert.toggle()
             return false
         }
         return true
