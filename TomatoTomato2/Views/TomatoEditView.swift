@@ -10,6 +10,7 @@ import SwiftUI
 struct TomatoEditView: View {
     
     var tomatoTask: TomatoTaskModel
+    @State var showDialog: Bool = false
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
@@ -80,6 +81,14 @@ struct TomatoEditView: View {
         .alert(isPresented: $showAlert) {
             getAlert()
         }
+        .onDisappear(perform: {
+            showDialog.toggle()
+        })
+        .alert(isPresented: $showDialog) {
+            Alert(title: Text("Are you sure you want to leave?"), message: Text("All changes will be lost."), primaryButton: .cancel(), secondaryButton: .default(Text("Leave")) {
+                presentationMode.wrappedValue.dismiss()
+            })
+        }
     }
     
     func savedButtonPressed() {
@@ -87,7 +96,7 @@ struct TomatoEditView: View {
             
             //Save mechanics
             listViewModel.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: textFieldText, size: sizePickerSelection, type: typePickerSelection))
-            
+            showDialog.toggle()
             presentationMode.wrappedValue.dismiss()
         }
     }
@@ -105,6 +114,7 @@ struct TomatoEditView: View {
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle))
     }
+    
 }
 
 struct TomatoEditView_Previews: PreviewProvider {
