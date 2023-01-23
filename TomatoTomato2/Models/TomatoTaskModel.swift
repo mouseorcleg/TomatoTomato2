@@ -15,7 +15,7 @@ struct TomatoTaskModel: Identifiable, Codable {
     let size: String
     let type: String
     let isCompleted: Bool
-    let tomatoCount: Int
+    var tomatoCount: Int
     
     init(id: UUID, title: String, size: String, type: String, isCompleted: Bool, tomatoCount: Int) {
         self.id = id
@@ -28,6 +28,10 @@ struct TomatoTaskModel: Identifiable, Codable {
     
     func updateCompletion() -> TomatoTaskModel {
         return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted, tomatoCount: tomatoCount)
+    }
+    
+    func plusOneTomato() -> TomatoTaskModel {
+        return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted, tomatoCount: tomatoCount + 1)
     }
     
     static func fromEdit(model: TomatoTaskModel, title: String, size: String, type: String) -> TomatoTaskModel {

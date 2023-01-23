@@ -117,6 +117,6 @@ struct TomatoEditView: View {
 
 struct TomatoEditView_Previews: PreviewProvider {
     static var previews: some View {
-        TomatoEditView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create EditView", size: "M", type: "develop", isCompleted: false))
+        TomatoEditView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create EditView", size: "M", type: "develop", isCompleted: false, tomatoCount: 1))
     }
 }

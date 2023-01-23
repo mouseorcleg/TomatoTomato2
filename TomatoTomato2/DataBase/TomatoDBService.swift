@@ -63,6 +63,7 @@ class TomatoDataService {
         newTomatoTask.size = model.size
         newTomatoTask.type = model.type
         newTomatoTask.isCompleted = model.isCompleted
+        newTomatoTask.tomatoCount = Int64(model.tomatoCount)
         saveData()
     }
     
@@ -72,6 +73,7 @@ class TomatoDataService {
             entity.size = update.size
             entity.type = update.type
             entity.isCompleted = update.isCompleted
+            entity.tomatoCount = Int64(update.tomatoCount)
             saveData()
         } else {
             print("Can't update if there are different id's")

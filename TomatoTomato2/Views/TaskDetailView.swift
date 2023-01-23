@@ -10,7 +10,9 @@ import SwiftUI
 struct TaskDetailView: View {
     
     var tomatoTask: TomatoTaskModel
-    @State var howManyTomatos: Int = 0
+    
+    @ObservedObject var tomatoTimer = TomatoTimer()
+    @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
         VStack {
@@ -62,7 +64,7 @@ struct TaskDetailView: View {
             .padding(.bottom)
             
             HStack {
-                TomatoTimerView(timer: TomatoTimer())
+                TomatoTimerView(timer: tomatoTimer)
                     .padding(.vertical)
             }
             
@@ -95,6 +97,6 @@ struct TaskDetailView: View {
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create TimerView", size: "L", type: "develop", isCompleted: false))
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 2))
     }
 }

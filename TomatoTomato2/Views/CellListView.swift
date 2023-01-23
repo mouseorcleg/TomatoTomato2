@@ -37,8 +37,8 @@ struct CellListView: View {
 }
 
 struct CellListView_Previews: PreviewProvider {
-    static var task1 = TomatoTaskModel(id: UUID(), title: "Sleep well", size: "L", type: "research", isCompleted: true)
-    static var task2 = TomatoTaskModel(id: UUID(), title: "Wake up", size: "XS", type: "develop", isCompleted: false)
+    static var task1 = TomatoTaskModel(id: UUID(), title: "Sleep well", size: "L", type: "research", isCompleted: true, tomatoCount: 2)
+    static var task2 = TomatoTaskModel(id: UUID(), title: "Wake up", size: "XS", type: "develop", isCompleted: false, tomatoCount: 0)
     
     static var previews: some View {
         Group {

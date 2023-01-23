@@ -42,7 +42,8 @@ class ListViewModel: ObservableObject {
             title: title,
             size: size,
             type: type,
-            isCompleted: false))
+            isCompleted: false,
+            tomatoCount: 0))
     }
     
     func updateTaskCompletion(task: TomatoTaskModel) {
