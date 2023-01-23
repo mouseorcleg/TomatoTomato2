@@ -7,10 +7,14 @@
 
 import SwiftUI
 
+let timer = Timer
+    .publish(every: 1, on: .main, in: .common)
+    .autoconnect()
+
 struct TomatoTimerView: View {
     
     @State var counter: Int = 0
-    var countTo: Int = 120
+    var countTo: Int = 60*25
     
     var body: some View {
         
@@ -30,13 +34,21 @@ struct TomatoTimerView: View {
                         Circle().trim(from: 0, to: progress())
                             .stroke(
                                 style: StrokeStyle(
-                                lineWidth: 25,
-                                lineCap: .round,
-                                lineJoin: .round
+                                    lineWidth: 20,
+                                    lineCap: .round,
+                                    lineJoin: .round
                                 )
                             )
-                            .foregroundColor(completed() ? Color.theme.extra: Color.theme.accent)
-                    ).animation(.easeInOut(duration: 0.2))
+                            .foregroundColor(completed() ? Color.theme.accent: Color.theme.extra)
+                    ).animation(.easeInOut(duration: 0.2), value: 1)
+                
+                Clock(counter: counter, countTo: countTo)
+                
+            }
+        }
+        .onReceive(timer) { time in
+            if (self.counter < self.countTo) {
+                self.counter += 1
             }
         }
     }
@@ -52,9 +64,20 @@ struct TomatoTimerView: View {
 }
 
 struct Clock: View {
+    var counter: Int
+    var countTo: Int
     
     var body: some View {
-        Text("Oh my God")
+        Text(counterToMinutes())
+            .font(.system(size: 50))
+            .fontWeight(.ultraLight)
+    }
+    
+    func counterToMinutes() -> String {
+        let currentTime = countTo - counter
+        let seconds = currentTime % 60
+        let minutes = Int(currentTime / 60)
+        return "\(minutes):\(seconds < 10 ? "0" : "")\(seconds)"
     }
     
 }
