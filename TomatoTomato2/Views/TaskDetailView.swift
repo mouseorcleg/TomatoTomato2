@@ -94,7 +94,7 @@ struct TaskDetailView: View {
         }
         .background(Color.theme.appBackground)
         .navigationBarItems(
-            trailing: NavigationLink("Edit", destination: TomatoEditView())
+            trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
         )
     }
 }
@@ -102,6 +102,6 @@ struct TaskDetailView: View {
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create DetailView", size: "M", type: "mail", isCompleted: true))
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create DetailView", size: "L", type: "mail", isCompleted: true))
     }
 }
