@@ -15,6 +15,7 @@ class TomatoTimer: ObservableObject {
     @Published var countTo: Int = 5
     @Published var timerIsRunning: Bool = false
     @Published var tomatoCounter: Int = 0
+    @Published var isItTimeForBreak: Bool = false
 
     func startTimer() {
         timer?.invalidate()
@@ -23,8 +24,12 @@ class TomatoTimer: ObservableObject {
             if (self.counter < self.countTo) {
                 self.counter += 1
             } else {
+                self.timer?.invalidate()
                 self.timerIsRunning = false
                 self.tomatoCounter += 1
+                self.isItTimeForBreak.toggle()
+                self.counter = 0
+                self.isItTimeForBreak ? (self.countTo = 5) : (self.countTo = 25)
             }
         }
         timerIsRunning = true
