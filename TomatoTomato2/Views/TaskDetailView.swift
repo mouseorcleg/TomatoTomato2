@@ -12,7 +12,7 @@ struct TaskDetailView: View {
     var tomatoTask: TomatoTaskModel
     
     @ObservedObject var tomatoTimer = TomatoTimer()
-    @EnvironmentObject var listViewModel: ListViewModel
+    @EnvironmentObject var vm: ListViewModel
     
     var body: some View {
         VStack {
@@ -68,10 +68,10 @@ struct TaskDetailView: View {
                     .padding(.vertical)
             }
             
-//            Spacer(minLength: 15)
+            //            Spacer(minLength: 15)
             
             HStack {
-                Text("Tomatos for this task: 🍅 🍅 🍅")
+                Text("Tomatos for this task: " + String(repeating: "🍅 ", count: tomatoTask.tomatoCount))
                     .font(.subheadline)
                     .opacity(0.7)
                     .padding(.leading)
@@ -90,7 +90,9 @@ struct TaskDetailView: View {
         .navigationBarItems(
             trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
         )
-
+        .onChange(of: tomatoTimer.tomatoCounter) { value in
+            vm.updateTaskInDB(model: tomatoTask.plusOneTomato())
+            }
     }
 }
 
