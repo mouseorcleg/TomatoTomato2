@@ -16,6 +16,7 @@ struct CellListView: View {
             Image(systemName: task.isCompleted ? "checkmark.circle" : "circle")
                 .foregroundColor(task.isCompleted ? Color.theme.accent : Color.primary)
             Text(task.title)
+                .lineLimit(1)
             Spacer()
             Text(task.type)
                 .padding(5)
@@ -37,7 +38,7 @@ struct CellListView: View {
 }
 
 struct CellListView_Previews: PreviewProvider {
-    static var task1 = TomatoTaskModel(id: UUID(), title: "Sleep well", size: "L", type: "research", isCompleted: true, tomatoCount: 2)
+    static var task1 = TomatoTaskModel(id: UUID(), title: "Sleep well and do not trouble yourself with what to come. Just sleep", size: "L", type: "research", isCompleted: true, tomatoCount: 2)
     static var task2 = TomatoTaskModel(id: UUID(), title: "Wake up", size: "XS", type: "develop", isCompleted: false, tomatoCount: 0)
     
     static var previews: some View {
