@@ -35,7 +35,7 @@ struct TomatoTimerView: View {
                                 )
                             )
                             .foregroundColor(Color.theme.extra)
-                    ).animation(.easeInOut(duration: 1), value: progress())
+                    ).animation(.easeInOut(duration: 1.3), value: progress())
                 
                 VStack {
                     Text(timer.isItTimeForBreak ? "Take a break" : "Work session")

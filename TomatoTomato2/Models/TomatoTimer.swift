@@ -12,7 +12,7 @@ class TomatoTimer: ObservableObject {
     
     @Published var timer: Timer?
     @Published var counter: Int = 0
-    @Published var countTo: Int = 25
+    @Published var countTo: Int = 25*60
     @Published var timerIsRunning: Bool = false
     @Published var tomatoCounter: Int = 0
     @Published var isItTimeForBreak: Bool = false
@@ -26,10 +26,13 @@ class TomatoTimer: ObservableObject {
             } else {
                 self.timer?.invalidate()
                 self.timerIsRunning = false
-                self.tomatoCounter += 1
                 self.isItTimeForBreak.toggle()
                 self.counter = 0
-                self.isItTimeForBreak ? (self.countTo = 5) : (self.countTo = 25)
+                if !self.isItTimeForBreak {
+                    self.tomatoCounter += 1
+                } else {
+                    self.countTo = 5*60
+                }
             }
         }
         timerIsRunning = true
