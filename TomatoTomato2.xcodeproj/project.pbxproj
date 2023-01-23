@@ -20,6 +20,7 @@
 		CBCB6B7629798DDB004C5552 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */; };
 		CBCB6B782979AFFD004C5552 /* TomatoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */; };
 		CBCB6B7D297E9916004C5552 /* TomatoTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B7C297E9916004C5552 /* TomatoTimerView.swift */; };
+		CBCB6B7F297EAC45004C5552 /* TomatoTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B7E297EAC45004C5552 /* TomatoTimer.swift */; };
 		CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBE424782976EAB6006CCA91 /* TomatoContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoEditView.swift; sourceTree = "<group>"; };
 		CBCB6B7C297E9916004C5552 /* TomatoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTimerView.swift; sourceTree = "<group>"; };
+		CBCB6B7E297EAC45004C5552 /* TomatoTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTimer.swift; sourceTree = "<group>"; };
 		CBE424792976EAB6006CCA91 /* TomatoContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoContainer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */,
+				CBCB6B7E297EAC45004C5552 /* TomatoTimer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				CBCB6B782979AFFD004C5552 /* TomatoEditView.swift in Sources */,
 				CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */,
 				CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */,
+				CBCB6B7F297EAC45004C5552 /* TomatoTimer.swift in Sources */,
 				CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */,
 				CBCB6B7629798DDB004C5552 /* TaskDetailView.swift in Sources */,
 				CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */,

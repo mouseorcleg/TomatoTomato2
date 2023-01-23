@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-let timer = Timer
-    .publish(every: 1, on: .main, in: .common)
-    .autoconnect()
+//let timer = Timer
+//    .publish(every: 1, on: .main, in: .common)
+//    .autoconnect()
 
 struct TomatoTimerView: View {
     
-    @State var counter: Int = 0
-    var countTo: Int = 60*25
+//    @State var timerIsRunning: Bool = false
+    @ObservedObject var timer = TomatoTimer()
     
     var body: some View {
         
@@ -42,13 +42,21 @@ struct TomatoTimerView: View {
                             .foregroundColor(completed() ? Color.theme.accent: Color.theme.extra)
                     ).animation(.easeInOut(duration: 0.2), value: 1)
                 
-                Clock(counter: counter, countTo: countTo)
-                
-            }
-        }
-        .onReceive(timer) { time in
-            if (self.counter < self.countTo) {
-                self.counter += 1
+                VStack {
+                    Clock(counter: timer.counter, countTo: timer.countTo)
+                        .padding(.vertical)
+                    Button {
+                        if timer.timerIsRunning {
+                            timer.pauseTimer()
+                        } else {
+                            timer.startTimer()
+                        }
+                    } label: {
+                        Image(systemName: timer.timerIsRunning ? "pause.circle.fill" : "play.circle.fill")
+                            .font(.system(size: 35))
+                            .foregroundColor(timer.timerIsRunning ? Color.theme.extra : Color.theme.accent)
+                    }
+                }
             }
         }
     }
@@ -58,7 +66,7 @@ struct TomatoTimerView: View {
     }
     
     func progress() -> CGFloat {
-        return (CGFloat(counter) / CGFloat(countTo))
+        return (CGFloat(timer.counter) / CGFloat(timer.countTo))
     }
     
 }
@@ -69,7 +77,7 @@ struct Clock: View {
     
     var body: some View {
         Text(counterToMinutes())
-            .font(.system(size: 50))
+            .font(.system(size: 60))
             .fontWeight(.ultraLight)
     }
     
