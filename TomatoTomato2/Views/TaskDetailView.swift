@@ -67,7 +67,7 @@ struct TaskDetailView: View {
             .padding(.bottom)
             .shadow(radius: 5)
             
-            if tomatoTask.isCompleted == false {
+            if !tomatoTask.isCompleted {
                 HStack {
                     TomatoTimerView(timer: tomatoTimer)
                         .padding(.vertical)
@@ -90,6 +90,13 @@ struct TaskDetailView: View {
             .padding(.horizontal)
             .padding(.top)
             .shadow(radius: 5)
+            
+            if tomatoTimer.isItTimeForBreak {
+                Text("*To get a tomato you have to go on a break ;-)")
+                    .padding()
+                    .foregroundColor(.secondary)
+                    .opacity(70)
+            }
             
             Spacer()
             
