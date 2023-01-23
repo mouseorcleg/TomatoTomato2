@@ -12,8 +12,9 @@ class TomatoTimer: ObservableObject {
     
     @Published var timer: Timer?
     @Published var counter: Int = 0
-    @Published var countTo: Int = 60*25
+    @Published var countTo: Int = 5
     @Published var timerIsRunning: Bool = false
+    @Published var tomatoCounter: Int = 0
 
     func startTimer() {
         timer?.invalidate()
@@ -21,6 +22,9 @@ class TomatoTimer: ObservableObject {
             guard let self = self else { return }
             if (self.counter < self.countTo) {
                 self.counter += 1
+            } else {
+                self.timerIsRunning = false
+                self.tomatoCounter += 1
             }
         }
         timerIsRunning = true

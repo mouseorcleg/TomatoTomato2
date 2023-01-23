@@ -7,13 +7,8 @@
 
 import SwiftUI
 
-//let timer = Timer
-//    .publish(every: 1, on: .main, in: .common)
-//    .autoconnect()
-
 struct TomatoTimerView: View {
     
-//    @State var timerIsRunning: Bool = false
     @ObservedObject var timer = TomatoTimer()
     
     var body: some View {
@@ -39,10 +34,11 @@ struct TomatoTimerView: View {
                                     lineJoin: .round
                                 )
                             )
-                            .foregroundColor(completed() ? Color.theme.accent: Color.theme.extra)
-                    ).animation(.easeInOut(duration: 0.2), value: 1)
+                            .foregroundColor(Color.theme.extra)
+                    ).animation(.linear, value: 1)
                 
                 VStack {
+                    
                     Clock(counter: timer.counter, countTo: timer.countTo)
                         .padding(.vertical)
                     Button {
