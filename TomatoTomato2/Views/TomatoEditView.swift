@@ -86,7 +86,7 @@ struct TomatoEditView: View {
         })
         .navigationBarBackButtonHidden()
         .alert(isPresented: $showDialog) {
-            Alert(title: Text("Are you sure you want to leave?"), message: Text("All changes will be lost."), primaryButton: .cancel(Text("Go back")), secondaryButton: .default(Text("Leave")) {
+            Alert(title: Text("Discard edits?"), primaryButton: .cancel(Text("No, back to editing")), secondaryButton: .default(Text("Discard and exit")) {
                 presentationMode.wrappedValue.dismiss()
             })
         }
@@ -95,9 +95,7 @@ struct TomatoEditView: View {
     func savedButtonPressed() {
         if thereIsTheTitle() {
             
-            //Save mechanics
             listViewModel.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: textFieldText, size: sizePickerSelection, type: typePickerSelection))
-            showDialog.toggle()
             presentationMode.wrappedValue.dismiss()
         }
     }

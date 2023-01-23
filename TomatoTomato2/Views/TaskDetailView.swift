@@ -10,9 +10,10 @@ import SwiftUI
 struct TaskDetailView: View {
     
     var tomatoTask: TomatoTaskModel
+    @State var howManyTomatos: Int = 0
     
     var body: some View {
-        ScrollView {
+        VStack {
             VStack {
                 HStack {
                     Text("📍Task:")
@@ -52,32 +53,20 @@ struct TaskDetailView: View {
                     Spacer()
                 }
                 .font(.title3)
-            }
+            } // taskVStack
             .padding(.vertical)
             .background()
             .backgroundStyle(.thickMaterial)
             .cornerRadius(10)
             .padding(.horizontal)
+            .padding(.bottom)
             
-            Spacer(minLength: 15)
-            
-            VStack {
-                Image(systemName: "timer")
-                    .frame(width: 340, height: 150, alignment: .bottom)
-                    .font(.largeTitle)
-                    .foregroundColor(Color.theme.extra)
-                    .opacity(0.7)
-                    .padding(.bottom)
-                Text("Place for a 🍅 timer")
-                    .font(.subheadline)
-                    .opacity(0.7)
-                    .padding(.bottom)
+            HStack {
+                TomatoTimerView(timer: TomatoTimer())
+                    .padding(.vertical)
             }
-            .background()
-            .backgroundStyle(.thinMaterial)
-            .cornerRadius(10)
             
-            Spacer(minLength: 15)
+//            Spacer(minLength: 15)
             
             HStack {
                 Text("Tomatos for this task: 🍅 🍅 🍅")
@@ -91,17 +80,21 @@ struct TaskDetailView: View {
             .backgroundStyle(.thinMaterial)
             .cornerRadius(10)
             .padding(.horizontal)
-        }
+            .padding(.top)
+            
+            Spacer()
+        }//main VStack
         .background(Color.theme.appBackground)
         .navigationBarItems(
             trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
         )
+
     }
 }
 
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create DetailView", size: "L", type: "mail", isCompleted: true))
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create TimerView", size: "L", type: "develop", isCompleted: false))
     }
 }
