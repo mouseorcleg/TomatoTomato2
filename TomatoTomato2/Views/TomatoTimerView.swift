@@ -35,12 +35,15 @@ struct TomatoTimerView: View {
                                 )
                             )
                             .foregroundColor(Color.theme.extra)
-                    ).animation(.linear, value: 1)
+                    ).animation(.easeInOut(duration: 1), value: progress())
                 
                 VStack {
+                    Text(timer.isItTimeForBreak ? "Take a break" : "Work session")
+                        .fontWeight(.light)
+                        .font(.callout)
                     
                     Clock(counter: timer.counter, countTo: timer.countTo)
-                        .padding(.vertical)
+                        .padding(.bottom)
                     Button {
                         if timer.timerIsRunning {
                             timer.pauseTimer()
