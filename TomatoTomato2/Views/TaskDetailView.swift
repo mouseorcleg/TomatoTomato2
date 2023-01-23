@@ -17,13 +17,17 @@ struct TaskDetailView: View {
     var body: some View {
         VStack {
             VStack {
-                HStack {
+                HStack(alignment: .top) {
                     Text("📍Task:")
                         .padding(.leading)
+                        .padding(.bottom)
+                        .underline(pattern: .solid, color: Color.theme.appBackground)
                     Text(tomatoTask.title)
+                        .lineLimit(3)
                     Spacer()
                 }
-                .font(.title2)
+                .font(.title3)
+                
                 HStack {
                     Text("Type:")
                         .padding(.leading)
@@ -43,7 +47,7 @@ struct TaskDetailView: View {
                         }
                     Spacer()
                 }
-                .font(.title3)
+                
                 
                 HStack {
                     Text("Finished, love?")
@@ -54,7 +58,6 @@ struct TaskDetailView: View {
                     Text(tomatoTask.isCompleted ? "Yeees 🎉" : "Not yet")
                     Spacer()
                 }
-                .font(.title3)
             } // taskVStack
             .padding(.vertical)
             .background()
@@ -62,27 +65,28 @@ struct TaskDetailView: View {
             .cornerRadius(10)
             .padding(.horizontal)
             .padding(.bottom)
+            .shadow(radius: 5)
             
             if tomatoTask.isCompleted == false {
                 HStack {
                     TomatoTimerView(timer: tomatoTimer)
                         .padding(.vertical)
                 }
+                
             }
             
             HStack {
-                Text("Tomatos for this task: " + String(repeating: "🍅 ", count: tomatoTask.tomatoCount))
-                    .font(.subheadline)
-                    .opacity(0.7)
+                Text("Task tomatos: " + String(repeating: "🍅 ", count: tomatoTask.tomatoCount))
                     .padding(.leading)
                     .padding(.vertical)
                 Spacer()
             }
             .background()
-            .backgroundStyle(.thinMaterial)
+            .backgroundStyle(.thickMaterial)
             .cornerRadius(10)
             .padding(.horizontal)
             .padding(.top)
+            .shadow(radius: 5)
             
             Spacer()
             
@@ -102,6 +106,6 @@ struct TaskDetailView: View {
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 2))
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 2))
     }
 }
