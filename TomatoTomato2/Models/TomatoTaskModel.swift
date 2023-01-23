@@ -40,7 +40,7 @@ struct TomatoTaskModel: Identifiable, Codable {
     }
     
     static func fromDB(model: TomatoTaskEntity) -> TomatoTaskModel {
-        return TomatoTaskModel(id: model.tomatoID ?? UUID(), title: model.title!, size: model.size ?? "", type: model.type ?? "", isCompleted: model.isCompleted, tomatoCount: model.tomatoCount)
+        return TomatoTaskModel(id: model.tomatoID ?? UUID(), title: model.title!, size: model.size ?? "", type: model.type ?? "", isCompleted: model.isCompleted, tomatoCount: Int(model.tomatoCount))
     }
 }
 // NB - update the model only through here!
