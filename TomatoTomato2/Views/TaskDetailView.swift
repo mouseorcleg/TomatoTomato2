@@ -76,11 +76,14 @@ struct TaskDetailView: View {
             }
             
             HStack {
-                Text("Task tomatos: " + String(repeating: "🍅 ", count: tomatoTask.tomatoCount))
+                Text("Task tomatos: ")
                     .padding(.leading)
-                    .padding(.vertical)
+                Text(getTomatosForDisplay())
+                    .padding(.trailing)
+                    .foregroundColor(.secondary)
                 Spacer()
             }
+            .padding(.vertical)
             .background()
             .backgroundStyle(.thickMaterial)
             .cornerRadius(10)
@@ -102,10 +105,18 @@ struct TaskDetailView: View {
             tomatoTimer.pauseTimer()
         }
     }
+    
+    func getTomatosForDisplay() -> String {
+        if tomatoTask.tomatoCount == 0 {
+            return String("start the timer to earn tomatos")
+        } else {
+            return String(repeating: "🍅 ", count: tomatoTask.tomatoCount)
+        }
+    }
 }
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 2))
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0))
     }
 }
