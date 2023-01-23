@@ -95,9 +95,7 @@ struct TomatoEditView: View {
     func savedButtonPressed() {
         if thereIsTheTitle() {
             
-            //Save mechanics
             listViewModel.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: textFieldText, size: sizePickerSelection, type: typePickerSelection))
-            showDialog.toggle()
             presentationMode.wrappedValue.dismiss()
         }
     }

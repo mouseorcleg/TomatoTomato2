@@ -19,6 +19,7 @@
 		CBA9A1902968419C00879058 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A18F2968419C00879058 /* ListView.swift */; };
 		CBCB6B7629798DDB004C5552 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */; };
 		CBCB6B782979AFFD004C5552 /* TomatoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */; };
+		CBCB6B7D297E9916004C5552 /* TomatoTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB6B7C297E9916004C5552 /* TomatoTimerView.swift */; };
 		CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBE424782976EAB6006CCA91 /* TomatoContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		CBA9A18F2968419C00879058 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoEditView.swift; sourceTree = "<group>"; };
+		CBCB6B7C297E9916004C5552 /* TomatoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTimerView.swift; sourceTree = "<group>"; };
 		CBE424792976EAB6006CCA91 /* TomatoContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoContainer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				CB21D452296886D700F6F8CC /* AddView.swift */,
 				CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */,
 				CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */,
+				CBCB6B7C297E9916004C5552 /* TomatoTimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBCB6B7D297E9916004C5552 /* TomatoTimerView.swift in Sources */,
 				CB21D451296881FC00F6F8CC /* CellListView.swift in Sources */,
 				CBCB6B782979AFFD004C5552 /* TomatoEditView.swift in Sources */,
 				CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */,
