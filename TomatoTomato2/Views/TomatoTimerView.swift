@@ -17,7 +17,7 @@ struct TomatoTimerView: View {
             ZStack {
                 Circle()
                     .fill(Color.clear)
-                    .frame(width: 250, height: 250)
+                    .frame(height: 250)
                     .overlay(
                         Circle().stroke(Color.theme.accent, lineWidth: 20)
                     )
