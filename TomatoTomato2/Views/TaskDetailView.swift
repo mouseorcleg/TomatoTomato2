@@ -68,8 +68,6 @@ struct TaskDetailView: View {
                     .padding(.vertical)
             }
             
-            //            Spacer(minLength: 15)
-            
             HStack {
                 Text("Tomatos for this task: " + String(repeating: "🍅 ", count: tomatoTask.tomatoCount))
                     .font(.subheadline)
@@ -85,6 +83,7 @@ struct TaskDetailView: View {
             .padding(.top)
             
             Spacer()
+            
         }//main VStack
         .background(Color.theme.appBackground)
         .navigationBarItems(
@@ -92,10 +91,9 @@ struct TaskDetailView: View {
         )
         .onChange(of: tomatoTimer.tomatoCounter) { value in
             vm.updateTaskInDB(model: tomatoTask.plusOneTomato())
-            }
+        }
     }
 }
-
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
