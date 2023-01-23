@@ -15,30 +15,32 @@ struct TomatoTaskModel: Identifiable, Codable {
     let size: String
     let type: String
     let isCompleted: Bool
+    let tomatoCount: Int
     
-    init(id: UUID, title: String, size: String, type: String, isCompleted: Bool) {
+    init(id: UUID, title: String, size: String, type: String, isCompleted: Bool, tomatoCount: Int) {
         self.id = id
         self.title = title
         self.size = size
         self.type = type
         self.isCompleted = isCompleted
+        self.tomatoCount = tomatoCount
     }
     
     func updateCompletion() -> TomatoTaskModel {
-        return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted)
+        return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted, tomatoCount: tomatoCount)
     }
     
     static func fromEdit(model: TomatoTaskModel, title: String, size: String, type: String) -> TomatoTaskModel {
-        let newModel = TomatoTaskModel(id: model.id, title: title, size: size, type: type, isCompleted: model.isCompleted)
+        let newModel = TomatoTaskModel(id: model.id, title: title, size: size, type: type, isCompleted: model.isCompleted, tomatoCount: model.tomatoCount)
         return newModel
     }
     
     static func from(from: TomatoTaskModel) -> TomatoTaskModel {
-        return TomatoTaskModel(id: from.id, title: from.title, size: from.size, type: from.type, isCompleted: from.isCompleted)
+        return TomatoTaskModel(id: from.id, title: from.title, size: from.size, type: from.type, isCompleted: from.isCompleted, tomatoCount: from.tomatoCount)
     }
     
     static func fromDB(model: TomatoTaskEntity) -> TomatoTaskModel {
-        return TomatoTaskModel(id: model.tomatoID ?? UUID(), title: model.title!, size: model.size ?? "", type: model.type ?? "", isCompleted: model.isCompleted)
+        return TomatoTaskModel(id: model.tomatoID ?? UUID(), title: model.title!, size: model.size ?? "", type: model.type ?? "", isCompleted: model.isCompleted, tomatoCount: model.tomatoCount)
     }
 }
 // NB - update the model only through here!
