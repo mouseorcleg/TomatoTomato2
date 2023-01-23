@@ -63,9 +63,11 @@ struct TaskDetailView: View {
             .padding(.horizontal)
             .padding(.bottom)
             
-            HStack {
-                TomatoTimerView(timer: tomatoTimer)
-                    .padding(.vertical)
+            if tomatoTask.isCompleted == false {
+                HStack {
+                    TomatoTimerView(timer: tomatoTimer)
+                        .padding(.vertical)
+                }
             }
             
             HStack {
@@ -91,6 +93,9 @@ struct TaskDetailView: View {
         )
         .onChange(of: tomatoTimer.tomatoCounter) { value in
             vm.updateTaskInDB(model: tomatoTask.plusOneTomato())
+        }
+        .onDisappear() {
+            tomatoTimer.pauseTimer()
         }
     }
 }
