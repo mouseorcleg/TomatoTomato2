@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct NoTasksView: View {
+    
+    @State var animate: Bool = false
+    
     var body: some View {
         ScrollView {
             ZStack {
@@ -29,10 +32,10 @@ struct NoTasksView: View {
                         Text("Add the first task 🎉")
                             .font(.title3)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color.theme.background)
+                            .foregroundColor(animate ? Color.theme.background : Color.secondary)
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .background(Color.theme.accent)
+                            .background(animate ? Color.theme.extra : Color.theme.appBackground)
                             .cornerRadius(10)
                             .padding(.horizontal)
                             .padding(.horizontal)
@@ -44,6 +47,16 @@ struct NoTasksView: View {
             }
         } //scrollView
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear(perform: addAnimation)
+    }
+    
+    func addAnimation() {
+        guard !animate else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            withAnimation(.easeInOut(duration: 2)) {
+                animate.toggle()
+            }
+        }
     }
 }
 
