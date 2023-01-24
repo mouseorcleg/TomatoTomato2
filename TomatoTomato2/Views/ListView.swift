@@ -13,28 +13,34 @@ struct ListView: View {
     
     var body: some View {
         
-        List {
-            ForEach(listViewModel.tomatoTasks) { tomatoTask in
-                NavigationLink {
-                    TaskDetailView(tomatoTask: tomatoTask)
-                } label: {
-                    CellListView(task: tomatoTask)
-                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                            Button {
-                                withAnimation(.linear) {
-                                    listViewModel.updateTaskCompletion(task: tomatoTask)
+        ZStack {
+            if listViewModel.tomatoTasks.isEmpty {
+                Text("No items")
+            } else {
+                List {
+                    ForEach(listViewModel.tomatoTasks) { tomatoTask in
+                        NavigationLink {
+                            TaskDetailView(tomatoTask: tomatoTask)
+                        } label: {
+                            CellListView(task: tomatoTask)
+                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                    Button {
+                                        withAnimation(.linear) {
+                                            listViewModel.updateTaskCompletion(task: tomatoTask)
+                                        }
+                                    } label: {
+                                        Label("Done?", systemImage: "checkmark")
+                                    }
+                                    .tint(Color.theme.accent)
                                 }
-                            } label: {
-                                Label("Done?", systemImage: "checkmark")
-                            }
-                            .tint(Color.theme.accent)
                         }
+                    }
+                    .onDelete(perform: listViewModel.deleteTomatofromDB)
+                    .onMove(perform: listViewModel.moveTask)
                 }
+                .listStyle(InsetGroupedListStyle())
             }
-            .onDelete(perform: listViewModel.deleteTomatofromDB)
-            .onMove(perform: listViewModel.moveTask)
         }
-        .listStyle(InsetGroupedListStyle())
         .navigationTitle("📌 To do:")
         .navigationBarItems(
             leading: EditButton(),
