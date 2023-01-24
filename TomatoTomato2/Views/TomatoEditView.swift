@@ -86,7 +86,7 @@ struct TomatoEditView: View {
         })
         .navigationBarBackButtonHidden()
         .alert(isPresented: $showDialog) {
-            Alert(title: Text("Discard edits?"), primaryButton: .cancel(Text("No, back to editing")), secondaryButton: .default(Text("Discard and exit")) {
+            Alert(title: Text("Discard edits?"), primaryButton: .cancel(Text("Go back to editing")), secondaryButton: .default(Text("Discard and exit")) {
                 presentationMode.wrappedValue.dismiss()
             })
         }
@@ -117,6 +117,6 @@ struct TomatoEditView: View {
 
 struct TomatoEditView_Previews: PreviewProvider {
     static var previews: some View {
-        TomatoEditView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create EditView", size: "M", type: "develop", isCompleted: false))
+        TomatoEditView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create EditView", size: "M", type: "develop", isCompleted: false, tomatoCount: 1))
     }
 }

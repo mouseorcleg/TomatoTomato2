@@ -10,18 +10,24 @@ import SwiftUI
 struct TaskDetailView: View {
     
     var tomatoTask: TomatoTaskModel
-    @State var howManyTomatos: Int = 0
+    
+    @ObservedObject var tomatoTimer = TomatoTimer()
+    @EnvironmentObject var vm: ListViewModel
     
     var body: some View {
         VStack {
             VStack {
-                HStack {
+                HStack(alignment: .top) {
                     Text("📍Task:")
                         .padding(.leading)
+                        .padding(.bottom)
+                        .underline(pattern: .solid, color: Color.theme.appBackground)
                     Text(tomatoTask.title)
+                        .lineLimit(3)
                     Spacer()
                 }
-                .font(.title2)
+                .font(.title3)
+                
                 HStack {
                     Text("Type:")
                         .padding(.leading)
@@ -41,7 +47,7 @@ struct TaskDetailView: View {
                         }
                     Spacer()
                 }
-                .font(.title3)
+                
                 
                 HStack {
                     Text("Finished, love?")
@@ -52,7 +58,6 @@ struct TaskDetailView: View {
                     Text(tomatoTask.isCompleted ? "Yeees 🎉" : "Not yet")
                     Spacer()
                 }
-                .font(.title3)
             } // taskVStack
             .padding(.vertical)
             .background()
@@ -60,41 +65,65 @@ struct TaskDetailView: View {
             .cornerRadius(10)
             .padding(.horizontal)
             .padding(.bottom)
+            .shadow(radius: 5)
             
-            HStack {
-                TomatoTimerView(timer: TomatoTimer())
-                    .padding(.vertical)
+            if !tomatoTask.isCompleted {
+                HStack {
+                    TomatoTimerView(timer: tomatoTimer)
+                        .padding(.vertical)
+                }
+                
             }
             
-//            Spacer(minLength: 15)
-            
             HStack {
-                Text("Tomatos for this task: 🍅 🍅 🍅")
-                    .font(.subheadline)
-                    .opacity(0.7)
+                Text("Task tomatos: ")
                     .padding(.leading)
-                    .padding(.vertical)
+                Text(getTomatosForDisplay())
+                    .padding(.trailing)
+                    .foregroundColor(.secondary)
                 Spacer()
             }
+            .padding(.vertical)
             .background()
-            .backgroundStyle(.thinMaterial)
+            .backgroundStyle(.thickMaterial)
             .cornerRadius(10)
             .padding(.horizontal)
             .padding(.top)
+            .shadow(radius: 5)
+            
+            if tomatoTimer.isItTimeForBreak {
+                Text("*To get a tomato you have to go on a break ;-)")
+                    .padding()
+                    .foregroundColor(.secondary)
+                    .opacity(70)
+            }
             
             Spacer()
+            
         }//main VStack
         .background(Color.theme.appBackground)
         .navigationBarItems(
             trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
         )
-
+        .onChange(of: tomatoTimer.tomatoCounter) { value in
+            vm.updateTaskInDB(model: tomatoTask.plusOneTomato())
+        }
+        .onDisappear() {
+            tomatoTimer.pauseTimer()
+        }
+    }
+    
+    func getTomatosForDisplay() -> String {
+        if tomatoTask.tomatoCount == 0 {
+            return String("start the timer to earn tomatos")
+        } else {
+            return String(repeating: "🍅 ", count: tomatoTask.tomatoCount)
+        }
     }
 }
 
-
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create TimerView", size: "L", type: "develop", isCompleted: false))
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0))
     }
 }
