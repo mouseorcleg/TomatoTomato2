@@ -102,6 +102,7 @@ struct TaskDetailView: View {
             
         }//main VStack
         .background(Color.theme.appBackground)
+        .frame(maxWidth: 500)
         .navigationBarItems(
             trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
         )

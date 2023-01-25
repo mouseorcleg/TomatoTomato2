@@ -15,7 +15,7 @@ struct NoTasksView: View {
         ScrollView {
             ZStack {
                 Circle()
-                    .fill(Color.theme.appBackground)
+                    .fill(Color.theme.appBackground.opacity(50))
                     .shadow(color: Color.theme.appBackground.opacity(10), radius: 10)
                 
                 VStack (spacing: 10){
@@ -46,8 +46,9 @@ struct NoTasksView: View {
                 }
                 .multilineTextAlignment(.center)
                 .padding(40)
-            }
+            }//Zstack
             .padding(.top, 60)
+            .frame(maxWidth: 500)
         } //scrollView
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear(perform: addAnimation)
