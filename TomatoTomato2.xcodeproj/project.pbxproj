@@ -11,6 +11,7 @@
 		CB21D453296886D700F6F8CC /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21D452296886D700F6F8CC /* AddView.swift */; };
 		CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB42D87129757BBB005060B1 /* TomatoDBService.swift */; };
 		CB6D5D48297FD98F00F4BE82 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */; };
+		CB7D594C298151AD00FF2ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */; };
 		CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */; };
 		CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D07296C5E660012D59E /* ListViewModel.swift */; };
 		CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */; };
@@ -30,6 +31,7 @@
 		CB21D452296886D700F6F8CC /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		CB42D87129757BBB005060B1 /* TomatoDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoDBService.swift; sourceTree = "<group>"; };
 		CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
+		CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskModel.swift; sourceTree = "<group>"; };
 		CB9F5D07296C5E660012D59E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		CBA9A17B29682EF700879058 /* TomatoTomato2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoTomato2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,12 +127,13 @@
 			isa = PBXGroup;
 			children = (
 				CBA9A18F2968419C00879058 /* ListView.swift */,
-				CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */,
 				CB21D450296881FC00F6F8CC /* CellListView.swift */,
 				CB21D452296886D700F6F8CC /* AddView.swift */,
 				CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */,
 				CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */,
 				CBCB6B7C297E9916004C5552 /* TomatoTimerView.swift */,
+				CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */,
+				CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7D594C298151AD00FF2ECC /* LaunchScreen.storyboard in Resources */,
 				CBA9A18629682EFA00879058 /* Preview Assets.xcassets in Resources */,
 				CBA9A18329682EFA00879058 /* Assets.xcassets in Resources */,
 			);
@@ -350,11 +354,12 @@
 				DEVELOPMENT_TEAM = FSX322285W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TomatoTomato2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TomatoTomato;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -382,11 +387,12 @@
 				DEVELOPMENT_TEAM = FSX322285W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TomatoTomato2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TomatoTomato;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
