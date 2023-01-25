@@ -17,7 +17,6 @@ struct NoTasksView: View {
                 Circle()
                     .fill(Color.theme.appBackground)
                     .shadow(radius: 10)
-
                 
                 VStack (spacing: 10){
                     Text("There are no tasks yet")
@@ -32,19 +31,23 @@ struct NoTasksView: View {
                         Text("Add the first task 🎉")
                             .font(.title3)
                             .fontWeight(.semibold)
-                            .foregroundColor(animate ? Color.theme.background : Color.secondary)
+                            .foregroundColor(Color.theme.background)
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
-                            .background(animate ? Color.theme.extra : Color.theme.appBackground)
+                            .background(Color.theme.accent)
                             .cornerRadius(10)
-                            .padding(.horizontal)
-                            .padding(.horizontal)
-                            .shadow(radius: 5)
+                            .padding(.top)
+                            .padding(.horizontal, 50)
+                            .shadow(
+                                color: animate ? Color.white.opacity(70) : Color.theme.accent.opacity(70),
+                                radius: 15
+                            )
                     })
                 }
                 .multilineTextAlignment(.center)
                 .padding(40)
             }
+            .padding(.top, 60)
         } //scrollView
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear(perform: addAnimation)
@@ -53,7 +56,11 @@ struct NoTasksView: View {
     func addAnimation() {
         guard !animate else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            withAnimation(.easeInOut(duration: 2)) {
+            withAnimation(
+                Animation
+                    .easeInOut(duration: 2)
+                    .repeatForever()
+            ) {
                 animate.toggle()
             }
         }
