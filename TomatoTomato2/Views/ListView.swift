@@ -15,7 +15,7 @@ struct ListView: View {
         
         ZStack {
             if listViewModel.tomatoTasks.isEmpty {
-                Text("No items")
+                NoTasksView()
             } else {
                 List {
                     ForEach(listViewModel.tomatoTasks) { tomatoTask in
