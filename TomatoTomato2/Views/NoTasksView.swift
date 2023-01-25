@@ -16,7 +16,7 @@ struct NoTasksView: View {
             ZStack {
                 Circle()
                     .fill(Color.theme.appBackground)
-                    .shadow(radius: 10)
+                    .shadow(color: Color.theme.appBackground.opacity(10), radius: 10)
                 
                 VStack (spacing: 10){
                     Text("There are no tasks yet")
