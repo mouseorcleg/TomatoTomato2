@@ -28,7 +28,7 @@ struct NoTasksView: View {
                         .fontWeight(.light)
                     
                     NavigationLink(destination: AddView(), label: {
-                        Text("Add the first task 🎉")
+                        Text("Add a shiny new task 🎉")
                             .font(.title3)
                             .fontWeight(.semibold)
                             .foregroundColor(Color.theme.background)
@@ -37,7 +37,7 @@ struct NoTasksView: View {
                             .background(Color.theme.accent)
                             .cornerRadius(10)
                             .padding(.top)
-                            .padding(.horizontal, 50)
+                            .padding(.horizontal, 40)
                             .shadow(
                                 color: animate ? Color.white.opacity(70) : Color.theme.accent.opacity(70),
                                 radius: 15
