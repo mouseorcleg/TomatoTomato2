@@ -3,15 +3,15 @@ TomatoTomato is a productivity app that combines the features of a to-do list an
 
 *if it’s the first time you hear about it, check out [the Pomodoro® Technique](https://francescocirillo.com/products/the-pomodoro-technique) explained by it's author.
 
-## 📑 Table of contents
+## 📑 Table of content
 * [Technologies](#-technologies)
 * [Roadmap](#-roadmap)
-- [Start of the journey](#%EF%B8%8F-start-of-the-journey)
-- []()
-- []()
-* []()
-* []()
-* []()
+  - [Start of the journey](#%EF%B8%8F-start-of-the-journey)
+  - [Current status](#-current-status)
+  - [Plans for the future updates](#-plans-for-the-future-updates)
+* [ScreenShots](#-screenshots)
+* [Credits and acknowledgements](#-credits-and-acknowledgements)
+* [License](#%EF%B8%8F-license)
 
 ## 🛠 Technologies
 - TomatoTomato was built using the MVVM (Model-View-ViewModel) architecture.
