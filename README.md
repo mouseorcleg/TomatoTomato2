@@ -67,6 +67,6 @@ I am also grateful to the creators of ChatGPT for releasing this powerful tool, 
 Lastly, I would like to thank [Sean Allen](https://github.com/SAllen0400) and his [YouTube channel](https://www.youtube.com/c/SeanAllen) for inspiring me to make this ReadMe visually engaging and hopefully not too boring to read.
 
 ## ©️ License
-MIT license @mouseorcleg
+MIT license [@mouseorcleg](https://github.com/mouseorcleg)
 - - - -
 👋 Say hello on [Twitter](https://twitter.com/mouse_or_cleg) or [LinkedIn](https://www.linkedin.com/in/maria-kharybina-b0993148/).
