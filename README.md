@@ -56,15 +56,15 @@ Any feedback is highly appreciated!
 Take a sneak peek of the user interface and functionality of TomatoTomato with these screenshots. From the main task list, to the task detail and editing screens, these images showcase the core features such as tracking time spent on tasks and the ability to add and edit tasks. Enjoy!
 
 ## 📝 Credits and acknowledgements
-I want to extend my heartfelt gratitude to Nick Sarno and his YouTube channel, Swiftful Thinking, for providing the foundation and inspiration for this project through his ToDo app course. 
+I want to extend my heartfelt gratitude to [Nick Sarno](https://github.com/SwiftfulThinking) and his YouTube channel, [Swiftful Thinking](https://youtube.com/c/SwiftfulThinking), for providing the foundation and inspiration for this project through [his ToDo app course](https://youtube.com/playlist?list=PLwvDm4VfkdpheGqemblOIA7v3oq0MS30i). 
 
-I would also like to thank Paul Hanson and the team at Hacking with Swift for providing invaluable resources where I found answers to many of my questions. 
+I would also like to thank [Paul Hudson](https://github.com/twostraws) and the team at [Hacking with Swift](https://www.hackingwithswift.com) for providing invaluable resources where I found answers to many of my questions. 
 
-I am extremely grateful to my mentor,  [@togramago](https://github.com/togramago) , for her unwavering patience and support throughout this journey. 
+I am extremely grateful to my mentor, [@togramago](https://github.com/togramago), for her unwavering patience and support throughout this journey. 
 
 I am also grateful to the creators of ChatGPT for releasing this powerful tool, which has been instrumental in debugging and improving the app. 
 
-Lastly, I would like to thank Sean Allen and his YouTube channel for inspiring me to make this ReadMe visually engaging and hopefully not too boring to read.
+Lastly, I would like to thank [Sean Allen](https://github.com/SAllen0400) and his [YouTube channel](https://www.youtube.com/c/SeanAllen) for inspiring me to make this ReadMe visually engaging and hopefully not too boring to read.
 
 ## ©️ License
 MIT license @mouseorcleg
