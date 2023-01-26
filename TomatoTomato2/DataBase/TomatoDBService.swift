@@ -26,8 +26,8 @@ class TomatoDataService {
         }
     }
     
-    // MARK: public fuctions
-    // Can be called someewhere else in the app
+    // MARK: public functions
+    // Can be called somewhere else in the app
     // I tried to make as few as I could
     
     
@@ -44,7 +44,7 @@ class TomatoDataService {
     }
     
     // MARK: Private functions
-    // they work only instide this class, can't be called from somewhere else
+    // they work only inside this class, can't be called from somewhere else
     // CRUD + few extra
     
     private func fetchData() {
