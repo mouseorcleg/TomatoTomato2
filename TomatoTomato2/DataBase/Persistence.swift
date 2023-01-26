@@ -8,6 +8,9 @@
 import CoreData
 
 struct PersistenceController {
+    
+    private let containerName: String = "TomatoContainer"
+    
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -27,7 +30,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "test")
+        container = NSPersistentContainer(name: containerName)
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

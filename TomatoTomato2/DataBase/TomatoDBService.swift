@@ -13,7 +13,6 @@ class TomatoDataService {
     @Published var savedEntities: [TomatoTaskEntity] = []
     
     private let container: NSPersistentContainer
-    private let containerName: String = "TomatoContainer"
     private let entityName: String = "TomatoTaskEntity"
     
     init(inMemory: Bool = false) {
