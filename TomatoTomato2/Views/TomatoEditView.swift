@@ -77,6 +77,7 @@ struct TomatoEditView: View {
                 .padding(.horizontal)
             }
         }
+        .frame(maxWidth: 500)
         .navigationTitle("✏️ Edit task ")
         .alert(isPresented: $showAlert) {
             getAlert()

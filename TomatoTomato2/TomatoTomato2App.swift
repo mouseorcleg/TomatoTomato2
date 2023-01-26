@@ -11,13 +11,16 @@ import SwiftUI
 struct TomatoTomato2App: App {
     
     @StateObject var listViewModel: ListViewModel = ListViewModel()
+    let persistenceController = PersistenceController.shared
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 ListView()
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(listViewModel)
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -13,11 +13,10 @@ class TomatoDataService {
     @Published var savedEntities: [TomatoTaskEntity] = []
     
     private let container: NSPersistentContainer
-    private let containerName: String = "TomatoContainer"
     private let entityName: String = "TomatoTaskEntity"
     
-    init() {
-        container = NSPersistentContainer(name: containerName)
+    init(inMemory: Bool = false) {
+        container = PersistenceController.shared.container
         container.loadPersistentStores { description, error in
             if let error = error {
                 print("Error loading CoreData: \(error)")
@@ -26,8 +25,8 @@ class TomatoDataService {
         }
     }
     
-    // MARK: public fuctions
-    // Can be called someewhere else in the app
+    // MARK: public functions
+    // Can be called somewhere else in the app
     // I tried to make as few as I could
     
     
@@ -44,7 +43,7 @@ class TomatoDataService {
     }
     
     // MARK: Private functions
-    // they work only instide this class, can't be called from somewhere else
+    // they work only inside this class, can't be called from somewhere else
     // CRUD + few extra
     
     private func fetchData() {

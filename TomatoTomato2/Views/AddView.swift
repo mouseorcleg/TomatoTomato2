@@ -70,8 +70,9 @@ struct AddView: View {
                 .cornerRadius(10)
                 .padding(.horizontal)
             }
-        }
+        } //ScrollView
         .navigationTitle("✏️ New task ")
+        .frame(maxWidth: 500)
         .alert(isPresented: $showAlert) {
             getAlert()
         }

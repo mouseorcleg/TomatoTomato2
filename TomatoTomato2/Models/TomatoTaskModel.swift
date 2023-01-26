@@ -31,7 +31,7 @@ struct TomatoTaskModel: Identifiable, Codable {
     }
     
     func plusOneTomato() -> TomatoTaskModel {
-        return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: !isCompleted, tomatoCount: tomatoCount + 1)
+        return TomatoTaskModel(id: id, title: title, size: size, type: type, isCompleted: isCompleted, tomatoCount: tomatoCount + 1)
     }
     
     static func fromEdit(model: TomatoTaskModel, title: String, size: String, type: String) -> TomatoTaskModel {
