@@ -12,6 +12,7 @@
 		CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB42D87129757BBB005060B1 /* TomatoDBService.swift */; };
 		CB6D5D48297FD98F00F4BE82 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */; };
 		CB7D594C298151AD00FF2ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */; };
+		CB7D596D2982813300FF2ECC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7D596C2982813300FF2ECC /* Persistence.swift */; };
 		CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */; };
 		CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D07296C5E660012D59E /* ListViewModel.swift */; };
 		CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */; };
@@ -32,6 +33,7 @@
 		CB42D87129757BBB005060B1 /* TomatoDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoDBService.swift; sourceTree = "<group>"; };
 		CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
 		CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CB7D596C2982813300FF2ECC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskModel.swift; sourceTree = "<group>"; };
 		CB9F5D07296C5E660012D59E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		CBA9A17B29682EF700879058 /* TomatoTomato2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoTomato2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				CB42D87129757BBB005060B1 /* TomatoDBService.swift */,
+				CB7D596C2982813300FF2ECC /* Persistence.swift */,
 				CBE424782976EAB6006CCA91 /* TomatoContainer.xcdatamodeld */,
 			);
 			path = DataBase;
@@ -218,6 +221,7 @@
 				CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */,
 				CBCB6B7629798DDB004C5552 /* TaskDetailView.swift in Sources */,
 				CB6D5D48297FD98F00F4BE82 /* NoTasksView.swift in Sources */,
+				CB7D596D2982813300FF2ECC /* Persistence.swift in Sources */,
 				CB9F5D08296C5E660012D59E /* ListViewModel.swift in Sources */,
 				CBA9A1902968419C00879058 /* ListView.swift in Sources */,
 				CB21D453296886D700F6F8CC /* AddView.swift in Sources */,

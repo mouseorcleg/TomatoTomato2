@@ -16,8 +16,8 @@ class TomatoDataService {
     private let containerName: String = "TomatoContainer"
     private let entityName: String = "TomatoTaskEntity"
     
-    init() {
-        container = NSPersistentContainer(name: containerName)
+    init(inMemory: Bool = false) {
+        container = PersistenceController.shared.container
         container.loadPersistentStores { description, error in
             if let error = error {
                 print("Error loading CoreData: \(error)")
