@@ -14,6 +14,8 @@
 * [Credits and acknowledgements](#-credits-and-acknowledgements)
 * [License](#%EF%B8%8F-license)
 
+<img align="right" height="400" alt="editScreen in darkMode" src="https://user-images.githubusercontent.com/45575272/214905608-91d2261b-3547-4050-9ed4-20a73ff3ad8d.png">
+
 ## 🛠 Technologies
 - TomatoTomato was built using the **MVVM** (Model-View-ViewModel) architecture.
 - The app’s user interface was developed using **SwiftUI** with support for Dark mode, Landscape and iPad. Storyboard was used only for the Launch screen. 
@@ -27,6 +29,8 @@ Time is one of our most valuable resources, yet it’s often the one we struggle
 I noticed that one of my biggest planning obstacles is that I have no idea how much time I spent on different types of tasks. Whether it’s working on a  pet project, writing an article, or just trying to stay on top of my daily tasks, I wanted a way to track my time and make better use of it. And that’s how TomatoTomato journey began.
 
 I hope that TomatoTomato can be useful for students who want to stay on top of their assignments, freelancers who want to optimise their workflow and anyone who wants to understand how they spent their time.
+
+<img align="left" height="400" alt="detailScreen_inProgress" src="https://user-images.githubusercontent.com/45575272/214907821-5b7448a3-dc81-45d5-89a8-72bc962934e0.png">
 
 ### 📱 Current status
 TomatoTomato is currently in its first version and ready for use. The app includes all the basic screens and features necessary for effective time management. 
