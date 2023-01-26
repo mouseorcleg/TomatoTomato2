@@ -63,7 +63,7 @@ I would also like to thank [Paul Hudson](https://github.com/twostraws) and the t
 
 I am extremely grateful to my mentor, [@togramago](https://github.com/togramago), for her unwavering patience and support throughout this journey. 
 
-I am also grateful to the creators of ChatGPT for releasing this powerful tool, which has been instrumental in debugging and improving the app. 
+I am also grateful to the creators of [ChatGPT](https://chat.openai.com/) for releasing this powerful tool, which has been instrumental in debugging and improving the app. 
 
 Lastly, I would like to thank [Sean Allen](https://github.com/SAllen0400) and his [YouTube channel](https://www.youtube.com/c/SeanAllen) for inspiring me to make this ReadMe visually engaging and hopefully not too boring to read.
 
