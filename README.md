@@ -4,6 +4,8 @@
 
 *if it’s the first time you hear about it, check out [the Pomodoro® Technique](https://francescocirillo.com/products/the-pomodoro-technique) explained by it's author.
 
+<img align="right" src="https://user-images.githubusercontent.com/45575272/214912556-76833619-bf19-48d3-a67a-73ad2aecccac.gif"  alt="launch of the app gif preview">
+
 ## 📑 Table of content
 * [Technologies](#-technologies)
 * [Roadmap](#-roadmap)
@@ -13,8 +15,6 @@
 * [ScreenShots](#-screenshots)
 * [Credits and acknowledgements](#-credits-and-acknowledgements)
 * [License](#%EF%B8%8F-license)
-
-<img align="right" height="400" alt="editScreen in darkMode" src="https://user-images.githubusercontent.com/45575272/214905608-91d2261b-3547-4050-9ed4-20a73ff3ad8d.png">
 
 ## 🛠 Technologies
 - TomatoTomato was built using the **MVVM** (Model-View-ViewModel) architecture.
@@ -30,7 +30,7 @@ I noticed that one of my biggest planning obstacles is that I have no idea how m
 
 I hope that TomatoTomato can be useful for students who want to stay on top of their assignments, freelancers who want to optimise their workflow and anyone who wants to understand how they spent their time.
 
-<img align="left" height="400" alt="detailScreen_inProgress" src="https://user-images.githubusercontent.com/45575272/214907821-5b7448a3-dc81-45d5-89a8-72bc962934e0.png">
+<img align="left" height="300" alt="detailScreen in Progress" src="https://user-images.githubusercontent.com/45575272/214912836-1e428168-1ef3-4938-b1ab-488877898283.png">
 
 ### 📱 Current status
 TomatoTomato is currently in its first version and ready for use. The app includes all the basic screens and features necessary for effective time management. 
@@ -41,6 +41,9 @@ While the functionality is currently basic, the app is stable and fully function
 
 ### 👩‍💻 Plans for the future updates
 TomatoTomato is just getting started, and there are many exciting features in the pipeline. Here are a few we’re currently working on:
+
+<img align="right" height="400" alt="updates plan in the listView" src="https://user-images.githubusercontent.com/45575272/214914853-bdff7d0f-089a-4d09-b0b4-a981b5addf5e.png">
+
 
 * Adding a due date parameter to the task data model, allowing users to filter tasks by their due date.
 * Creating separate screens for unfinished, finished, and all tasks to make it easier to stay organised.
@@ -59,6 +62,15 @@ Any feedback is highly appreciated!
 
 ## 📷 ScreenShots
 Take a sneak peek of the user interface and functionality of TomatoTomato with these screenshots. From the main task list, to the task detail and editing screens, these images showcase the core features such as tracking time spent on tasks and the ability to add and edit tasks. Enjoy!
+
+<img height="400" alt="empty_list" src="https://user-images.githubusercontent.com/45575272/214915651-6a205273-dfd9-404b-a807-6aa6bb1128be.png"> <img height="400" alt="newTaskScreen" src="https://user-images.githubusercontent.com/45575272/214915795-86176947-ae32-4843-893d-7361b2c9eba8.png"> <img height="400" alt="list" src="https://user-images.githubusercontent.com/45575272/214916641-24046ce2-4194-4e5d-b985-7d86c2905966.png"> <img height="400" alt="detailScreen_inProgress" src="https://user-images.githubusercontent.com/45575272/214915928-8edb119b-46c7-4aff-9e07-805a4f83ca18.png"> <img height="400" alt="breakTime" src="https://user-images.githubusercontent.com/45575272/214916190-cbc57012-ced0-4dc6-bb64-707780fe2791.png"> <img height="400" alt="editScreen_darkMode" src="https://user-images.githubusercontent.com/45575272/214916078-387d919b-7b13-4e98-b3e6-b82f5fc93998.png"> <img width="400" alt="edit_landscape" src="https://user-images.githubusercontent.com/45575272/214918622-64d16baa-3347-4610-91e1-3288b8860644.png">
+
+<details>
+  <summary>And some gifs!</summary>
+  
+  <img src="https://user-images.githubusercontent.com/45575272/214916929-2d9455db-9438-4273-b5f2-7f47e3891c0e.gif"  alt="Detail_and_Edit_screen"><img src="https://user-images.githubusercontent.com/45575272/214916992-7ac2543d-74ba-41d7-9b3c-8c5a615e3389.gif"  alt="DetailView_Complete_and_InProgress">
+  
+ </details>
 
 ## 📝 Credits and acknowledgements
 I want to extend my heartfelt gratitude to [Nick Sarno](https://github.com/SwiftfulThinking) and his YouTube channel, [Swiftful Thinking](https://youtube.com/c/SwiftfulThinking), for providing the foundation and inspiration for this project through [his ToDo app course](https://youtube.com/playlist?list=PLwvDm4VfkdpheGqemblOIA7v3oq0MS30i). 
