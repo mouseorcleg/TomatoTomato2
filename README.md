@@ -42,7 +42,7 @@ While the functionality is currently basic, the app is stable and fully function
 ### 👩‍💻 Plans for the future updates
 TomatoTomato is just getting started, and there are many exciting features in the pipeline. Here are a few we’re currently working on:
 
-<img align="right" height="400" alt="updates plan in the listView" src="https://user-images.githubusercontent.com/45575272/214914853-bdff7d0f-089a-4d09-b0b4-a981b5addf5e.png">
+<img align="right" height="300" alt="updates plan in the listView" src="https://user-images.githubusercontent.com/45575272/214914853-bdff7d0f-089a-4d09-b0b4-a981b5addf5e.png">
 
 
 * Adding a due date parameter to the task data model, allowing users to filter tasks by their due date.
