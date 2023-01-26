@@ -15,10 +15,10 @@
 * [License](#%EF%B8%8F-license)
 
 ## 🛠 Technologies
-- TomatoTomato was built using the MVVM (Model-View-ViewModel) architecture.
-- The app’s user interface was developed using SwiftUI with support for Dark mode, Landscape and iPad. Storyboard was used only for the Launch screen. 
-- CoreData is used as the database solution, allowing for efficient data storage and retrieval with a fully integrated with the SwiftUI framework.
-- In future updates, CloudKit will be integrated for data synchronisation across multiple devices.
+- TomatoTomato was built using the **MVVM** (Model-View-ViewModel) architecture.
+- The app’s user interface was developed using **SwiftUI** with support for Dark mode, Landscape and iPad. Storyboard was used only for the Launch screen. 
+- **CoreData** is used as the database solution, allowing for efficient data storage and retrieval with a fully integrated with the SwiftUI framework.
+- In future updates, _CloudKit_ will be integrated for data synchronisation across multiple devices.
 
 ## 🗺 Roadmap
 ### ✈️ Start of the journey
