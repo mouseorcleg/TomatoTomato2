@@ -66,8 +66,9 @@ Take a sneak peek of the user interface and functionality of TomatoTomato with t
 
 <details>
   <summary>👾 and gifs 👾</summary>
-  <img alt="launch screen" src="https://user-images.githubusercontent.com/45575272/215057761-ff74fc59-dfad-4026-a7dd-c39bda0aae4d.gif"> <img src="https://user-images.githubusercontent.com/45575272/214916929-2d9455db-9438-4273-b5f2-7f47e3891c0e.gif"  alt="Detail_and_Edit_screen"> <img src="https://user-images.githubusercontent.com/45575272/214916992-7ac2543d-74ba-41d7-9b3c-8c5a615e3389.gif"  alt="DetailView_Complete_and_InProgress">
-  
+  <img alt="launch screen" src="https://user-images.githubusercontent.com/45575272/215057761-ff74fc59-dfad-4026-a7dd-c39bda0aae4d.gif">
+  <img src="https://user-images.githubusercontent.com/45575272/214916929-2d9455db-9438-4273-b5f2-7f47e3891c0e.gif"  alt="Detail_and_Edit_screen">
+  <img src="https://user-images.githubusercontent.com/45575272/214916992-7ac2543d-74ba-41d7-9b3c-8c5a615e3389.gif"  alt="DetailView_Complete_and_InProgress">
  </details>
 
 ## 📝 Credits and acknowledgements
