@@ -28,7 +28,7 @@ I noticed that one of my biggest planning obstacles is that I have no idea how m
 
 I hope that TomatoTomato can be useful for students who want to stay on top of their assignments, freelancers who want to optimise their workflow and anyone who wants to understand how they spent their time.
 
-<img height="500" alt="screen sketches" src="https://user-images.githubusercontent.com/45575272/215068419-2e842feb-d9f1-4fa4-a5ed-894da33d0e1e.png">
+<img alt="screen sketches" src="https://user-images.githubusercontent.com/45575272/215068419-2e842feb-d9f1-4fa4-a5ed-894da33d0e1e.png">
 
 
 ### 📱 Current status
