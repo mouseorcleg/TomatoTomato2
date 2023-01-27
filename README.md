@@ -2,6 +2,8 @@
 
 <img align="right" src="https://user-images.githubusercontent.com/45575272/214887495-2ca768f0-5827-41b8-b479-23511ea8fb47.png" width="50" alt="app icon" > TomatoTomato is a productivity app that combines the features of a to-do list and a [Pomodoro timer](https://francescocirillo.com/products/the-pomodoro-technique), helping users easily track their tasks and monitor the time spent on them.
 
+![GitHub_header](https://user-images.githubusercontent.com/45575272/215065855-c0f1126e-82a3-45f2-9245-c7b4564e323e.png)
+
 ## 📑 Table of content
 * [Technologies](#-technologies)
 * [Roadmap](#-roadmap)
