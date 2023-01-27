@@ -55,12 +55,12 @@ Any feedback is highly appreciated!
 Take a sneak peek of the user interface and functionality of TomatoTomato with these screenshots. From the main task list, to the task detail and editing screens, these images showcase the core features such as tracking time spent on tasks and the ability to add and edit tasks. Enjoy!
 
 <details>
-    <summary>Amazing screenshots</summary>
+    <summary>✨ amazing screenshots ✨</summary>
 <img height="400" alt="empty_list" src="https://user-images.githubusercontent.com/45575272/214915651-6a205273-dfd9-404b-a807-6aa6bb1128be.png"> <img height="400" alt="newTaskScreen" src="https://user-images.githubusercontent.com/45575272/214915795-86176947-ae32-4843-893d-7361b2c9eba8.png"> <img height="400" alt="list" src="https://user-images.githubusercontent.com/45575272/214916641-24046ce2-4194-4e5d-b985-7d86c2905966.png"> <img height="400" alt="detailScreen_inProgress" src="https://user-images.githubusercontent.com/45575272/214915928-8edb119b-46c7-4aff-9e07-805a4f83ca18.png"> <img height="400" alt="breakTime" src="https://user-images.githubusercontent.com/45575272/214916190-cbc57012-ced0-4dc6-bb64-707780fe2791.png"> <img height="400" alt="editScreen_darkMode" src="https://user-images.githubusercontent.com/45575272/214916078-387d919b-7b13-4e98-b3e6-b82f5fc93998.png"> <img width="400" alt="edit_landscape" src="https://user-images.githubusercontent.com/45575272/214918622-64d16baa-3347-4610-91e1-3288b8860644.png">
  </details>
 
 <details>
-  <summary>And some gifs!</summary>
+  <summary>👾 and gifs 👾</summary>
   <img alt="launch screen" src="https://user-images.githubusercontent.com/45575272/215057761-ff74fc59-dfad-4026-a7dd-c39bda0aae4d.gif"> <img src="https://user-images.githubusercontent.com/45575272/214916929-2d9455db-9438-4273-b5f2-7f47e3891c0e.gif"  alt="Detail_and_Edit_screen"> <img src="https://user-images.githubusercontent.com/45575272/214916992-7ac2543d-74ba-41d7-9b3c-8c5a615e3389.gif"  alt="DetailView_Complete_and_InProgress">
   
  </details>
