@@ -17,16 +17,19 @@ class AddViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     
     @Published var textFieldText: String = ""
-    @Published var sizePickerSelection: String = "L"
-    @Published var typePickerSelection: String = ""
     
-    @Published var sizePickerOptions: TomatoSize = TomatoSize.L
-    @Published var typePickerOptions: TomatoType = TomatoType.usual
+    @Published var sizePickerOptions: TomatoSize
+    @Published var typePickerOptions: TomatoType
+    
+    init(sizePickerOptions: TomatoSize = TomatoSize.L, typePickerOptions: TomatoType = TomatoType.usual) {
+        self.sizePickerOptions = sizePickerOptions
+        self.typePickerOptions = typePickerOptions
+    }
     
     func savedButtonPressed() {
         if thereIsTheTitle() {
             
-            dataRepo.addTomatoTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+            dataRepo.addTomatoTask(title: textFieldText, size: sizePickerOptions.name, type: typePickerOptions.name)
             
             presentationMode.wrappedValue.dismiss()
         }
@@ -35,7 +38,6 @@ class AddViewModel: ObservableObject {
     func thereIsTheTitle() -> Bool {
         if textFieldText.count < 3 {
             alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
-            //can add other checks here
             showAlert.toggle()
             return false
         }

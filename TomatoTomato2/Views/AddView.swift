@@ -10,6 +10,7 @@ import SwiftUI
 struct AddView: View {
     
     @State var addVM = AddViewModel()
+    @EnvironmentObject var dataRepo: DataRepo
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
@@ -25,7 +26,7 @@ struct AddView: View {
                     .cornerRadius(10)
                     .padding()
                 
-                Picker("Size", selection: $addVM.sizePickerSelection) {
+                Picker("Size", selection: $addVM.sizePickerOptions) {
                     ForEach(TomatoSize.allCases, id: \.self) { size in
                         Text(size.name)
                     }
@@ -35,7 +36,7 @@ struct AddView: View {
                 .padding(.bottom)
                 .frame(height: 45)
                 
-                Picker("Type", selection: $addVM.typePickerSelection) {
+                Picker("Type", selection: $addVM.typePickerOptions) {
                     ForEach(TomatoType.allCases, id: \.self) { type in
                         Text(type.name)
                             .foregroundColor(Color.theme.extra)
