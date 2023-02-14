@@ -10,8 +10,8 @@ import SwiftUI
 @main
 struct TomatoTomato2App: App {
     
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
-    let persistenceController = PersistenceController.shared
+    @StateObject var dataRepo: DataRepo = DataRepo()
+    @StateObject var persistenceController = PersistenceController.shared
     
     var body: some Scene {
         WindowGroup {
@@ -19,7 +19,7 @@ struct TomatoTomato2App: App {
                 ListView()
             }
             .navigationViewStyle(StackNavigationViewStyle())
-            .environmentObject(listViewModel)
+            .environmentObject(dataRepo)
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

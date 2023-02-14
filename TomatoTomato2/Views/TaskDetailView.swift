@@ -12,7 +12,7 @@ struct TaskDetailView: View {
     var tomatoTask: TomatoTaskModel
     
     @ObservedObject var tomatoTimer = TomatoTimer()
-    @EnvironmentObject var vm: ListViewModel
+    @EnvironmentObject var dataRepo: DataRepo
     
     var body: some View {
         VStack {
@@ -72,7 +72,6 @@ struct TaskDetailView: View {
                     TomatoTimerView(timer: tomatoTimer)
                         .padding(.vertical)
                 }
-                
             }
             
             HStack {
@@ -107,7 +106,7 @@ struct TaskDetailView: View {
             trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
         )
         .onChange(of: tomatoTimer.tomatoCounter) { value in
-            vm.updateTaskInDB(model: tomatoTask.plusOneTomato())
+            dataRepo.updateTaskInDB(model: tomatoTask.plusOneTomato())
         }
         .onDisappear() {
             tomatoTimer.pauseTimer()

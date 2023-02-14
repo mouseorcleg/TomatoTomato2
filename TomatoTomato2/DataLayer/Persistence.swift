@@ -7,7 +7,7 @@
 
 import CoreData
 
-struct PersistenceController {
+class PersistenceController: ObservableObject {
     
     private let containerName: String = "TomatoContainer"
     

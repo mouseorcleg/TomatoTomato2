@@ -10,7 +10,7 @@ import SwiftUI
 struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var listViewModel: ListViewModel
+    @EnvironmentObject var dataRepo: DataRepo
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
@@ -81,7 +81,7 @@ struct AddView: View {
     func savedButtonPressed() {
         if thereIsTheTitle() {
             
-            listViewModel.addTomatoTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+            dataRepo.addTomatoTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
             
             presentationMode.wrappedValue.dismiss()
         }
@@ -107,6 +107,6 @@ struct AddView_Previews: PreviewProvider {
         NavigationView{
             AddView()
         }
-        .environmentObject(ListViewModel())
+        .environmentObject(DataRepo())
     }
 }
