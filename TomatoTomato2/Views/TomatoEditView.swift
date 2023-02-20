@@ -29,8 +29,7 @@ struct TomatoEditView: View {
     @State var sizePickerSelection: String
     @State var typePickerSelection: String
     
-    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
+    @StateObject var tomatoTaskParameters = TomatoTaskParameters()
     
     var body: some View {
         ScrollView {
@@ -43,7 +42,7 @@ struct TomatoEditView: View {
                     .padding()
                 
                 Picker("Size", selection: $sizePickerSelection) {
-                    ForEach(sizePickerOptions, id: \.self) { size in
+                    ForEach(tomatoTaskParameters.taskSizes, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -53,7 +52,7 @@ struct TomatoEditView: View {
                 .frame(height: 45)
                 
                 Picker("Type", selection: $typePickerSelection) {
-                    ForEach(typePickerOptions, id: \.self) { type in
+                    ForEach(tomatoTaskParameters.taskTypes, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }
