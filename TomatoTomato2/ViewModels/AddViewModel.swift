@@ -17,7 +17,6 @@ class AddViewModel: ObservableObject {
     @Published var sizePickerSelection: String = "M"
     @Published var typePickerSelection: String = "none"
     
-    
     func thereIsTheTitle() -> Bool {
         if textFieldText.count < 3 {
             alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"

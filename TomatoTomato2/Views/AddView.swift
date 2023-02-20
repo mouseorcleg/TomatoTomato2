@@ -71,6 +71,8 @@ struct AddView: View {
         }
     }
     
+    //TODO: Check why environment object doesn't want to work inside view model
+
     func savedButtonPressed() {
         if vm.thereIsTheTitle() {
             
