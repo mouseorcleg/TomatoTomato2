@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ListViewModel: ObservableObject {
+class DataRepository: ObservableObject {
     
     @Published var tomatoTasks: [TomatoTaskModel] = []
     
