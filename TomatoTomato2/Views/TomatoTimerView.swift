@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TomatoTimerView: View {
     
-    @ObservedObject var timer = TomatoTimer()
+    @ObservedObject var vm = TomatoTimerViewModel()
     
     var body: some View {
         
@@ -26,7 +26,7 @@ struct TomatoTimerView: View {
                     .fill(Color.clear)
                     .frame(width: 250, height: 250)
                     .overlay(
-                        Circle().trim(from: 0, to: progress())
+                        Circle().trim(from: 0, to: vm.progress())
                             .stroke(
                                 style: StrokeStyle(
                                     lineWidth: 20,
@@ -35,58 +35,30 @@ struct TomatoTimerView: View {
                                 )
                             )
                             .foregroundColor(Color.theme.extra)
-                    ).animation(.easeInOut(duration: 1.3), value: progress())
+                    ).animation(.easeInOut(duration: 1.3), value: vm.progress())
                 
                 VStack {
-                    Text(timer.isItTimeForBreak ? "Take a break" : "Work session")
+                    Text(vm.timer.isItTimeForBreak ? "Take a break" : "Work session")
                         .fontWeight(.light)
                         .font(.callout)
                     
-                    Clock(counter: timer.counter, countTo: timer.countTo)
+                    TomatoClockView(counter: vm.timer.counter, countTo: vm.timer.countTo)
                         .padding(.bottom)
                     Button {
-                        if timer.timerIsRunning {
-                            timer.pauseTimer()
+                        if vm.timer.timerIsRunning {
+                            vm.timer.pauseTimer()
                         } else {
-                            timer.startTimer()
+                            vm.timer.startTimer()
                         }
                     } label: {
-                        Image(systemName: timer.timerIsRunning ? "pause.circle.fill" : "play.circle.fill")
+                        Image(systemName: vm.timer.timerIsRunning ? "pause.circle.fill" : "play.circle.fill")
                             .font(.system(size: 35))
-                            .foregroundColor(timer.timerIsRunning ? Color.theme.extra : Color.theme.accent)
+                            .foregroundColor(vm.timer.timerIsRunning ? Color.theme.extra : Color.theme.accent)
                     }
                 }
             }
         }
     }
-    
-    func completed() -> Bool {
-        return progress() == 1
-    }
-    
-    func progress() -> CGFloat {
-        return (CGFloat(timer.counter) / CGFloat(timer.countTo))
-    }
-    
-}
-
-struct Clock: View {
-    var counter: Int
-    var countTo: Int
-    
-    var body: some View {
-        Text(counterToMinutes())
-            .font(.system(size: 60))
-            .fontWeight(.ultraLight)
-    }
-    
-    func counterToMinutes() -> String {
-        let currentTime = countTo - counter
-        let seconds = currentTime % 60
-        let minutes = Int(currentTime / 60)
-        return "\(minutes):\(seconds < 10 ? "0" : "")\(seconds)"
-    }
-    
 }
 
 struct TomatoTimerView_Previews: PreviewProvider {

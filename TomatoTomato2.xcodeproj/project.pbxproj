@@ -11,6 +11,8 @@
 		CB21D453296886D700F6F8CC /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21D452296886D700F6F8CC /* AddView.swift */; };
 		CB2565E129A77892002E30BA /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2565E029A77892002E30BA /* EditViewModel.swift */; };
 		CB2565E329A7B3F0002E30BA /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2565E229A7B3F0002E30BA /* TaskDetailViewModel.swift */; };
+		CB2565E529A7B710002E30BA /* TomatoTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2565E429A7B710002E30BA /* TomatoTimerViewModel.swift */; };
+		CB2565E729A7B7C6002E30BA /* TomatoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2565E629A7B7C6002E30BA /* TomatoClockView.swift */; };
 		CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB42D87129757BBB005060B1 /* TomatoDBService.swift */; };
 		CB6D5D48297FD98F00F4BE82 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */; };
 		CB7D594C298151AD00FF2ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */; };
@@ -36,6 +38,8 @@
 		CB21D452296886D700F6F8CC /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		CB2565E029A77892002E30BA /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		CB2565E229A7B3F0002E30BA /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
+		CB2565E429A7B710002E30BA /* TomatoTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTimerViewModel.swift; sourceTree = "<group>"; };
+		CB2565E629A7B7C6002E30BA /* TomatoClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoClockView.swift; sourceTree = "<group>"; };
 		CB42D87129757BBB005060B1 /* TomatoDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoDBService.swift; sourceTree = "<group>"; };
 		CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
 		CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				CBA4D2A329A3D60B00B94094 /* AddViewModel.swift */,
 				CB2565E029A77892002E30BA /* EditViewModel.swift */,
 				CB2565E229A7B3F0002E30BA /* TaskDetailViewModel.swift */,
+				CB2565E429A7B710002E30BA /* TomatoTimerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 				CBCB6B7529798DDB004C5552 /* TaskDetailView.swift */,
 				CBCB6B772979AFFD004C5552 /* TomatoEditView.swift */,
 				CBCB6B7C297E9916004C5552 /* TomatoTimerView.swift */,
+				CB2565E629A7B7C6002E30BA /* TomatoClockView.swift */,
 				CB6D5D47297FD98F00F4BE82 /* NoTasksView.swift */,
 				CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */,
 			);
@@ -238,10 +244,12 @@
 				CB6D5D48297FD98F00F4BE82 /* NoTasksView.swift in Sources */,
 				CB7D596D2982813300FF2ECC /* Persistence.swift in Sources */,
 				CB9F5D08296C5E660012D59E /* DataRepository.swift in Sources */,
+				CB2565E729A7B7C6002E30BA /* TomatoClockView.swift in Sources */,
 				CBA9A1902968419C00879058 /* ListView.swift in Sources */,
 				CB21D453296886D700F6F8CC /* AddView.swift in Sources */,
 				CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */,
 				CBA4D2A429A3D60B00B94094 /* AddViewModel.swift in Sources */,
+				CB2565E529A7B710002E30BA /* TomatoTimerViewModel.swift in Sources */,
 				CBA9A18D2968404300879058 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
