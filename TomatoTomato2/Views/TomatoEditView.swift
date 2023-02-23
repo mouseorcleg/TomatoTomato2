@@ -10,38 +10,29 @@ import SwiftUI
 struct TomatoEditView: View {
     
     var tomatoTask: TomatoTaskModel
-    @State var showDialog: Bool = false
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var repo: DataRepository
     
-    init(tomatoTask: TomatoTaskModel) {
-        self.tomatoTask = tomatoTask
-        _textFieldText = State(initialValue: tomatoTask.title)
-        _sizePickerSelection = State(initialValue: tomatoTask.size)
-        _typePickerSelection = State(initialValue: tomatoTask.type)
-    }
-    
-    @State var alertTitle: String = ""
-    @State var showAlert: Bool = false
-    
-    @State var textFieldText: String
-    @State var sizePickerSelection: String
-    @State var typePickerSelection: String
-    
     @StateObject var tomatoTaskParameters = TomatoTaskParameters()
+    @ObservedObject var vm: EditViewModel
+    
+    init(tomatoTask: TomatoTaskModel, vm: EditViewModel) {
+        self.tomatoTask = tomatoTask
+        self._vm = ObservedObject(wrappedValue: EditViewModel(tomatoTask: tomatoTask))
+    }
     
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type the title", text: $textFieldText)
+                TextField("Type the title", text: $vm.textFieldText)
                     .padding(.horizontal)
                     .frame(height: 45)
                     .background(Color.theme.background.opacity(0.85))
                     .cornerRadius(10)
                     .padding()
                 
-                Picker("Size", selection: $sizePickerSelection) {
+                Picker("Size", selection: $vm.sizePickerSelection) {
                     ForEach(tomatoTaskParameters.taskSizes, id: \.self) { size in
                         Text(size)
                     }
@@ -51,7 +42,7 @@ struct TomatoEditView: View {
                 .padding(.bottom)
                 .frame(height: 45)
                 
-                Picker("Type", selection: $typePickerSelection) {
+                Picker("Type", selection: $vm.typePickerSelection) {
                     ForEach(tomatoTaskParameters.taskTypes, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
@@ -78,14 +69,14 @@ struct TomatoEditView: View {
         }
         .frame(maxWidth: 500)
         .navigationTitle("✏️ Edit task ")
-        .alert(isPresented: $showAlert) {
-            getAlert()
+        .alert(isPresented: $vm.showAlert) {
+            vm.getAlert()
         }
         .navigationBarItems(leading: Button("Cancel") {
-            showDialog = true
+            vm.showDialog = true
         })
         .navigationBarBackButtonHidden()
-        .alert(isPresented: $showDialog) {
+        .alert(isPresented: $vm.showDialog) {
             Alert(title: Text("Discard edits?"), primaryButton: .cancel(Text("Go back to editing")), secondaryButton: .default(Text("Discard and exit")) {
                 presentationMode.wrappedValue.dismiss()
             })
@@ -93,30 +84,17 @@ struct TomatoEditView: View {
     }
     
     func savedButtonPressed() {
-        if thereIsTheTitle() {
+        if vm.thereIsTheTitle() {
             
-            repo.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: textFieldText, size: sizePickerSelection, type: typePickerSelection))
+            repo.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: vm.textFieldText, size: vm.sizePickerSelection, type: vm.typePickerSelection))
             presentationMode.wrappedValue.dismiss()
         }
     }
-    
-    func thereIsTheTitle() -> Bool {
-        if textFieldText.count < 3 {
-            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
-            //can add other checks here
-            return false
-        }
-        return true
-    }
-    
-    func getAlert() -> Alert {
-        return Alert(title: Text(alertTitle))
-    }
-    
 }
 
 struct TomatoEditView_Previews: PreviewProvider {
     static var previews: some View {
-        TomatoEditView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create EditView", size: "M", type: "develop", isCompleted: false, tomatoCount: 1))
+        TomatoEditView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create EditView", size: "M", type: "develop", isCompleted: false, tomatoCount: 1),
+                       vm: EditViewModel(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create EditView", size: "M", type: "develop", isCompleted: false, tomatoCount: 1)))
     }
 }
