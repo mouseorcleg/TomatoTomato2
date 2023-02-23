@@ -10,9 +10,14 @@ import SwiftUI
 struct TaskDetailView: View {
     
     var tomatoTask: TomatoTaskModel
-    
-    @ObservedObject var tomatoTimer = TomatoTimer()
+
     @EnvironmentObject var repo: DataRepository
+    @ObservedObject var vm: TaskDetailViewModel
+    
+    init(tomatoTask: TomatoTaskModel, vm: TaskDetailViewModel) {
+        self.tomatoTask = tomatoTask
+        self._vm = ObservedObject(wrappedValue: TaskDetailViewModel(tomatoTask: tomatoTask))
+    }
     
     var body: some View {
         VStack {
@@ -69,7 +74,7 @@ struct TaskDetailView: View {
             
             if !tomatoTask.isCompleted {
                 HStack {
-                    TomatoTimerView(timer: tomatoTimer)
+                    TomatoTimerView(timer: vm.tomatoTimer)
                         .padding(.vertical)
                 }
                 
@@ -78,7 +83,7 @@ struct TaskDetailView: View {
             HStack {
                 Text("Task tomatos: ")
                     .padding(.leading)
-                Text(getTomatosForDisplay())
+                Text(vm.getTomatosForDisplay())
                     .padding(.trailing)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -91,7 +96,7 @@ struct TaskDetailView: View {
             .padding(.top)
             .shadow(radius: 5)
             
-            if tomatoTimer.isItTimeForBreak {
+            if vm.tomatoTimer.isItTimeForBreak {
                 Text("*To get a tomato you have to go on a break ;-)")
                     .padding()
                     .foregroundColor(.secondary)
@@ -106,25 +111,19 @@ struct TaskDetailView: View {
         .navigationBarItems(
             trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask, vm: EditViewModel(tomatoTask: tomatoTask)))
         )
-        .onChange(of: tomatoTimer.tomatoCounter) { value in
+        .onChange(of: vm.tomatoTimer.tomatoCounter) { value in
             repo.updateTaskInDB(model: tomatoTask.plusOneTomato())
         }
         .onDisappear() {
-            tomatoTimer.pauseTimer()
-        }
-    }
-    
-    func getTomatosForDisplay() -> String {
-        if tomatoTask.tomatoCount == 0 {
-            return String("start the timer to earn tomatos")
-        } else {
-            return String(repeating: "🍅 ", count: tomatoTask.tomatoCount)
+            vm.tomatoTimer.pauseTimer()
         }
     }
 }
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0))
+        TaskDetailView(
+            tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0),
+            vm: TaskDetailViewModel(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0)))
     }
 }

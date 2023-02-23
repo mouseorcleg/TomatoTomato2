@@ -20,7 +20,7 @@ struct ListView: View {
                 List {
                     ForEach(repo.tomatoTasks) { tomatoTask in
                         NavigationLink {
-                            TaskDetailView(tomatoTask: tomatoTask)
+                            TaskDetailView(tomatoTask: tomatoTask, vm: TaskDetailViewModel(tomatoTask: tomatoTask))
                         } label: {
                             CellListView(task: tomatoTask)
                                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
