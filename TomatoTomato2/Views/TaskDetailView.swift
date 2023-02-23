@@ -104,7 +104,7 @@ struct TaskDetailView: View {
         .background(Color.theme.appBackground)
         .frame(maxWidth: 500)
         .navigationBarItems(
-            trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
+            trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask, vm: EditViewModel(tomatoTask: tomatoTask)))
         )
         .onChange(of: tomatoTimer.tomatoCounter) { value in
             repo.updateTaskInDB(model: tomatoTask.plusOneTomato())
