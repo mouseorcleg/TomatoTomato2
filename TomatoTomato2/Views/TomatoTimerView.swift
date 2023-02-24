@@ -42,8 +42,12 @@ struct TomatoTimerView: View {
                         .fontWeight(.light)
                         .font(.callout)
                     
-                    TomatoClockView(counter: vm.timer.counter, countTo: vm.timer.countTo)
+                    Text(vm.counterToMinutes())
+                                .font(.system(size: 60))
+                                .fontWeight(.ultraLight)
+
                         .padding(.bottom)
+                    
                     Button {
                         if vm.timer.timerIsRunning {
                             vm.timer.pauseTimer()

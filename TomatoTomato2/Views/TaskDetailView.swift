@@ -74,7 +74,7 @@ struct TaskDetailView: View {
             
             if !tomatoTask.isCompleted {
                 HStack {
-                    TomatoTimerView(timer: vm.tomatoTimer)
+                    TomatoTimerView()
                         .padding(.vertical)
                 }
                 
