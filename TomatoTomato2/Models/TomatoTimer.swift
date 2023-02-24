@@ -17,6 +17,8 @@ class TomatoTimer: ObservableObject {
     @Published var tomatoCounter: Int = 0
     @Published var isItTimeForBreak: Bool = false
 
+    //TODO: what we can move from here to vm?
+    
     func startTimer() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
