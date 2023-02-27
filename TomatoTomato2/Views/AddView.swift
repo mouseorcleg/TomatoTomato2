@@ -12,6 +12,8 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var repo: DataRepository
     
+    @StateObject var ttParameters = TomatoTaskParameters()
+    
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
     }
@@ -22,9 +24,6 @@ struct AddView: View {
     @State var textFieldText: String = ""
     @State var sizePickerSelection: String = "L"
     @State var typePickerSelection: String = ""
-    
-    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
     var body: some View {
         ScrollView {
@@ -37,7 +36,7 @@ struct AddView: View {
                     .padding()
                 
                 Picker("Size", selection: $sizePickerSelection) {
-                    ForEach(sizePickerOptions, id: \.self) { size in
+                    ForEach(ttParameters.taskSizes, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -47,7 +46,7 @@ struct AddView: View {
                 .frame(height: 45)
                 
                 Picker("Type", selection: $typePickerSelection) {
-                    ForEach(typePickerOptions, id: \.self) { type in
+                    ForEach(ttParameters.taskTypes, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }

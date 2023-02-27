@@ -15,6 +15,8 @@ struct TomatoEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var repo: DataRepository
     
+    @StateObject var ttParameters = TomatoTaskParameters()
+    
     init(tomatoTask: TomatoTaskModel) {
         self.tomatoTask = tomatoTask
         _textFieldText = State(initialValue: tomatoTask.title)
@@ -29,9 +31,6 @@ struct TomatoEditView: View {
     @State var sizePickerSelection: String
     @State var typePickerSelection: String
     
-    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
-    
     var body: some View {
         ScrollView {
             VStack {
@@ -43,7 +42,7 @@ struct TomatoEditView: View {
                     .padding()
                 
                 Picker("Size", selection: $sizePickerSelection) {
-                    ForEach(sizePickerOptions, id: \.self) { size in
+                    ForEach(ttParameters.taskSizes, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -53,7 +52,7 @@ struct TomatoEditView: View {
                 .frame(height: 45)
                 
                 Picker("Type", selection: $typePickerSelection) {
-                    ForEach(typePickerOptions, id: \.self) { type in
+                    ForEach(ttParameters.taskTypes, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }
