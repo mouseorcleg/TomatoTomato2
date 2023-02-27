@@ -10,12 +10,13 @@ import SwiftUI
 struct ListView: View {
     
     @EnvironmentObject var repo: DataRepository
+    @ObservedObject var addVM = AddViewModel()
     
     var body: some View {
         
         ZStack {
             if repo.tomatoTasks.isEmpty {
-                NoTasksView()
+                NoTasksView(addVM: addVM)
             } else {
                 List {
                     ForEach(repo.tomatoTasks) { tomatoTask in
@@ -45,7 +46,7 @@ struct ListView: View {
         .navigationBarItems(
             leading: EditButton(),
             trailing:
-                NavigationLink("Add", destination: AddView())
+                NavigationLink("Add", destination: AddView(addVM: addVM))
         )
     }
 }

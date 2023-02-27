@@ -14,6 +14,7 @@
 		CB7D594C298151AD00FF2ECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */; };
 		CB7D596D2982813300FF2ECC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7D596C2982813300FF2ECC /* Persistence.swift */; };
 		CB90B2F329AD04FE00D03E05 /* TomatoTaskParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B2F229AD04FE00D03E05 /* TomatoTaskParameters.swift */; };
+		CB90B2F529AD06F400D03E05 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B2F429AD06F400D03E05 /* AddViewModel.swift */; };
 		CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */; };
 		CB9F5D08296C5E660012D59E /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D07296C5E660012D59E /* DataRepository.swift */; };
 		CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */; };
@@ -36,6 +37,7 @@
 		CB7D594B298151AD00FF2ECC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB7D596C2982813300FF2ECC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CB90B2F229AD04FE00D03E05 /* TomatoTaskParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskParameters.swift; sourceTree = "<group>"; };
+		CB90B2F429AD06F400D03E05 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
 		CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskModel.swift; sourceTree = "<group>"; };
 		CB9F5D07296C5E660012D59E /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		CBA9A17B29682EF700879058 /* TomatoTomato2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoTomato2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +77,7 @@
 		CB9F5D06296C5E450012D59E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CB90B2F429AD06F400D03E05 /* AddViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				CBA9A1902968419C00879058 /* ListView.swift in Sources */,
 				CB21D453296886D700F6F8CC /* AddView.swift in Sources */,
 				CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */,
+				CB90B2F529AD06F400D03E05 /* AddViewModel.swift in Sources */,
 				CBA9A18D2968404300879058 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
