@@ -358,7 +358,6 @@
 				DEVELOPMENT_TEAM = FSX322285W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TomatoTomato2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TomatoTomato;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -391,7 +390,6 @@
 				DEVELOPMENT_TEAM = FSX322285W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TomatoTomato2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TomatoTomato;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
