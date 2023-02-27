@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ListView: View {
     
-    @EnvironmentObject var listViewModel: ListViewModel
+    @EnvironmentObject var repo: DataRepository
     
     var body: some View {
         
         ZStack {
-            if listViewModel.tomatoTasks.isEmpty {
+            if repo.tomatoTasks.isEmpty {
                 NoTasksView()
             } else {
                 List {
-                    ForEach(listViewModel.tomatoTasks) { tomatoTask in
+                    ForEach(repo.tomatoTasks) { tomatoTask in
                         NavigationLink {
                             TaskDetailView(tomatoTask: tomatoTask)
                         } label: {
@@ -26,7 +26,7 @@ struct ListView: View {
                                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                     Button {
                                         withAnimation(.linear) {
-                                            listViewModel.updateTaskCompletion(task: tomatoTask)
+                                            repo.updateTaskCompletion(task: tomatoTask)
                                         }
                                     } label: {
                                         Label("Done?", systemImage: "checkmark")
@@ -35,8 +35,8 @@ struct ListView: View {
                                 }
                         }
                     }
-                    .onDelete(perform: listViewModel.deleteTomatofromDB)
-                    .onMove(perform: listViewModel.moveTask)
+                    .onDelete(perform: repo.deleteTomatofromDB)
+                    .onMove(perform: repo.moveTask)
                 }
                 .listStyle(InsetGroupedListStyle())
             }
@@ -56,6 +56,6 @@ struct ListView_Previews: PreviewProvider {
         NavigationView {
             ListView()
         }
-        .environmentObject(ListViewModel())
+        .environmentObject(DataRepository())
     }
 }

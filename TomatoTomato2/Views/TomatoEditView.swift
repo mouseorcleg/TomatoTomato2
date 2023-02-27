@@ -13,7 +13,7 @@ struct TomatoEditView: View {
     @State var showDialog: Bool = false
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var listViewModel: ListViewModel
+    @EnvironmentObject var repo: DataRepository
     
     init(tomatoTask: TomatoTaskModel) {
         self.tomatoTask = tomatoTask
@@ -96,7 +96,7 @@ struct TomatoEditView: View {
     func savedButtonPressed() {
         if thereIsTheTitle() {
             
-            listViewModel.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: textFieldText, size: sizePickerSelection, type: typePickerSelection))
+            repo.updateTaskInDB(model: TomatoTaskModel.fromEdit(model: tomatoTask, title: textFieldText, size: sizePickerSelection, type: typePickerSelection))
             presentationMode.wrappedValue.dismiss()
         }
     }
