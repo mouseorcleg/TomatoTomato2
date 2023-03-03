@@ -1,5 +1,5 @@
 //
-//  ListViewModel.swift
+//  DataRepository.swift
 //  TomatoTomato2
 //
 //  Created by Maria Kharybina on 09/01/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ListViewModel: ObservableObject {
+class DataRepository: ObservableObject {
     
     @Published var tomatoTasks: [TomatoTaskModel] = []
     

@@ -9,24 +9,26 @@ import SwiftUI
 
 struct ListView: View {
     
-    @EnvironmentObject var listViewModel: ListViewModel
+    @EnvironmentObject var repo: DataRepository
+    @ObservedObject var addVM = AddViewModel()
     
     var body: some View {
         
         ZStack {
-            if listViewModel.tomatoTasks.isEmpty {
-                NoTasksView()
+            if repo.tomatoTasks.isEmpty {
+                NoTasksView(addVM: addVM)
             } else {
                 List {
-                    ForEach(listViewModel.tomatoTasks) { tomatoTask in
+                    ForEach(repo.tomatoTasks) { tomatoTask in
+                        let editVM = EditViewModel(tomatoTask: tomatoTask)
                         NavigationLink {
-                            TaskDetailView(tomatoTask: tomatoTask)
+                            TaskDetailView(tomatoTask: tomatoTask, editVM: editVM)
                         } label: {
                             CellListView(task: tomatoTask)
                                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                     Button {
                                         withAnimation(.linear) {
-                                            listViewModel.updateTaskCompletion(task: tomatoTask)
+                                            repo.updateTaskCompletion(task: tomatoTask)
                                         }
                                     } label: {
                                         Label("Done?", systemImage: "checkmark")
@@ -35,8 +37,8 @@ struct ListView: View {
                                 }
                         }
                     }
-                    .onDelete(perform: listViewModel.deleteTomatofromDB)
-                    .onMove(perform: listViewModel.moveTask)
+                    .onDelete(perform: repo.deleteTomatofromDB)
+                    .onMove(perform: repo.moveTask)
                 }
                 .listStyle(InsetGroupedListStyle())
             }
@@ -45,7 +47,7 @@ struct ListView: View {
         .navigationBarItems(
             leading: EditButton(),
             trailing:
-                NavigationLink("Add", destination: AddView())
+                NavigationLink("Add", destination: AddView(addVM: addVM))
         )
     }
 }
@@ -56,6 +58,6 @@ struct ListView_Previews: PreviewProvider {
         NavigationView {
             ListView()
         }
-        .environmentObject(ListViewModel())
+        .environmentObject(DataRepository())
     }
 }

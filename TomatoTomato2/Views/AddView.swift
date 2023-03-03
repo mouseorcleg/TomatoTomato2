@@ -10,34 +10,28 @@ import SwiftUI
 struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var listViewModel: ListViewModel
+    @EnvironmentObject var repo: DataRepository
     
-    init() {
+    @ObservedObject var addVM: AddViewModel
+    @StateObject var ttParameters = TomatoTaskParameters()
+    
+    init(addVM: AddViewModel) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(displayP3Red: 0.075, green: 0.501, blue: 0.518, alpha: 0.3)
+        self.addVM = addVM
     }
-    
-    @State var alertTitle: String = ""
-    @State var showAlert: Bool = false
-    
-    @State var textFieldText: String = ""
-    @State var sizePickerSelection: String = "L"
-    @State var typePickerSelection: String = ""
-    
-    var sizePickerOptions: [String] = ["XS", "S", "M", "L", "XL"]
-    var typePickerOptions: [String] = ["mail", "develop", "launch", "meet", "", "plan", "research", "review", "test"]
     
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type the title", text: $textFieldText)
+                TextField("Type the title", text: $addVM.textFieldText)
                     .padding(.horizontal)
                     .frame(height: 45)
                     .background(Color.theme.background.opacity(0.85))
                     .cornerRadius(10)
                     .padding()
                 
-                Picker("Size", selection: $sizePickerSelection) {
-                    ForEach(sizePickerOptions, id: \.self) { size in
+                Picker("Size", selection: $addVM.sizePickerSelection) {
+                    ForEach(ttParameters.taskSizes, id: \.self) { size in
                         Text(size)
                     }
                 }
@@ -46,8 +40,8 @@ struct AddView: View {
                 .padding(.bottom)
                 .frame(height: 45)
                 
-                Picker("Type", selection: $typePickerSelection) {
-                    ForEach(typePickerOptions, id: \.self) { type in
+                Picker("Type", selection: $addVM.typePickerSelection) {
+                    ForEach(ttParameters.taskTypes, id: \.self) { type in
                         Text(type)
                             .foregroundColor(Color.theme.extra)
                     }
@@ -73,40 +67,26 @@ struct AddView: View {
         } //ScrollView
         .navigationTitle("✏️ New task ")
         .frame(maxWidth: 500)
-        .alert(isPresented: $showAlert) {
-            getAlert()
+        .alert(isPresented: $addVM.showAlert) {
+            addVM.getAlert()
         }
     }
     
     func savedButtonPressed() {
-        if thereIsTheTitle() {
+        if addVM.thereIsTheTitle() {
             
-            listViewModel.addTomatoTask(title: textFieldText, size: sizePickerSelection, type: typePickerSelection)
+            repo.addTomatoTask(title: addVM.textFieldText, size: addVM.sizePickerSelection, type: addVM.typePickerSelection)
             
             presentationMode.wrappedValue.dismiss()
         }
-    }
-    
-    func thereIsTheTitle() -> Bool {
-        if textFieldText.count < 3 {
-            alertTitle = "Title of your task should be at least 3 characters long. Type it up 🦾"
-            //can add other checks here
-            showAlert.toggle()
-            return false
-        }
-        return true
-    }
-    
-    func getAlert() -> Alert {
-        return Alert(title: Text(alertTitle))
     }
 }
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            AddView()
+            AddView(addVM: AddViewModel())
         }
-        .environmentObject(ListViewModel())
+        .environmentObject(DataRepository())
     }
 }

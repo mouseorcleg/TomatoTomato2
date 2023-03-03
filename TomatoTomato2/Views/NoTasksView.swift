@@ -10,6 +10,7 @@ import SwiftUI
 struct NoTasksView: View {
     
     @State var animate: Bool = false
+    @ObservedObject var addVM: AddViewModel
     
     var body: some View {
         ScrollView {
@@ -27,7 +28,7 @@ struct NoTasksView: View {
                         .font(.title3)
                         .fontWeight(.light)
                     
-                    NavigationLink(destination: AddView(), label: {
+                    NavigationLink(destination: AddView(addVM: addVM), label: {
                         Text("Add a shiny new task 🎉")
                             .font(.title3)
                             .fontWeight(.semibold)
@@ -70,6 +71,6 @@ struct NoTasksView: View {
 
 struct NoTasksView_Previews: PreviewProvider {
     static var previews: some View {
-        NoTasksView()
+        NoTasksView(addVM: AddViewModel())
     }
 }
