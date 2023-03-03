@@ -11,8 +11,10 @@ struct TaskDetailView: View {
     
     var tomatoTask: TomatoTaskModel
     
-    @ObservedObject var tomatoTimer = TomatoTimer()
     @EnvironmentObject var repo: DataRepository
+    @ObservedObject var editVM: EditViewModel
+    @ObservedObject var tomatoTimer = TomatoTimer()
+
     
     var body: some View {
         VStack {
@@ -104,7 +106,7 @@ struct TaskDetailView: View {
         .background(Color.theme.appBackground)
         .frame(maxWidth: 500)
         .navigationBarItems(
-            trailing: NavigationLink("Edit", destination: TomatoEditView(tomatoTask: tomatoTask))
+            trailing: NavigationLink("Edit", destination: TomatoEditView(editVM: editVM))
         )
         .onChange(of: tomatoTimer.tomatoCounter) { value in
             repo.updateTaskInDB(model: tomatoTask.plusOneTomato())
@@ -125,6 +127,7 @@ struct TaskDetailView: View {
 
 struct TaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0))
+        TaskDetailView(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0),
+                       editVM: EditViewModel(tomatoTask: TomatoTaskModel(id: UUID(), title: "Create fantastic and super puper ultra magestic TimerView", size: "L", type: "develop", isCompleted: false, tomatoCount: 0)))
     }
 }

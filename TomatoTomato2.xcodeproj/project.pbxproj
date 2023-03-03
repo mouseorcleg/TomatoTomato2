@@ -15,6 +15,7 @@
 		CB7D596D2982813300FF2ECC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7D596C2982813300FF2ECC /* Persistence.swift */; };
 		CB90B2F329AD04FE00D03E05 /* TomatoTaskParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B2F229AD04FE00D03E05 /* TomatoTaskParameters.swift */; };
 		CB90B2F529AD06F400D03E05 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B2F429AD06F400D03E05 /* AddViewModel.swift */; };
+		CB90B2F729AD0A6100D03E05 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B2F629AD0A6100D03E05 /* EditViewModel.swift */; };
 		CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */; };
 		CB9F5D08296C5E660012D59E /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9F5D07296C5E660012D59E /* DataRepository.swift */; };
 		CBA9A17F29682EF700879058 /* TomatoTomato2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9A17E29682EF700879058 /* TomatoTomato2App.swift */; };
@@ -38,6 +39,7 @@
 		CB7D596C2982813300FF2ECC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CB90B2F229AD04FE00D03E05 /* TomatoTaskParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskParameters.swift; sourceTree = "<group>"; };
 		CB90B2F429AD06F400D03E05 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
+		CB90B2F629AD0A6100D03E05 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		CB9F5D042968B29F0012D59E /* TomatoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoTaskModel.swift; sourceTree = "<group>"; };
 		CB9F5D07296C5E660012D59E /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		CBA9A17B29682EF700879058 /* TomatoTomato2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomatoTomato2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				CB90B2F429AD06F400D03E05 /* AddViewModel.swift */,
+				CB90B2F629AD0A6100D03E05 /* EditViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				CBCB6B782979AFFD004C5552 /* TomatoEditView.swift in Sources */,
 				CB42D87229757BBB005060B1 /* TomatoDBService.swift in Sources */,
 				CB9F5D052968B29F0012D59E /* TomatoTaskModel.swift in Sources */,
+				CB90B2F729AD0A6100D03E05 /* EditViewModel.swift in Sources */,
 				CBCB6B7F297EAC45004C5552 /* TomatoTimer.swift in Sources */,
 				CBE4247A2976EAB6006CCA91 /* TomatoContainer.xcdatamodeld in Sources */,
 				CBCB6B7629798DDB004C5552 /* TaskDetailView.swift in Sources */,

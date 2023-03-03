@@ -20,8 +20,9 @@ struct ListView: View {
             } else {
                 List {
                     ForEach(repo.tomatoTasks) { tomatoTask in
+                        let editVM = EditViewModel(tomatoTask: tomatoTask)
                         NavigationLink {
-                            TaskDetailView(tomatoTask: tomatoTask)
+                            TaskDetailView(tomatoTask: tomatoTask, editVM: editVM)
                         } label: {
                             CellListView(task: tomatoTask)
                                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
